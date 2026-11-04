@@ -141,6 +141,8 @@ math[display=block]{overflow-x:auto;margin:.3em 0}
 .mf .sq{border-top:1px solid currentColor;padding:0 1px}
 math{font-size:1.1em}
 .choice .why{display:block;margin-top:6px;padding:7px 9px;border-radius:8px;font-size:13.5px;font-weight:400;line-height:1.55;text-align:left;background:rgba(0,0,0,.035);color:var(--ink,#333)}.choice .why b{display:block;font-size:12px;margin-bottom:2px}.choice .why.y b{color:#1a8f4c}.choice .why.n b{color:#c9423a}
+.res{overflow-x:auto}
+.part{margin:14px 0 4px;padding-top:12px;border-top:1px dashed var(--line)}.part .ptxt{font-size:15px;font-weight:600;line-height:1.6;margin-bottom:8px;word-break:keep-all}.part .pts{color:var(--acc);font-weight:700;font-size:13px}.tbwrap{overflow-x:auto;margin:10px 0}.tbwrap table{border-collapse:collapse;font-size:13.5px;margin:0 auto}.tbwrap td,.tbwrap th{border:1px solid #d9d6cf;padding:6px 9px;text-align:center}.tbwrap th{background:#f4f2ee}
 .qtext .katex-display,.detail .katex-display{margin:.4em 0;overflow-x:auto;overflow-y:hidden}
 @media (max-width:420px){.subj .nm{font-size:18px}.qtext{font-size:16px}}
 </style>
@@ -166,7 +168,7 @@ math{font-size:1.1em}
 "use strict";
 const SUBJ={phys:{n:'물리',e:'⚡',c:'bg-phys'},chem:{n:'화학',e:'🧪',c:'bg-chem'},bio:{n:'생물',e:'🧬',c:'bg-bio'},earth:{n:'지구과학',e:'🌌',c:'bg-earth'}};
 const SORDER=['phys','chem','bio','earth'];
-const TYPE_NM={mc:'객관식',num:'단답(수치)',txt:'단답',essay:'서술형'};
+const TYPE_NM={mc:'객관식',num:'단답(수치)',txt:'단답',essay:'서술형',set:'서답형 세트'};
 const LV_NM={1:'암기',2:'계산·적용',3:'심화'};
 const Q=QS; const QMAP={}; Q.forEach(q=>QMAP[q.id]=q);
 
@@ -236,6 +238,7 @@ function ansText(q){
   if(q.t==='mc') return q.c[q.a];
   if(q.t==='num') return fmt(q.a)+(q.unit?' '+q.unit:'');
   if(q.t==='txt') return q.a[0];
+  if(q.t==='set') return '(소문항별 풀이 참고)';
   return '';
 }
 
@@ -306,7 +309,7 @@ function vSubject(s){
   const qs=Q.filter(q=>q.s===s); const units=[...new Set(qs.map(q=>q.u))];
   if(SEL.subj!==s){SEL={subj:s,mode:'lv1',units:[],count:10}}
   const cnt=m=>qs.filter(q=>modeFilter(q,m)).length;
-  const modes=[['lv1','📝','암기 확인','핵심 개념 객관식·단답'],['lv2','🧮','계산·문제풀이','공식 적용, 판정, 수치 단답'],['lv3','🔥','심화','까다로운 계산·함정 문제'],['essay','✍️','서술형','모범답안·채점 기준으로 자가 채점'],['fig','🖼️','그림·자료 해석','그림·그래프·표가 있는 문제'],['all','🎲','전체 랜덤','서술형 제외 모든 문제'],['wrong','📕','이 과목 오답만','틀린 문제 다시 풀기']];
+  const modes=[['lv1','📝','암기 확인','핵심 개념 객관식·단답'],['lv2','🧮','계산·문제풀이','공식 적용, 판정, 수치 단답'],['lv3','🔥','심화','까다로운 계산·함정 문제'],['set','🏆','서답형 심화 세트','학원 TEST 스타일 · 소문항별 부분 점수'],['essay','✍️','서술형','모범답안·채점 기준으로 자가 채점'],['fig','🖼️','그림·자료 해석','그림·그래프·표가 있는 문제'],['all','🎲','전체 랜덤','서술형 제외 모든 문제'],['wrong','📕','이 과목 오답만','틀린 문제 다시 풀기']];
   let h=`<div class="h2">${SUBJ[s].e} ${SUBJ[s].n}</div><div class="sub">${qs.length}문제 · 단원 ${units.length}개</div><div class="lbl">문제 유형</div>`;
   modes.forEach(([k,ic,nm,d])=>{const n=cnt(k);h+=`<button class="mode ${SEL.mode===k?'on':''}" onclick="SEL.mode='${k}';vSubject('${s}')" ${n?'':'disabled style="opacity:.45"'}><div class="ic">${ic}</div><div style="flex:1"><b>${nm} <span style="font-weight:600">· ${n}문제</span></b><span>${d}</span></div></button>`});
   h+=`<div class="lbl">단원 (선택 안 하면 전체)</div><div class="chips">`;
@@ -319,6 +322,8 @@ function vSubject(s){
 }
 function toggleUnit(s,u){const i=SEL.units.indexOf(u);if(i>=0)SEL.units.splice(i,1);else SEL.units.push(u);vSubject(s)}
 function modeFilter(q,m){
+  if(m==='set') return q.t==='set';
+  if(q.t==='set') return false;
   if(m==='essay') return q.t==='essay';
   if(q.t==='essay') return false;
   if(m==='all') return true;
@@ -338,7 +343,7 @@ function startQuiz(s,ids){
 /* ---------- quiz (practice) ---------- */
 function figHtml(q){return q.fig&&FIG[q.fig]?`<div class="figbox" onclick="this.classList.toggle('zoom')">${FIG[q.fig]}<div class="fighint">그림을 누르면 크게 / 작게</div></div>`:''}
 function qHead(q,i,n){
-  return `<div class="tags"><span class="tag">${SUBJ[q.s].n}</span><span class="tag">${esc(q.u)}</span>${q.t==='essay'?'<span class="tag es">서술형</span>':`<span class="tag lv${q.lv}">${LV_NM[q.lv]}</span><span class="tag">${TYPE_NM[q.t]}</span>`}${q.fig?'<span class="tag" style="background:#e8f0ff;color:#3a5bd9">그림</span>':''}</div>`;
+  return `<div class="tags"><span class="tag">${SUBJ[q.s].n}</span><span class="tag">${esc(q.u)}</span>${q.t==='set'?`<span class="tag lv3">서답형 심화</span><span class="tag es">${q.parts.reduce((s,p)=>s+p.pt,0)}점</span>`:q.t==='essay'?'<span class="tag es">서술형</span>':`<span class="tag lv${q.lv}">${LV_NM[q.lv]}</span><span class="tag">${TYPE_NM[q.t]}</span>`}${q.fig?'<span class="tag" style="background:#e8f0ff;color:#3a5bd9">그림</span>':''}</div>`;
 }
 function vQuiz(){
   if(!QZ||!QZ.list.length){go('home');return}
@@ -346,8 +351,9 @@ function vQuiz(){
   if(QZ.i>=QZ.list.length){return quizSummary()}
   const q=QMAP[QZ.list[QZ.i]], n=QZ.list.length, r=QZ.res[q.id];
   let h=`<div class="row" style="font-size:13px;color:var(--mute)"><span>${QZ.i+1} / ${n}</span><span style="text-align:right">맞힘 ${Object.values(QZ.res).filter(x=>x.ok).length}</span></div><div class="prog"><i style="width:${(QZ.i)/n*100}%"></i></div>
-  <div class="card">${qHead(q)}${figHtml(q)}<div class="qtext">${escBr(q.q)}</div>`;
-  if(q.t==='mc'){
+  <div class="card">${qHead(q)}${q.t==='set'?'':figHtml(q)}<div class="qtext">${escBr(q.q)}</div>${q.t==='set'?figHtml(q):''}${q.tb?`<div class="tbwrap">${q.tb}</div>`:''}`;
+  if(q.t==='set'){ h+=setBlock(q,r); }
+  else if(q.t==='mc'){
     if(!QZ.order[q.id]) QZ.order[q.id]=shuffle(q.c.map((_,k)=>k));
     QZ.order[q.id].forEach((k,j)=>{
       let cls=''; if(r){ if(k===q.a)cls='right'; else if(k===r.val)cls='wrong'; }
@@ -361,7 +367,7 @@ function vQuiz(){
     if(!r&&QZ.esOpen!==q.id) h+=`<button class="btn" style="margin-top:10px" onclick="showEssay()">모범답안·채점 기준 보기</button>`;
     if(!r&&QZ.esOpen===q.id) h+=essayBlock(q);
   }
-  if(r) h+=resultBlock(q,r);
+  if(r&&q.t!=='set') h+=resultBlock(q,r);
   h+=`</div>`;
   if(r) h+=`<div class="row"><button class="btn sec" onclick="QZ.i=Math.max(0,QZ.i-1);vQuiz()" ${QZ.i?'':'disabled'}>‹ 이전</button><button class="btn" onclick="QZ.i++;vQuiz()">${QZ.i+1<n?'다음 문제 ›':'결과 보기'}</button></div>`;
   else h+=`<div class="row"><button class="btn sec" onclick="QZ.i=Math.max(0,QZ.i-1);vQuiz()" ${QZ.i?'':'disabled'}>‹ 이전</button><button class="btn sec" onclick="QZ.i++;vQuiz()">건너뛰기 ›</button></div>`;
@@ -382,6 +388,35 @@ function resultBlock(q,r){
   h+=`<div class="lbl" style="margin-top:12px">📂 관련 자료 보기</div>${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div>`;
   return h;
 }
+function setSave(){const q=QMAP[QZ.list[QZ.i]];if(!QZ.set||QZ.set.id!==q.id)return;q.parts.forEach((p,i)=>{const el=document.getElementById('sp'+i);if(el&&!el.disabled)QZ.set.vals[i]=el.value})}
+function setBlock(q,r){
+  if(!QZ.set||QZ.set.id!==q.id) QZ.set={id:q.id,phase:r?'done':'input',vals:r?r.vals.slice():q.parts.map(()=>''),auto:[]};
+  const S=QZ.set, tot=q.parts.reduce((s,p)=>s+p.pt,0); let h='';
+  q.parts.forEach((p,i)=>{
+    const dis=S.phase!=='input'?'disabled':'';
+    h+=`<div class="part"><div class="ptxt"><b>(${i+1})</b> ${escBr(p.p)} <span class="pts">[${p.pt}점]</span></div>`;
+    if(p.t==='essay') h+=`<textarea id="sp${i}" class="inp" style="min-height:90px" placeholder="풀이 과정까지 써 보세요" ${dis}>${esc(S.vals[i]||'')}</textarea>`;
+    else h+=`<div class="row"><input id="sp${i}" class="inp" ${p.t==='num'?'inputmode="decimal"':''} placeholder="${p.t==='num'?'숫자로 입력':'답을 입력'}" value="${esc(S.vals[i]||'')}" ${dis}>${p.unit?`<span class="unit" style="flex:none">${esc(p.unit)}</span>`:''}</div>`;
+    if(S.phase==='grade'){
+      if(p.t==='essay') h+=`<div class="res es"><b>채점 기준 — 내 답안에 들어간 항목 체크</b>${p.kp.map(k=>`<label class="kp"><input type="checkbox" class="kpc" data-i="${i}"><span>${esc(k)}</span></label>`).join('')}<details class="detail" open><summary style="cursor:pointer;font-weight:700">모범답안</summary><div style="margin-top:6px">${p.sol}</div></details></div>`;
+      else{const ok=S.auto[i];h+=`<div class="res ${ok?'ok':'no'}" style="padding:10px 12px"><b>${ok?'⭕ 정답':'❌ 오답'} · 정답: ${esc(ansText(p))}</b></div>`}
+    }
+    if(S.phase==='done'&&r){const g=r.got[i];h+=`<div class="res ${g>=p.pt?'ok':(g>0?'es':'no')}" style="padding:10px 12px"><h4 style="margin:0 0 4px">${g>=p.pt?'⭕':(g>0?'🔺':'❌')} ${g} / ${p.pt}점${p.t!=='essay'?` · 정답: ${esc(ansText(p))}`:''}</h4><div>${p.sol}</div></div>`}
+    h+=`</div>`;
+  });
+  if(S.phase==='input') h+=`<button class="btn" style="margin-top:12px" onclick="setSubmit()">제출하고 채점하기</button>`;
+  else if(S.phase==='grade') h+=`<button class="btn" style="margin-top:12px" onclick="setFinish()">채점 완료</button>`;
+  else if(r){
+    h+=`<div class="res ${r.ok?'ok':'no'}"><h4>🏆 총점 ${r.score} / ${tot}점 (${Math.round(r.score/tot*100)}%) ${r.ok?'· 통과':'· 보완 필요'}</h4>${q.ex?`<div>${escBr(q.ex)}</div>`:''}${q.sol?`<details class="detail"><summary style="cursor:pointer;font-weight:700">📖 전체 풀이</summary><div style="margin-top:6px">${q.sol}</div></details>`:''}<div class="lbl" style="margin-top:12px">📂 관련 자료 보기</div>${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button><button class="ref" onclick="QZ.set=null;delete QZ.res['${q.id}'];vQuiz()">↺ 다시 풀기</button></div></div>`;
+  }
+  return h;
+}
+function setSubmit(){const q=QMAP[QZ.list[QZ.i]];setSave();const S=QZ.set;S.auto=q.parts.map((p,i)=>p.t==='essay'?null:checkAns(p,S.vals[i]||''));
+  if(q.parts.some(p=>p.t==='essay')){S.phase='grade';vQuiz();}else setFinish();}
+function setFinish(){const q=QMAP[QZ.list[QZ.i]];const S=QZ.set;const cs=[...document.querySelectorAll('.kpc')];
+  const got=q.parts.map((p,i)=>{if(p.t!=='essay')return S.auto[i]?p.pt:0;const mine=cs.filter(c=>+c.dataset.i===i);const n=mine.filter(c=>c.checked).length;return Math.round(p.pt*n/Math.max(1,mine.length)*2)/2});
+  const tot=q.parts.reduce((s,p)=>s+p.pt,0), score=got.reduce((a,b)=>a+b,0), ok=score/tot>=0.7;
+  S.phase='done'; QZ.res[q.id]={val:'',vals:S.vals.slice(),got,score,ok}; record(q.id,ok); vQuiz();}
 function answerMC(k){const q=QMAP[QZ.list[QZ.i]];const ok=checkAns(q,k);QZ.res[q.id]={val:k,ok};record(q.id,ok);vQuiz()}
 function answerIn(){const q=QMAP[QZ.list[QZ.i]];const v=$('#ansIn').value;if(!v.trim()){$('#ansIn').focus();return}const ok=checkAns(q,v);QZ.res[q.id]={val:v,ok};record(q.id,ok);vQuiz()}
 function essayBlock(q){
@@ -418,7 +453,7 @@ function vExamSetup(){
   render(h);
 }
 function examPool(){
-  let p=Q.filter(q=>q.t!=='essay'&&(EXS.subj==='all'||q.s===EXS.subj));
+  let p=Q.filter(q=>q.t!=='essay'&&q.t!=='set'&&(EXS.subj==='all'||q.s===EXS.subj));
   return p;
 }
 function startExam(){
@@ -526,7 +561,8 @@ function botAnswer(text,ctxQ){
   }
   const top=r[0].k; const more=r.slice(1,compareCue?3:3).filter(x=>x.sc>=r[0].sc*0.45);
   let h='';
-  if(ctxQ){h+=`<h5>📌 이 문제 풀이</h5><div><b>정답:</b> ${esc(ctxQ.t==='essay'?'(모범답안 참고)':ansText(ctxQ))}</div><div style="margin:4px 0 8px">${escBr(ctxQ.ex||'')}</div>${ctxQ.sol?`<div class="detail">${ctxQ.t==='essay'?escBr(ctxQ.sol):ctxQ.sol}</div>`:''}<hr style="border:none;border-top:1px solid #eee;margin:10px 0">`}
+  if(ctxQ&&ctxQ.t==='set'){h+=`<h5>📌 이 문제 풀이</h5>${ctxQ.parts.map((p,i)=>`<div style="margin:4px 0"><b>(${i+1})</b> ${p.t!=='essay'?'정답: '+esc(ansText(p))+' — ':''}${p.sol}</div>`).join('')}<hr style="border:none;border-top:1px solid #eee;margin:10px 0">`}
+  else if(ctxQ){h+=`<h5>📌 이 문제 풀이</h5><div><b>정답:</b> ${esc(ctxQ.t==='essay'?'(모범답안 참고)':ansText(ctxQ))}</div><div style="margin:4px 0 8px">${escBr(ctxQ.ex||'')}</div>${ctxQ.sol?`<div class="detail">${ctxQ.t==='essay'?escBr(ctxQ.sol):ctxQ.sol}</div>`:''}<hr style="border:none;border-top:1px solid #eee;margin:10px 0">`}
   h+=`<h5>📒 ${esc(top.t)} <span class="tag">${SUBJ[top.s].n}</span></h5><div>${top.b}</div><div class="lbl" style="margin-top:8px">📂 필기·자료에서 보기</div>${refsHtml(top.ref)}`;
   if(more.length){h+=`<div class="lbl">함께 보면 좋은 내용</div>`+more.map(x=>`<details class="detail"><summary style="cursor:pointer;font-weight:700">${esc(x.k.t)}</summary><div style="margin-top:6px">${x.k.b}</div>${refsHtml(x.k.ref)}</details>`).join('')}
   const rq=relatedQs(top,ctxQ&&ctxQ.id);

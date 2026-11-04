@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -17,6 +17,13 @@ for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_eart
             q['c']=[str(c) for c in q['c']]
         if q['t']=='num': q['a']=float(q['a'])
         if q['t']=='txt': q['a']=[str(x) for x in q['a']]
+        if q['t']=='set':
+            q.setdefault('lv',3); assert q['parts'], q['id']
+            for p in q['parts']:
+                assert p['t'] in ('num','txt','essay') and 'pt' in p and 'sol' in p, q['id']
+                if p['t']=='num': p['a']=float(p['a']); p.setdefault('tol',0.02)
+                if p['t']=='txt': p['a']=[str(x) for x in p['a']]
+                if p['t']=='essay': assert p.get('kp'), q['id']
         q['ref']=[str(r) for r in q.get('ref',[])]
         QS.append(q)
 CX=yaml.safe_load(open('cx.yaml'))
@@ -30,6 +37,10 @@ for q in QS:
     if q.get('sol'): q['sol']=mathify(q['sol'],True)
     if q['t']=='mc': q['c']=[mathify(c) for c in q['c']]; q['cx']=[mathify(c) for c in q['cx']]
     if q.get('kp'): q['kp']=[mathify(str(x)) for x in q['kp']]
+    if q.get('tb'): q['tb']=mathify(q['tb'],True)
+    for p in q.get('parts',[]):
+        p['p']=mathify(str(p['p'])); p['sol']=mathify(str(p['sol']),True)
+        if p.get('kp'): p['kp']=[mathify(str(x)) for x in p['kp']]
 ids=[q['id'] for q in QS]; assert len(ids)==len(set(ids)),'dup id'
 KB=yaml.safe_load(open('kb.yaml'))
 for k in KB: k['b']=mathify(k['b'],True)
