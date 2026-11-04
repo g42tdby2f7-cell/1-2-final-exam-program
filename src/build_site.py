@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -48,6 +48,7 @@ SRC={
  'r2':dict(n='화학 CHEMTAK 손필기본 (Solids · Phase Transitions)',short='CHEMTAK',s='chem',ic='📙'),
  'nc':dict(n='내 필기 · 화학 (열역학·열화학)',short='내 필기',s='chem',note=True,labels={'n1':'화학 열역학 필기 (제1법칙·Cp/Cv·가역/비가역)','n2':'화학 열화학 필기 (열량계·헤스·반응 엔탈피)'}),
  's2':dict(n='물리 「6. 다이오드」 수업 PPT',short='물리 다이오드 PPT',s='phys',ic='📕'),
+ 'qm':dict(n='물리 「양자역학」 수업 PPT·필기 (흑체 복사 ~ 양자 컴퓨터)',short='물리 양자역학',s='phys',ic='📕'),
  's1':dict(n='물리 「다이오드 추가」 PPT (근사 모델·예제)',short='물리 다이오드 추가',s='phys',ic='📕'),
 }
 IMG={}

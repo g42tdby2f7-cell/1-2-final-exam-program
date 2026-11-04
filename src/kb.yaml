@@ -527,3 +527,89 @@
     <li>Vpp = 최댓값 − 최솟값 = 2 × 진폭</li>
     <li>반파 정류 실험: 브레드보드, 1N4007, 1 kΩ</li></ul>
   ref: [s2:25, s2:26, s2:27, s2:28, s2:29]
+
+# ---------------- 물리 · 양자역학 ----------------
+- id: k_q1
+  s: phys
+  t: 흑체 복사 (빈 · 레일리–진스 · 플랑크)
+  kw: [흑체, 흑체복사, 빈, 변위법칙, 빈의 변위 법칙, 레일리, 진스, 레일리진스, 자외선파탄, 플랑크, 양자화, 볼츠만, 슈테판, 정상파, 에너지밀도]
+  b: |
+    <ul><li><b>빈의 변위 법칙</b>: $\lambda_{max}T=2.9\times10^{-3}$ m·K = 일정 → 뜨거울수록 봉우리가 짧은 파장 쪽</li>
+    <li><b>빈의 복사식</b>(실험식): $u=\dfrac{a}{\lambda^5}e^{-b/\lambda T}$</li>
+    <li><b>레일리–진스</b>: 공동 속 정상파, 정상파당 평균 에너지 $\bar\varepsilon=kT$ (k: 볼츠만 상수, 에너지 연속) → $u=\dfrac{8\pi kT}{\lambda^4}$, 긴 파장 ○ / 짧은 파장에서 발산 ✗</li>
+    <li><b>플랑크</b>: 진동자 에너지 불연속 $E_n=nhf$, $\Delta E=hf$ (양자화 = 입자화) → $u=\dfrac{8\pi hc}{\lambda^5}\dfrac{1}{e^{hc/\lambda kT}-1}$, 모든 파장에서 실험과 일치</li>
+    <li>슈테판–볼츠만: $P=e\sigma AT^4$ (흑체 e = 1)</li></ul>
+  ref: [qm:1, qm:2]
+
+- id: k_q2
+  s: phys
+  t: 탄성 충돌 (1차원 · 2차원)
+  kw: [충돌, 탄성충돌, 탄성, 1차원, 2차원, 운동량보존, 에너지보존, 속도교환, 90도, 수직]
+  b: |
+    <ul><li>운동량: $m_1v_{1,i}=m_1v_{1,f}+m_2v_{2,f}$, 에너지: $\tfrac12m_1v_{1,i}^2=\tfrac12m_1v_{1,f}^2+\tfrac12m_2v_{2,f}^2$ ($v_{2,i}=0$)</li>
+    <li>연립 → $v_{1,i}+v_{1,f}=v_{2,f}$</li>
+    <li>$v_{1,f}=\dfrac{m_1-m_2}{m_1+m_2}v_{1,i}$, $v_{2,f}=\dfrac{2m_1}{m_1+m_2}v_{1,i}$</li>
+    <li>$m_1=m_2$ → 속도 교환 ($v_{1,f}=0$, $v_{2,f}=v_{1,i}$)</li>
+    <li>2차원, 같은 질량, 표적 정지: $\cos(\theta+\phi)=0$ → $\theta+\phi=90°$</li></ul>
+  ref: [qm:4, qm:5]
+
+- id: k_q3
+  s: phys
+  t: 상대론적 에너지와 광자의 운동량
+  kw: [상대론, 감마, 로렌츠인자, 정지에너지, 정지질량, 운동에너지, E=mc2, 광자, 운동량, 광자운동량, pc]
+  b: |
+    <ul><li>$E=\gamma m_0c^2=K+m_0c^2$, $\gamma=\dfrac{1}{\sqrt{1-v^2/c^2}}$ (상대론적 질량 $\gamma m_0$)</li>
+    <li>$K=(\gamma-1)m_0c^2$ → $v\ll c$이면 $\tfrac12m_0v^2$</li>
+    <li>$p=\gamma m_0v$, $E^2=p^2c^2+m_0^2c^4$</li>
+    <li>광자($m_0=0$): $E=pc=hf=\dfrac{hc}{\lambda}$ → $p=\dfrac{h}{\lambda}$</li></ul>
+  ref: [qm:6, qm:7]
+
+- id: k_q4
+  s: phys
+  t: 콤프턴 효과
+  kw: [콤프턴, 콤프턴효과, 콤프턴산란, X선, 흑연, 산란, 산란각, 파장변화, 콤프턴파장, 되튄전자, 입자성]
+  b: |
+    <ul><li>흑연에 X선 → 산란된 X선의 파장이 <b>길어짐</b> (광자가 전자에 에너지를 줌)</li>
+    <li>에너지 보존: $p_\gamma c+m_ec^2=p_\gamma^{\prime}c+E_e$ / 운동량 보존: $\vec p_\gamma=\vec p_\gamma^{\prime}+\vec p_e$</li>
+    <li>$\Delta\lambda=\lambda^{\prime}-\lambda=\dfrac{h}{m_ec}(1-\cos\theta)=\lambda_c(1-\cos\theta)$, $\lambda_c=2.43\times10^{-12}$ m (전자의 콤프턴 파장)</li>
+    <li>θ만의 함수: 0° → 0, 90° → $\lambda_c$, 180° → $2\lambda_c$ (최대)</li>
+    <li>빛의 <b>입자성</b> 증거 (광전 효과와 함께)</li></ul>
+  ref: [qm:7, qm:8, qm:9, qm:10, qm:11]
+
+- id: k_q5
+  s: phys
+  t: 물질파와 이중슬릿 (빛 · 전자)
+  kw: [드브로이, 물질파, 이중슬릿, 간섭, 회절, 이중성, 빛의이중성, 전자이중슬릿, 검출기, 관측, 광자수, 세기]
+  b: |
+    <ul><li>가속 전자: $eV=\dfrac{p^2}{2m}$ → $\lambda=\dfrac{h}{p}=\dfrac{h}{\sqrt{2meV}}$</li>
+    <li>빛: 파동 – 간섭·회절 / 입자(광자) – 광전 효과·콤프턴</li>
+    <li>빛의 세기 = $|A|^2$ ∝ 도달하는 광자 수(확률)</li>
+    <li>전자를 하나씩 보내도 쌓이면 간섭 무늬: $P_{12}=|\phi_1+\phi_2|^2\ne P_1+P_2$</li>
+    <li>슬릿에서 경로를 관측하면 간섭 무늬가 사라짐(두 띠) — 필기: "이 뒤 내용이 어렵게 출제"</li></ul>
+  ref: [qm:12, qm:13, qm:14, qm:15]
+
+- id: k_q6
+  s: phys
+  t: 코펜하겐 해석 · 중첩 · 얽힘
+  kw: [코펜하겐, 보어, 하이젠베르크, 보른, 파동함수, 확률밀도, 붕괴, 결정론, 상보성, 중첩, 양자중첩, 얽힘, 양자얽힘, 아인슈타인, 원격작용]
+  b: |
+    <ul><li>코펜하겐 해석(보어·하이젠베르크·보른): $|\psi(x)|^2$ = 위치 x에서의 확률 밀도, 결정론 포기</li>
+    <li>측정 전: 여러 상태의 중첩 → 측정 순간 하나로 <b>붕괴</b>(Collapse)</li>
+    <li>상보성 원리: 입자성·파동성이 관측 조건에 따라 상호 보완적으로 나타남</li>
+    <li>중첩: $|\psi\rangle=c_1|\uparrow\rangle+c_2|\downarrow\rangle$, 측정 확률 $|c_1|^2$, $|c_2|^2$ (합 = 1)</li>
+    <li>얽힘: 한 입자를 측정하면 다른 입자 상태도 즉시 결정, 개별 파동함수로 나눌 수 없음 (예: $\tfrac{1}{\sqrt2}(|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle)$)</li>
+    <li>정보의 전송이 아니라 하나의 전체 상태가 붕괴</li></ul>
+  ref: [qm:16, qm:17, qm:18, qm:19]
+
+- id: k_q7
+  s: phys
+  t: 스핀 · 슈테른–게를라흐 · 블로흐 구 · 양자 컴퓨터
+  kw: [스핀, 전자스핀, 업스핀, 다운스핀, 슈테른, 게를라흐, 슈테른게를라흐, 은원자, 블로흐, 블로흐구, 큐비트, 양자컴퓨터, 도이치, 파인만]
+  b: |
+    <ul><li>스핀 = 고유 각운동량(실제 자전 아님), $s=\tfrac12$, $|S|=\sqrt{s(s+1)}\hbar=\tfrac{\sqrt3}{2}\hbar$, $S_z=\pm\tfrac12\hbar$ (up/down)</li>
+    <li>슈테른–게를라흐: 은 원자 빔 + <b>불균일</b> 자기장 → 두 갈래 (고전 예상은 연속 띠) → 스핀 양자화</li>
+    <li>블로흐 구: $|\psi\rangle=\cos\tfrac\theta2|0\rangle+e^{i\varphi}\sin\tfrac\theta2|1\rangle$, θ = 0 → |0⟩, θ = π → |1⟩, θ = π/2·φ = 0 → $\tfrac{|0\rangle+|1\rangle}{\sqrt2}$</li>
+    <li>고전 비트(0 또는 1) vs 큐비트(중첩)</li>
+    <li>데이비드 도이치: 파인만의 생각을 정식화, Deutsch–Jozsa 알고리즘으로 양자 우위 최초 증명</li>
+    <li>고전 컴퓨터 한계: 순차 처리, 빅데이터 병목, 확장성, 실시간 분석, 모델 복잡성</li></ul>
+  ref: [qm:20, qm:21, qm:22, qm:23, qm:24, qm:26]

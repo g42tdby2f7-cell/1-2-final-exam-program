@@ -433,7 +433,82 @@ def doping(kind='P'):
         b+=C(cx+31,cy-4,6,'#fff',RED,2)+L(cx+35,cy-9,250,25,c=RED,w=1)+T(252,22,'전자가 빈 자리','start',12,RED)
     return svg(360,190,b)
 
-FIGS={
+
+# ---------------- quantum ----------------
+import math as _m
+def _wave(x0,y0,x1,y1,c,amp=5,n=6):
+    L=_m.hypot(x1-x0,y1-y0); ux,uy=(x1-x0)/L,(y1-y0)/L; px,py=-uy,ux; d=f'M{x0:.1f},{y0:.1f}'
+    N=60
+    for i in range(1,N+1):
+        t=i/N; a=amp*_m.sin(2*_m.pi*n*t)
+        d+=f' L{x0+ux*L*t+px*a:.1f},{y0+uy*L*t+py*a:.1f}'
+    return P(d,c=c,w=1.8)
+def compton():
+    b=''; cx,cy=210,150
+    b+=_wave(20,cy,cx-14,cy,RED,5,7)+T(80,cy-16,'입사 X선 (λ)','middle',12,RED)
+    b+=L(cx,cy,400,cy,c=MUT,w=1,dash='4 4')
+    th=_m.radians(40); x1,y1=cx+170*_m.cos(th),cy-170*_m.sin(th)
+    b+=_wave(cx+12*_m.cos(th),cy-12*_m.sin(th),x1,y1,BLUE,4,9)+T(x1-10,y1-8,"산란 X선 (λ′ > λ)",'end',12,BLUE)
+    ph=_m.radians(35); x2,y2=cx+130*_m.cos(ph),cy+130*_m.sin(ph)
+    b+=L(cx,cy,x2,y2,c=INK,w=1.8,mk='ar')+T(x2+4,y2+16,'되튄 전자 (p_e)','middle',12)
+    b+=P(f'M{cx+45},{cy} A45,45 0 0,0 {cx+45*_m.cos(th):.1f},{cy-45*_m.sin(th):.1f}',c=BLUE,w=1.3)+T(cx+55,cy-14,'θ','start',13,BLUE,'bold')
+    b+=P(f'M{cx+38},{cy} A38,38 0 0,1 {cx+38*_m.cos(ph):.1f},{cy+38*_m.sin(ph):.1f}',c=INK,w=1.3)+T(cx+46,cy+22,'φ','start',13,INK,'bold')
+    b+=C(cx,cy,9,'#ffe08a')+T(cx,cy+4,'e','middle',11)+T(cx-6,cy+30,'정지 전자','middle',11,MUT)
+    return svg(420,265,b)
+def coll1d():
+    b=''; y=70
+    b+=T(210,18,'충돌 전','middle',12,MUT)+C(60,y-20,20,'#dfe8ff',BLUE)+T(60,y-16,'m₁','middle',13)+L(84,y-20,140,y-20,c=BLUE,mk='arB')+T(112,y-30,'v₁,ᵢ','middle',12,BLUE)
+    b+=C(260,y-20,26,'#ffe3e3',RED)+T(260,y-16,'m₂','middle',13)+T(260,y+18,'정지 (v₂,ᵢ = 0)','middle',11,MUT)
+    b+=L(10,y+30,410,y+30,c=MUT,w=1,dash='4 4')+T(210,y+52,'충돌 후 (1차원 탄성 충돌)','middle',12,MUT)
+    b+=C(60,y+85,20,'#dfe8ff',BLUE)+T(60,y+89,'m₁','middle',13)+L(84,y+85,130,y+85,c=BLUE,mk='arB')+T(108,y+75,'v₁,f','middle',12,BLUE)
+    b+=C(260,y+85,26,'#ffe3e3',RED)+T(260,y+89,'m₂','middle',13)+L(290,y+85,370,y+85,c=RED,mk='arR')+T(330,y+75,'v₂,f','middle',12,RED)
+    return svg(420,180,b)
+def coll2d():
+    b=''; cx,cy=200,110
+    b+=C(50,cy,16,'#dfe8ff',BLUE)+T(50,cy+4,'m','middle',12)+L(70,cy,cx-22,cy,c=BLUE,mk='arB')+T(120,cy-12,'v₁,ᵢ','middle',12,BLUE)
+    b+=C(cx,cy,16,'#ffe3e3',RED)+T(cx,cy+4,'m','middle',12)+T(cx,cy+34,'정지','middle',11,MUT)
+    b+=L(cx,cy,390,cy,c=MUT,w=1,dash='4 4')
+    th=_m.radians(35); ph=_m.radians(55)
+    b+=L(cx+18*_m.cos(th),cy-18*_m.sin(th),cx+150*_m.cos(th),cy-150*_m.sin(th),c=BLUE,mk='arB')+T(cx+160*_m.cos(th),cy-160*_m.sin(th),'v₁,f','middle',12,BLUE)
+    b+=L(cx+18*_m.cos(ph),cy+18*_m.sin(ph),cx+110*_m.cos(ph),cy+110*_m.sin(ph),c=RED,mk='arR')+T(cx+122*_m.cos(ph)+10,cy+118*_m.sin(ph),'v₂,f','middle',12,RED)
+    b+=P(f'M{cx+50},{cy} A50,50 0 0,0 {cx+50*_m.cos(th):.1f},{cy-50*_m.sin(th):.1f}',c=BLUE,w=1.2)+T(cx+58,cy-12,'θ','start',13,BLUE,'bold')
+    b+=P(f'M{cx+42},{cy} A42,42 0 0,1 {cx+42*_m.cos(ph):.1f},{cy+42*_m.sin(ph):.1f}',c=RED,w=1.2)+T(cx+46,cy+28,'φ','start',13,RED,'bold')
+    return svg(420,220,b)
+def bbody():
+    b=''; ox,oy=50,210; W,H=340,180
+    b+=L(ox,oy,ox+W,oy,mk='ar')+L(ox,oy,ox,oy-H,mk='ar')+T(ox+W-4,oy+18,'파장 λ','end',12)+T(ox+4,oy-H-4,'복사 세기','start',12)
+    hc_k=1.4388e-2
+    def plank(l,T): return 1/(l**5*(_m.exp(hc_k/(l*T))-1))
+    Ts=[(6000,RED,'6000 K'),(5000,ORG,'5000 K'),(4000,BLUE,'4000 K')]
+    mx=max(plank(2.9e-3/6000,6000),1)
+    lmax=2.5e-6
+    for Tk,col,lab in Ts:
+        d=''
+        for i in range(1,121):
+            l=lmax*i/120; y=plank(l,Tk)/mx
+            X=ox+W*0.95*l/lmax; Y=oy-H*0.9*y
+            d+=('M' if i==1 else ' L')+f'{X:.1f},{Y:.1f}'
+        b+=P(d,c=col,w=2)
+        lp=2.9e-3/Tk; X=ox+W*0.95*lp/lmax; Y=oy-H*0.9*plank(lp,Tk)/mx
+        b+=C(X,Y,3,col,col)+T(X+6,Y-6,lab,'start',11,col)
+    return svg(420,230,b)
+def bloch():
+    b=''; cx,cy,r=200,125,85
+    b+=f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="#eef1fc" stroke="{BLUE}" stroke-width="1.6"/>'
+    b+=f'<ellipse cx="{cx}" cy="{cy}" rx="{r}" ry="24" fill="none" stroke="{BLUE}" stroke-width="1" stroke-dasharray="4 3"/>'
+    b+=L(cx,cy,cx,cy-r-18,c=INK,w=1.3,mk='ar')+T(cx+8,cy-r-14,'z','start',12)
+    b+=L(cx,cy,cx+r+22,cy,c=INK,w=1.3,mk='ar')+T(cx+r+26,cy+4,'y','start',12)
+    b+=L(cx,cy,cx-50,cy+40,c=INK,w=1.3,mk='ar')+T(cx-58,cy+50,'x','middle',12)
+    b+=C(cx,cy-r,4,INK,INK)+T(cx+10,cy-r+16,'|0⟩ (θ = 0)','start',12)
+    b+=C(cx,cy+r,4,INK,INK)+T(cx+10,cy+r-6,'|1⟩ (θ = π)','start',12)
+    tx,ty=cx+55,cy-58
+    b+=L(cx,cy,tx,ty,c=RED,w=2,mk='arR')+T(tx+6,ty-4,'|ψ⟩','start',13,RED,'bold')
+    b+=P(f'M{cx},{cy-30} A30,30 0 0,1 {cx+30*0.69:.1f},{cy-30*0.73:.1f}',c=RED,w=1.2)+T(cx+8,cy-36,'θ','start',12,RED)
+    b+=T(cx,cy+r+30,'|ψ⟩ = cos(θ/2)|0⟩ + e<tspan baseline-shift="super" font-size="70%">iφ</tspan> sin(θ/2)|1⟩','middle',12,MUT)
+    return svg(420,250,b)
+
+FIGS={'compton':compton,'coll1d':coll1d,'coll2d':coll2d,'bbody':bbody,'bloch':bloch,
+
  'cell_sc':lambda:cell('sc'),'cell_bcc':lambda:cell('bcc'),'cell_fcc':lambda:cell('fcc'),'cell_nacl':lambda:cell('nacl'),'cell_cscl':lambda:cell('cscl'),
  'cell_perov':lambda:cell('perov'),'cell_nial':lambda:cell('nial'),'cell_edge':lambda:cell('edgeb'),'lattice2d':lattice2d,
  'hess_co':hess_co,'hess_form':hess_form,'struct_ch4':struct_ch4,'pv_paths':pv_paths,'pv_carnot':pv_carnot,'g_vs_t':g_vs_t,
