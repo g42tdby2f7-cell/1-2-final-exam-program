@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>1-2 기말 복습 · 물화생지</title>
+<script src="katex.min.js"></script>
+<script src="auto-render.min.js"></script>
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1d1d1f; --mute:#6b6b70; --line:#e6e4df;
+  --acc:#3a5bd9; --acc2:#eef1fc; --ok:#1f9d55; --okbg:#e8f6ee; --no:#d64545; --nobg:#fdecec;
+  --phys:#3a5bd9; --chem:#d9822b; --bio:#1f9d55; --earth:#8b5cf6;
+  --r:16px; --sh:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.05);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;font-size:16px;line-height:1.55}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+input,textarea,select{font:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:16px 16px 110px}
+header.top{position:sticky;top:0;z-index:20;background:rgba(246,245,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .in{max-width:760px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:10px}
+header.top h1{font-size:17px;margin:0;font-weight:700;letter-spacing:-.2px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);font-size:18px}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs .in{max-width:760px;margin:0 auto;display:flex}
+nav.tabs button{flex:1;padding:8px 0 9px;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11.5px;color:var(--mute)}
+nav.tabs button .ic{font-size:20px;line-height:1.2}
+nav.tabs button.on{color:var(--acc);font-weight:700}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:16px;margin:12px 0;border:1px solid #eeece8}
+.h2{font-size:20px;font-weight:800;margin:6px 0 2px;letter-spacing:-.3px}
+.sub{color:var(--mute);font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.subj{border-radius:var(--r);padding:16px;color:#fff;box-shadow:var(--sh);text-align:left;position:relative;overflow:hidden;min-height:118px}
+.subj .nm{font-size:20px;font-weight:800}
+.subj .ct{font-size:13px;opacity:.9;margin-top:2px}
+.subj .bar{height:6px;border-radius:9px;background:rgba(255,255,255,.3);margin-top:14px;overflow:hidden}
+.subj .bar i{display:block;height:100%;background:#fff;border-radius:9px}
+.subj .emo{position:absolute;right:10px;top:8px;font-size:34px;opacity:.9}
+.bg-phys{background:linear-gradient(135deg,#3a5bd9,#5b7cf0)}
+.bg-chem{background:linear-gradient(135deg,#d9822b,#efa04a)}
+.bg-bio{background:linear-gradient(135deg,#1f9d55,#3cbf75)}
+.bg-earth{background:linear-gradient(135deg,#7c4ddb,#a07cf2)}
+.mode{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;border-radius:14px;background:#fff;border:1.5px solid var(--line);margin:8px 0}
+.mode.on{border-color:var(--acc);background:var(--acc2)}
+.mode .ic{font-size:24px;width:36px;text-align:center}
+.mode b{display:block;font-size:15.5px}
+.mode span{font-size:13px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chip{padding:6px 11px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font-size:13.5px}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:13px 18px;border-radius:13px;background:var(--acc);color:#fff;font-weight:700;font-size:15.5px;width:100%}
+.btn.sec{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn.sm{padding:9px 13px;font-size:14px;width:auto;border-radius:11px}
+.btn:disabled{opacity:.45}
+.row{display:flex;gap:8px;align-items:center}
+.row>*{flex:1}
+.lbl{font-size:13px;font-weight:700;color:var(--mute);margin:14px 0 4px}
+.prog{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin:4px 0 2px}
+.prog i{display:block;height:100%;background:var(--acc);transition:width .3s}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.tag{font-size:12px;padding:3px 8px;border-radius:7px;background:#f1f0ed;color:#55555a;font-weight:600}
+.tag.lv3{background:#fdecec;color:#c23b3b}.tag.lv2{background:#fff4e5;color:#b86a12}.tag.lv1{background:#e9f7ef;color:#1f7a45}.tag.es{background:#efe9fc;color:#6a3fc8}
+.qtext{font-size:16.5px;font-weight:600;line-height:1.65;word-break:keep-all}
+.choice{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;padding:12px 13px;border-radius:12px;border:1.5px solid var(--line);background:#fff;margin:8px 0;font-size:15px;line-height:1.5;word-break:keep-all}
+.choice .no{flex:none;width:24px;height:24px;border-radius:50%;background:#f1f0ed;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.choice.sel{border-color:var(--acc);background:var(--acc2)}
+.choice.right{border-color:var(--ok);background:var(--okbg)}
+.choice.right .no{background:var(--ok);color:#fff}
+.choice.wrong{border-color:var(--no);background:var(--nobg)}
+.choice.wrong .no{background:var(--no);color:#fff}
+.inp{width:100%;padding:13px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-size:16px;outline:none}
+.inp:focus{border-color:var(--acc)}
+textarea.inp{min-height:150px;resize:vertical;line-height:1.6}
+.unit{color:var(--mute);font-size:14px;white-space:nowrap}
+.res{border-radius:14px;padding:14px;margin-top:12px;font-size:15px;line-height:1.65}
+.res.ok{background:var(--okbg);border:1px solid #bfe6cf}
+.res.no{background:var(--nobg);border:1px solid #f5c6c6}
+.res.es{background:#f5f2fd;border:1px solid #dcd0f7}
+.res h4{margin:0 0 6px;font-size:16px}
+.detail{margin-top:10px;padding:12px;border-radius:12px;background:#fff;border:1px dashed #d6d3cc;font-size:14.5px}
+.refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.ref{font-size:13px;padding:7px 10px;border-radius:10px;background:#fff;border:1.5px solid var(--line);font-weight:600;text-align:left}
+.ref.note{border-color:#f0c48a;background:#fff8ee}
+table.t{border-collapse:collapse;width:100%;font-size:13.5px;margin:6px 0;background:#fff}
+table.t td,table.t th{border:1px solid #dedbd4;padding:6px 7px;text-align:center;vertical-align:middle}
+table.t th{background:#f4f2ee}
+.kp{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eee}
+.kp input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--acc)}
+.timer{position:sticky;top:58px;z-index:15;background:var(--ink);color:#fff;border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin:10px 0;box-shadow:var(--sh)}
+.timer .t{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.timer.warn{background:#c23b3b}
+.timer .grow{flex:1;font-size:13px;opacity:.85}
+.exq{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.qnav{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.qnav button{width:34px;height:34px;border-radius:9px;background:#fff;border:1.5px solid var(--line);font-size:13px;font-weight:700}
+.qnav button.done{background:var(--acc2);border-color:var(--acc)}
+.qnav button.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.qnav button.no{background:var(--nobg);border-color:var(--no);color:var(--no)}
+.big{font-size:44px;font-weight:900;letter-spacing:-1px}
+.chat{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.bub{max-width:92%;padding:11px 13px;border-radius:16px;font-size:15px;line-height:1.6;word-break:keep-all}
+.bub.me{align-self:flex-end;background:var(--acc);color:#fff;border-bottom-right-radius:5px}
+.bub.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;box-shadow:var(--sh)}
+.bub.bot h5{margin:0 0 6px;font-size:15.5px}
+.bub ul,.bub ol,.detail ul,.detail ol{margin:4px 0;padding-left:20px}
+.askbar{position:sticky;bottom:72px;display:flex;gap:8px;margin-top:12px;background:var(--bg);padding:8px 0}
+.askbar .inp{flex:1}
+.src{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px;border-radius:12px;background:#fff;border:1px solid var(--line);margin:6px 0}
+.src .ic{font-size:22px}
+.src b{font-size:14.5px;display:block}
+.src span{font-size:12.5px;color:var(--mute)}
+.pages{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.pages button{min-width:40px;padding:7px 9px;border-radius:9px;background:#f4f2ee;font-size:13px;font-weight:600}
+#viewer{position:fixed;inset:0;z-index:100;background:rgba(20,20,22,.96);display:none;flex-direction:column}
+#viewer.on{display:flex}
+#viewer .vh{display:flex;align-items:center;gap:8px;padding:10px 12px;color:#fff;padding-top:calc(10px + env(safe-area-inset-top))}
+#viewer .vh .tt{flex:1;font-size:14px;font-weight:600;line-height:1.3}
+#viewer .vh button{color:#fff;background:rgba(255,255,255,.12);border-radius:10px;padding:7px 11px;font-size:14px}
+#viewer .vb{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;text-align:center}
+#viewer img{width:100%;max-width:none;background:#fff;transition:width .15s;image-rendering:auto}
+#viewer .vf{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));justify-content:center}
+#viewer .vf button{color:#fff;background:rgba(255,255,255,.14);border-radius:10px;padding:9px 14px;font-size:14px;font-weight:600}
+.empty{text-align:center;color:var(--mute);padding:30px 10px}
+.hint{font-size:13px;color:var(--mute);background:#fffdf5;border:1px solid #f0e6c5;border-radius:12px;padding:10px 12px;margin:10px 0}
+.kbd{display:inline-block;padding:1px 6px;border-radius:5px;background:#eee;font-size:12px}
+.sumrow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;font-size:14.5px;gap:10px}
+.sumrow:last-child{border-bottom:none}
+.pill{font-size:12px;font-weight:700;padding:3px 8px;border-radius:99px}
+.pill.ok{background:var(--okbg);color:var(--ok)}.pill.no{background:var(--nobg);color:var(--no)}
+.katex{font-size:1.05em}
+math{font-size:1.08em}
+math[display=block]{overflow-x:auto;margin:.3em 0}
+.figbox{background:#fff;border:1px solid #eceae5;border-radius:12px;padding:10px;margin:4px 0 12px;text-align:center;overflow-x:auto}
+.figbox table.t{margin:0}
+.figbox.zoom svg{max-width:none!important;width:190%!important}
+.fighint{font-size:11px;color:#aaa;margin-top:4px}
+.mf{font-family:"Times New Roman","Cambria Math",serif;white-space:nowrap}
+.mf .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.88em;line-height:1.15;margin:0 2px}
+.mf .fr>span:first-child{border-bottom:1px solid currentColor;padding:0 2px}
+.mf .sq{border-top:1px solid currentColor;padding:0 1px}
+math{font-size:1.1em}
+.choice .why{display:block;margin-top:6px;padding:7px 9px;border-radius:8px;font-size:13.5px;font-weight:400;line-height:1.55;text-align:left;background:rgba(0,0,0,.035);color:var(--ink,#333)}.choice .why b{display:block;font-size:12px;margin-bottom:2px}.choice .why.y b{color:#1a8f4c}.choice .why.n b{color:#c9423a}
+.qtext .katex-display,.detail .katex-display{margin:.4em 0;overflow-x:auto;overflow-y:hidden}
+@media (max-width:420px){.subj .nm{font-size:18px}.qtext{font-size:16px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><button class="back" id="backBtn" style="display:none" onclick="goBack()">‹</button><h1 id="ttl">1-2 기말 복습</h1></div></header>
+<main class="wrap" id="app"></main>
+<nav class="tabs"><div class="in">
+  <button data-t="home" onclick="go('home')"><span class="ic">🏠</span>홈</button>
+  <button data-t="exam" onclick="go('examSetup')"><span class="ic">⏱️</span>모의고사</button>
+  <button data-t="ask" onclick="go('ask')"><span class="ic">💬</span>질문</button>
+  <button data-t="lib" onclick="go('lib')"><span class="ic">📚</span>자료실</button>
+  <button data-t="wrong" onclick="go('wrong')"><span class="ic">📕</span>오답</button>
+</div></nav>
+<div id="modal" style="display:none;position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.45);align-items:center;justify-content:center;padding:20px"><div style="background:#fff;border-radius:16px;padding:18px;max-width:340px;width:100%;box-shadow:0 10px 30px rgba(0,0,0,.2)"><div id="mMsg" style="font-size:15.5px;line-height:1.6;margin-bottom:14px"></div><div class="row"><button class="btn sec" onclick="closeModal()">취소</button><button class="btn" id="mYes">확인</button></div></div></div>
+<div id="viewer">
+  <div class="vh"><div class="tt" id="vTitle"></div><button onclick="zoom(-1)">－</button><button onclick="zoom(1)">＋</button><button onclick="closeViewer()">닫기 ✕</button></div>
+  <div class="vb" id="vBody"><img id="vImg" alt="" ondblclick="V.z=V.z>100?100:220;this.style.width=V.z+'%'"></div>
+  <div class="vf"><button onclick="vMove(-1)">‹ 이전</button><button id="vPos" style="background:none"></button><button onclick="vMove(1)">다음 ›</button></div>
+</div>
+<script src="data.js"></script>
+<script>
+"use strict";
+const SUBJ={phys:{n:'물리',e:'⚡',c:'bg-phys'},chem:{n:'화학',e:'🧪',c:'bg-chem'},bio:{n:'생물',e:'🧬',c:'bg-bio'},earth:{n:'지구과학',e:'🌌',c:'bg-earth'}};
+const SORDER=['phys','chem','bio','earth'];
+const TYPE_NM={mc:'객관식',num:'단답(수치)',txt:'단답',essay:'서술형'};
+const LV_NM={1:'암기',2:'계산·적용',3:'심화'};
+const Q=QS; const QMAP={}; Q.forEach(q=>QMAP[q.id]=q);
+
+/* ---------- storage ---------- */
+const SK='bss_1-2final_v1';
+let ST={ans:{},wrong:[],exams:[]};
+try{const s=localStorage.getItem(SK); if(s) ST=Object.assign(ST,JSON.parse(s));}catch(e){}
+function save(){try{localStorage.setItem(SK,JSON.stringify(ST))}catch(e){}}
+function record(id,ok){
+  const a=ST.ans[id]||{c:0,w:0}; if(ok)a.c++; else a.w++; a.last=ok; ST.ans[id]=a;
+  const i=ST.wrong.indexOf(id);
+  if(ok){ if(i>=0) ST.wrong.splice(i,1); } else { if(i<0) ST.wrong.unshift(id); }
+  save();
+}
+
+/* ---------- utils ---------- */
+const $=s=>document.querySelector(s);
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function escBr(s){return esc(s).replace(/\n/g,'<br>')}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const TSYM={Delta:'Δ',delta:'δ',gamma:'γ',eta:'η',lambda:'λ',theta:'θ',pi:'π',sigma:'σ',mu:'μ',rho:'ρ',omega:'ω',alpha:'α',beta:'β',epsilon:'ε',oint:'∮',int:'∫',sum:'Σ',oplus:'⊕',odot:'⊙',circ:'°',times:'×',cdot:'·',approx:'≈',le:'≤',ge:'≥',leq:'≤',geq:'≥',infty:'∞',to:'→',rightarrow:'→',Rightarrow:'⇒',ln:'ln ',log:'log ',sin:'sin ',cos:'cos ',exp:'exp',dots:'…',ldots:'…',pm:'±',neq:'≠',propto:'∝',quad:' ',qquad:'  ',',':' ',';':' ','!':'',' ':' ',displaystyle:'','{':'{','}':'}'};
+function tex2h(s){let i=0;
+  const tok=()=>{const ch=s[i];
+    if(ch==='\\'){const m=/^\\([a-zA-Z]+|.)/.exec(s.slice(i));i+=m[0].length;const c=m[1];
+      if(c==='frac'||c==='dfrac'||c==='tfrac'){const a=one(),b=one();return '<span class="fr"><span>'+a+'</span><span>'+b+'</span></span>'}
+      if(c==='sqrt')return '√<span class="sq">'+one()+'</span>';
+      if(['mathrm','text','mathbf','operatorname','mathit'].includes(c))return one();
+      if(c==='hat')return one()+'\u0302'; if(c==='vec')return one()+'\u20D7';
+      if(c==='left'||c==='right'){const d=s[i];i++;return d==='.'?'':esc(d)}
+      return (c in TSYM)?TSYM[c]:c}
+    if(ch==='^'||ch==='_'){i++;const a=one();return ch==='^'?'<sup>'+a+'</sup>':'<sub>'+a+'</sub>'}
+    if(ch==='{'){i++;return grp()}
+    i++;return esc(ch)};
+  const grp=()=>{let o='';while(i<s.length){if(s[i]==='}'){i++;return o}o+=tok()}return o};
+  const one=()=>{while(s[i]===' ')i++;if(s[i]==='{'){i++;return grp()}return tok()};
+  let o='';while(i<s.length)o+=tok();return o}
+function fallbackMath(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>(n.parentNode&&/^(TEXTAREA|SCRIPT|STYLE)$/.test(n.parentNode.nodeName))||!n.nodeValue.includes('$')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+  const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(n=>{const t=n.nodeValue;const re=/\$\$([^$]+)\$\$|\$([^$]+)\$/g;let last=0,m,f=document.createDocumentFragment(),hit=false;
+    while((m=re.exec(t))){hit=true;f.appendChild(document.createTextNode(t.slice(last,m.index)));const sp=document.createElement('span');sp.className='mf';try{sp.innerHTML=tex2h(m[1]||m[2])}catch(e){sp.textContent=m[1]||m[2]}f.appendChild(sp);last=re.lastIndex}
+    if(hit){f.appendChild(document.createTextNode(t.slice(last)));n.parentNode.replaceChild(f,n)}});
+}
+setTimeout(()=>{if(!window.renderMathInElement){window.__kxFail=true;rerenderMath()}},5000);
+function rerenderMath(el){
+  if(!window.renderMathInElement){ if(window.__kxFail){fallbackMath(el||document.getElementById('app'))} return; }
+  try{renderMathInElement(el||document.getElementById('app'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false,output:'mathml'})}catch(e){}
+}
+function setTitle(t,back){$('#ttl').textContent=t;$('#backBtn').style.display=back?'flex':'none'}
+function setTab(t){document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t))}
+function render(html){const a=$('#app');a.innerHTML=html;rerenderMath(a);window.scrollTo(0,0)}
+function normTxt(s){return String(s).toLowerCase().replace(/[\s,.\-()·'"’‘_~!?]/g,'')}
+function parseNum(s){
+  s=String(s).trim().replace(/,/g,'').replace(/−/g,'-').replace(/\s/g,'');
+  s=s.replace(/⁻/g,'-').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,c=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c));
+  let m=s.match(/^(-?\d*\.?\d+(?:e[-+]?\d+)?)(?:[x×*]10\^?(-?\d+))?/i);
+  if(!m) return NaN; let v=parseFloat(m[1]); if(m[2]) v*=Math.pow(10,parseInt(m[2])); return v;
+}
+function fmt(v){if(typeof v!=='number')return v;const a=Math.abs(v);if(a>=1000)return v.toLocaleString('ko-KR',{maximumFractionDigits:0});if(a>=100)return +v.toFixed(1)+'';if(a>=1)return +v.toFixed(3)+'';return +v.toPrecision(3)+''}
+function checkAns(q,val){
+  if(q.t==='mc') return val===q.a;
+  if(q.t==='num'){let x=parseNum(val); if(q.unit&&/^×10/.test(q.unit)&&Math.abs(x)>1e6) x/=Math.pow(10,parseInt((q.unit.match(/10(.+)$/)||[0,'0'])[1].replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,c=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)))); if(isNaN(x)) return false; const tol=q.tol==null?0.02:q.tol; return Math.abs(x-q.a)<=Math.abs(q.a)*tol+1e-9;}
+  if(q.t==='txt'){const v=normTxt(val); return v.length>0 && q.a.some(a=>normTxt(a)===v);}
+  return false;
+}
+function ansText(q){
+  if(q.t==='mc') return q.c[q.a];
+  if(q.t==='num') return fmt(q.a)+(q.unit?' '+q.unit:'');
+  if(q.t==='txt') return q.a[0];
+  return '';
+}
+
+/* ---------- sources / viewer ---------- */
+function refLabel(r){
+  const [src,pg]=r.split(':'); const S=SRC[src]; if(!S) return r;
+  if(S.note){return '✍️ '+(S.labels[pg]||S.n)}
+  return (S.ic||'📄')+' '+S.short+' p.'+pg;
+}
+function refsHtml(refs){
+  if(!refs||!refs.length) return '';
+  return '<div class="refs">'+refs.filter(r=>IMG[r.replace(':','_')]).map(r=>{const S=SRC[r.split(':')[0]]||{};return `<button class="ref ${S.note?'note':''}" onclick="openRef('${r}')">${esc(refLabel(r))}</button>`}).join('')+'</div>';
+}
+let V={src:null,list:[],i:0,z:100};
+function openRef(r){const [src,pg]=r.split(':');openViewer(src,pg)}
+function openViewer(src,pg){
+  const S=SRC[src]; V.src=src; V.list=S.pages.map(String); V.i=Math.max(0,V.list.indexOf(String(pg))); V.z=100; showV(); $('#viewer').classList.add('on'); document.body.style.overflow='hidden';
+}
+function showV(){
+  const S=SRC[V.src], p=V.list[V.i]; const key=V.src+'_'+p;
+  $('#vImg').src=IMG[key]||''; $('#vImg').style.width=V.z+'%';
+  $('#vTitle').textContent=S.note?(S.labels[p]||S.n):(S.n+' · p.'+p);
+  $('#vPos').textContent=(V.i+1)+' / '+V.list.length; $('#vBody').scrollTop=0;
+}
+function vMove(d){V.i=Math.min(V.list.length-1,Math.max(0,V.i+d));showV()}
+function zoom(d){V.z=Math.min(400,Math.max(60,V.z+d*40));$('#vImg').style.width=V.z+'%'}
+document.addEventListener('DOMContentLoaded',()=>{});
+function closeViewer(){$('#viewer').classList.remove('on');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(!$('#viewer').classList.contains('on'))return;if(e.key==='Escape')closeViewer();if(e.key==='ArrowRight')vMove(1);if(e.key==='ArrowLeft')vMove(-1)});
+
+/* ---------- modal ---------- */
+function askConfirm(msg,yes){$('#mMsg').textContent=msg;const m=$('#modal');m.style.display='flex';$('#mYes').onclick=()=>{closeModal();yes()}}
+function closeModal(){$('#modal').style.display='none'}
+/* ---------- navigation ---------- */
+let HIST=[];
+function go(view,arg,push){
+  if(push!==false){HIST.push([view,arg]); if(HIST.length>30)HIST.shift();}
+  if(TIMER&&view!=='exam'){ if(push!==false)HIST.pop(); askConfirm('모의고사가 진행 중이에요. 나가면 지금 상태로 바로 채점돼요. 나갈까요?',()=>{submitExam(true);go(view,arg)}); return; }
+  ({home:vHome,subject:vSubject,quiz:vQuiz,examSetup:vExamSetup,exam:vExam,examResult:vExamResult,ask:vAsk,lib:vLib,wrong:vWrong})[view](arg);
+}
+function goBack(){HIST.pop();const h=HIST.pop();if(h)go(h[0],h[1]);else go('home')}
+
+/* ---------- home ---------- */
+function stat(subj){
+  const qs=Q.filter(q=>q.s===subj); let done=0,ok=0;
+  qs.forEach(q=>{const a=ST.ans[q.id]; if(a){done++; if(a.last)ok++;}});
+  return {n:qs.length,done,ok};
+}
+function vHome(){
+  setTitle('1-2 기말 복습 · 물화생지',false); setTab('home');
+  let h=`<div class="h2">무엇을 복습할까요?</div><div class="sub">수업 PPT·학습지·내 필기로 만든 문제 ${Q.length}개${typeof UPDATED!=='undefined'?' · 업데이트 '+UPDATED:''}</div><div class="grid2" style="margin-top:14px">`;
+  SORDER.forEach(s=>{const st=stat(s);const pct=st.n?Math.round(st.done/st.n*100):0;
+    h+=`<button class="subj ${SUBJ[s].c}" onclick="go('subject','${s}')"><div class="emo">${SUBJ[s].e}</div><div class="nm">${SUBJ[s].n}</div><div class="ct">${st.n}문제<br>푼 ${st.done} · 맞힘 ${st.ok}</div><div class="bar"><i style="width:${pct}%"></i></div></button>`});
+  h+=`</div>
+  <div class="card"><div class="row" style="align-items:flex-start"><div style="font-size:28px;flex:none">⏱️</div><div><b>시험처럼 풀어보기</b><div class="sub">시간이 끝나면 자동 채점되는 모의고사</div></div></div><button class="btn" style="margin-top:12px" onclick="go('examSetup')">모의고사 시작</button></div>
+  <div class="grid2">
+    <button class="card" style="margin:0;text-align:left" onclick="go('ask')"><div style="font-size:24px">💬</div><b>필기에 질문하기</b><div class="sub">개념·공식·차이점</div></button>
+    <button class="card" style="margin:0;text-align:left" onclick="go('wrong')"><div style="font-size:24px">📕</div><b>오답 노트</b><div class="sub">${ST.wrong.length}문제 남음</div></button>
+  </div>
+  <div class="hint">💡 문제를 풀면 바로 풀이가 나오고, <b>관련 자료</b> 버튼으로 수업 PPT·학습지·내 필기의 해당 페이지를 열어볼 수 있어요. 기록은 이 기기의 브라우저에 저장돼요.</div>`;
+  render(h);
+}
+
+/* ---------- subject ---------- */
+let SEL={mode:'lv1',units:[],count:10};
+function vSubject(s){
+  setTitle(SUBJ[s].n+' 복습',true); setTab('home');
+  const qs=Q.filter(q=>q.s===s); const units=[...new Set(qs.map(q=>q.u))];
+  if(SEL.subj!==s){SEL={subj:s,mode:'lv1',units:[],count:10}}
+  const cnt=m=>qs.filter(q=>modeFilter(q,m)).length;
+  const modes=[['lv1','📝','암기 확인','핵심 개념 객관식·단답'],['lv2','🧮','계산·문제풀이','공식 적용, 판정, 수치 단답'],['lv3','🔥','심화','까다로운 계산·함정 문제'],['essay','✍️','서술형','모범답안·채점 기준으로 자가 채점'],['fig','🖼️','그림·자료 해석','그림·그래프·표가 있는 문제'],['all','🎲','전체 랜덤','서술형 제외 모든 문제'],['wrong','📕','이 과목 오답만','틀린 문제 다시 풀기']];
+  let h=`<div class="h2">${SUBJ[s].e} ${SUBJ[s].n}</div><div class="sub">${qs.length}문제 · 단원 ${units.length}개</div><div class="lbl">문제 유형</div>`;
+  modes.forEach(([k,ic,nm,d])=>{const n=cnt(k);h+=`<button class="mode ${SEL.mode===k?'on':''}" onclick="SEL.mode='${k}';vSubject('${s}')" ${n?'':'disabled style="opacity:.45"'}><div class="ic">${ic}</div><div style="flex:1"><b>${nm} <span style="font-weight:600">· ${n}문제</span></b><span>${d}</span></div></button>`});
+  h+=`<div class="lbl">단원 (선택 안 하면 전체)</div><div class="chips">`;
+  units.forEach(u=>{h+=`<button class="chip ${SEL.units.includes(u)?'on':''}" onclick="toggleUnit('${s}','${u}')">${esc(u)}</button>`});
+  h+=`</div><div class="lbl">문제 수</div><div class="chips">`;
+  [5,10,20,0].forEach(c=>{h+=`<button class="chip ${SEL.count===c?'on':''}" onclick="SEL.count=${c};vSubject('${s}')">${c||'전부'}</button>`});
+  const pool=qs.filter(q=>modeFilter(q,SEL.mode)&&(!SEL.units.length||SEL.units.includes(q.u)));
+  h+=`</div><button class="btn" style="margin-top:18px" ${pool.length?'':'disabled'} onclick="startQuiz('${s}')">시작하기 (${SEL.count?Math.min(SEL.count,pool.length):pool.length}문제)</button>`;
+  render(h);
+}
+function toggleUnit(s,u){const i=SEL.units.indexOf(u);if(i>=0)SEL.units.splice(i,1);else SEL.units.push(u);vSubject(s)}
+function modeFilter(q,m){
+  if(m==='essay') return q.t==='essay';
+  if(q.t==='essay') return false;
+  if(m==='all') return true;
+  if(m==='fig') return !!q.fig;
+  if(m==='wrong') return ST.wrong.includes(q.id);
+  return 'lv'+q.lv===m;
+}
+let QZ=null;
+function startQuiz(s,ids){
+  let pool;
+  if(ids){pool=ids.map(i=>QMAP[i]).filter(Boolean)}
+  else{pool=Q.filter(q=>q.s===s&&modeFilter(q,SEL.mode)&&(!SEL.units.length||SEL.units.includes(q.u))); pool=shuffle(pool); if(SEL.count) pool=pool.slice(0,SEL.count);}
+  QZ={s,list:pool.map(q=>q.id),i:0,res:{},order:{}};
+  go('quiz');
+}
+
+/* ---------- quiz (practice) ---------- */
+function figHtml(q){return q.fig&&FIG[q.fig]?`<div class="figbox" onclick="this.classList.toggle('zoom')">${FIG[q.fig]}<div class="fighint">그림을 누르면 크게 / 작게</div></div>`:''}
+function qHead(q,i,n){
+  return `<div class="tags"><span class="tag">${SUBJ[q.s].n}</span><span class="tag">${esc(q.u)}</span>${q.t==='essay'?'<span class="tag es">서술형</span>':`<span class="tag lv${q.lv}">${LV_NM[q.lv]}</span><span class="tag">${TYPE_NM[q.t]}</span>`}${q.fig?'<span class="tag" style="background:#e8f0ff;color:#3a5bd9">그림</span>':''}</div>`;
+}
+function vQuiz(){
+  if(!QZ||!QZ.list.length){go('home');return}
+  setTitle(SUBJ[QZ.s]?SUBJ[QZ.s].n+' 문제풀이':'문제풀이',true);
+  if(QZ.i>=QZ.list.length){return quizSummary()}
+  const q=QMAP[QZ.list[QZ.i]], n=QZ.list.length, r=QZ.res[q.id];
+  let h=`<div class="row" style="font-size:13px;color:var(--mute)"><span>${QZ.i+1} / ${n}</span><span style="text-align:right">맞힘 ${Object.values(QZ.res).filter(x=>x.ok).length}</span></div><div class="prog"><i style="width:${(QZ.i)/n*100}%"></i></div>
+  <div class="card">${qHead(q)}${figHtml(q)}<div class="qtext">${escBr(q.q)}</div>`;
+  if(q.t==='mc'){
+    if(!QZ.order[q.id]) QZ.order[q.id]=shuffle(q.c.map((_,k)=>k));
+    QZ.order[q.id].forEach((k,j)=>{
+      let cls=''; if(r){ if(k===q.a)cls='right'; else if(k===r.val)cls='wrong'; }
+      h+=`<button class="choice ${cls}" ${r?'disabled':''} onclick="answerMC(${k})"><span class="no">${j+1}</span><span>${esc(q.c[k])}${r?whyHtml(q,k,r.val):''}</span></button>`;
+    });
+  } else if(q.t==='num'||q.t==='txt'){
+    h+=`<div class="row" style="margin-top:12px"><input id="ansIn" class="inp" ${q.t==='num'?'inputmode="decimal"':''} placeholder="${q.t==='num'?'숫자로 입력 (예: -15.7)':'답을 입력'}" value="${r?esc(r.val):''}" ${r?'disabled':''} onkeydown="if(event.key==='Enter')answerIn()">${q.unit?`<span class="unit" style="flex:none">${esc(q.unit)}</span>`:''}</div>`;
+    if(!r) h+=`<button class="btn" style="margin-top:10px" onclick="answerIn()">채점하기</button>`;
+  } else {
+    h+=`<textarea id="esIn" class="inp" style="margin-top:12px" placeholder="답안을 직접 써 보세요 (써 보는 것만으로도 서술형 대비에 큰 도움이 돼요)" ${r?'disabled':''}>${r?esc(r.val):(QZ.esOpen===q.id?esc(QZ.esDraft||''):'')}</textarea>`;
+    if(!r&&QZ.esOpen!==q.id) h+=`<button class="btn" style="margin-top:10px" onclick="showEssay()">모범답안·채점 기준 보기</button>`;
+    if(!r&&QZ.esOpen===q.id) h+=essayBlock(q);
+  }
+  if(r) h+=resultBlock(q,r);
+  h+=`</div>`;
+  if(r) h+=`<div class="row"><button class="btn sec" onclick="QZ.i=Math.max(0,QZ.i-1);vQuiz()" ${QZ.i?'':'disabled'}>‹ 이전</button><button class="btn" onclick="QZ.i++;vQuiz()">${QZ.i+1<n?'다음 문제 ›':'결과 보기'}</button></div>`;
+  else h+=`<div class="row"><button class="btn sec" onclick="QZ.i=Math.max(0,QZ.i-1);vQuiz()" ${QZ.i?'':'disabled'}>‹ 이전</button><button class="btn sec" onclick="QZ.i++;vQuiz()">건너뛰기 ›</button></div>`;
+  render(h);
+  const ai=$('#ansIn'); if(ai&&!r) setTimeout(()=>ai.focus({preventScroll:true}),50);
+}
+function whyHtml(q,k,picked){
+  if(!q.cx||!q.cx[k]) return '';
+  const ok=k===q.a, me=k===picked;
+  return `<span class="why ${ok?'y':'n'}"><b>${ok?'✓ 정답인 이유':'✗ 틀린 이유'}${me&&!ok?' · 내가 고른 답':''}</b>${esc(q.cx[k])}</span>`;
+}
+function resultBlock(q,r){
+  if(q.t==='essay'){
+    return `<div class="res es"><h4>✍️ 자가 채점: ${r.score}% ${r.ok?'· 통과':'· 보완 필요'}</h4><b>모범답안</b><div class="detail">${escBr(q.sol)}</div>${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div>`;
+  }
+  let h=`<div class="res ${r.ok?'ok':'no'}"><h4>${r.ok?'⭕ 정답!':'❌ 오답'}${r.ok?'':` <span style="font-weight:600">정답: ${esc(ansText(q))}</span>`}</h4>${q.t!=='mc'&&!r.ok?`<div class="sub">내 답: ${esc(r.val)||'(빈칸)'}</div>`:''}<div>${escBr(q.ex)}</div>`;
+  if(q.sol) h+=`<details class="detail" ${r.ok?'':'open'}><summary style="cursor:pointer;font-weight:700">📖 자세한 풀이</summary><div style="margin-top:6px">${q.sol}</div></details>`;
+  h+=`<div class="lbl" style="margin-top:12px">📂 관련 자료 보기</div>${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div>`;
+  return h;
+}
+function answerMC(k){const q=QMAP[QZ.list[QZ.i]];const ok=checkAns(q,k);QZ.res[q.id]={val:k,ok};record(q.id,ok);vQuiz()}
+function answerIn(){const q=QMAP[QZ.list[QZ.i]];const v=$('#ansIn').value;if(!v.trim()){$('#ansIn').focus();return}const ok=checkAns(q,v);QZ.res[q.id]={val:v,ok};record(q.id,ok);vQuiz()}
+function essayBlock(q){
+  return `<div class="res es"><h4>📋 채점 기준 — 내 답안에 들어간 항목을 체크하세요</h4>${q.kp.map((k,i)=>`<label class="kp"><input type="checkbox" class="kpc"><span>${esc(k)}</span></label>`).join('')}<details class="detail" open><summary style="cursor:pointer;font-weight:700">모범답안</summary><div style="margin-top:6px">${escBr(q.sol)}</div></details>${refsHtml(q.ref)}<button class="btn" style="margin-top:12px" onclick="gradeEssay()">채점 완료</button></div>`;
+}
+function showEssay(){const q=QMAP[QZ.list[QZ.i]];QZ.esDraft=$('#esIn').value;QZ.esOpen=q.id;vQuiz()}
+function gradeEssay(){
+  const q=QMAP[QZ.list[QZ.i]];const cs=[...document.querySelectorAll('.kpc')];const sc=Math.round(cs.filter(c=>c.checked).length/cs.length*100);
+  const ok=sc>=70; QZ.res[q.id]={val:$('#esIn').value,ok,score:sc}; record(q.id,ok); QZ.esOpen=null; vQuiz();
+}
+function quizSummary(){
+  const ids=QZ.list, done=ids.filter(i=>QZ.res[i]), ok=done.filter(i=>QZ.res[i].ok);
+  let h=`<div class="card" style="text-align:center"><div class="sub">결과</div><div class="big">${ok.length} / ${ids.length}</div><div class="sub">푼 문제 ${done.length} · 정답률 ${done.length?Math.round(ok.length/done.length*100):0}%</div></div><div class="card">`;
+  ids.forEach((id,k)=>{const q=QMAP[id],r=QZ.res[id];h+=`<div class="sumrow"><span style="flex:1">${k+1}. ${esc(q.q.split('\n')[0].slice(0,46))}${q.q.length>46?'…':''}</span>${r?`<span class="pill ${r.ok?'ok':'no'}">${r.ok?'정답':'오답'}</span>`:'<span class="pill">안 풂</span>'}<button class="btn sm sec" onclick="QZ.i=${k};vQuiz()">보기</button></div>`});
+  h+=`</div><div class="row"><button class="btn sec" onclick="${SORDER.includes(QZ.s)?`go('subject','${QZ.s}')`:`go('home')`}">${SORDER.includes(QZ.s)?'과목으로':'홈으로'}</button>${ids.some(i=>QZ.res[i]&&!QZ.res[i].ok)?`<button class="btn" onclick="startQuiz('${QZ.s}',QZ.list.filter(i=>QZ.res[i]&&!QZ.res[i].ok))">틀린 것만 다시</button>`:''}</div>`;
+  render(h);
+}
+
+/* ---------- mock exam ---------- */
+let EX=null, TIMER=null, EXS={subj:'all',count:20,min:20,lv:'mix'};
+function vExamSetup(){
+  setTitle('모의고사',false); setTab('exam');
+  const pool=examPool();
+  let h=`<div class="h2">⏱️ 타임어택 모의고사</div><div class="sub">객관식·단답형으로 출제돼요. 시간이 끝나면 바로 자동 채점돼요.</div><div class="lbl">과목</div><div class="chips">`;
+  [['all','전 과목 섞기'],...SORDER.map(s=>[s,SUBJ[s].n])].forEach(([k,n])=>{h+=`<button class="chip ${EXS.subj===k?'on':''}" onclick="EXS.subj='${k}';vExamSetup()">${n}</button>`});
+  h+=`</div><div class="lbl">난이도</div><div class="chips">`;
+  [['mix','골고루'],['easy','암기 위주'],['hard','계산·심화 위주']].forEach(([k,n])=>{h+=`<button class="chip ${EXS.lv===k?'on':''}" onclick="EXS.lv='${k}';vExamSetup()">${n}</button>`});
+  h+=`</div><div class="lbl">문제 수</div><div class="chips">`;
+  [10,15,20,25,30].forEach(c=>{h+=`<button class="chip ${EXS.count===c?'on':''}" onclick="EXS.count=${c};vExamSetup()">${c}문제</button>`});
+  h+=`</div><div class="lbl">제한 시간</div><div class="chips">`;
+  [5,10,15,20,30,40,50].forEach(c=>{h+=`<button class="chip ${EXS.min===c?'on':''}" onclick="EXS.min=${c};vExamSetup()">${c}분</button>`});
+  h+=`</div><div class="hint">출제 가능 ${pool.length}문제 중 ${Math.min(EXS.count,pool.length)}문제를 무작위로 뽑아요. 권장: 문제당 약 1분.</div><button class="btn" onclick="startExam()">시험 시작</button>`;
+  if(ST.exams.length){h+=`<div class="lbl" style="margin-top:22px">최근 기록</div><div class="card">`;ST.exams.slice(0,8).forEach(e=>{h+=`<div class="sumrow"><span>${e.d} · ${e.subj}</span><b>${e.sc} / ${e.n}</b></div>`});h+=`</div>`}
+  render(h);
+}
+function examPool(){
+  let p=Q.filter(q=>q.t!=='essay'&&(EXS.subj==='all'||q.s===EXS.subj));
+  return p;
+}
+function startExam(){
+  let p=examPool(); let pick=[];
+  const n=Math.min(EXS.count,p.length);
+  const w=q=>EXS.lv==='easy'?(q.lv===1?4:q.lv===2?1.5:.5):EXS.lv==='hard'?(q.lv===1?.6:q.lv===2?2:3):1;
+  if(EXS.subj==='all'){ // balance subjects
+    const by={}; SORDER.forEach(s=>by[s]=wshuffle(p.filter(q=>q.s===s),w));
+    let k=0; while(pick.length<n){const s=SORDER[k%4]; if(by[s].length) pick.push(by[s].shift()); k++; if(k>2000)break;}
+    pick=shuffle(pick);
+  } else pick=wshuffle(p,w).slice(0,n);
+  EX={ids:pick.map(q=>q.id),ans:{},order:{},start:Date.now(),end:Date.now()+EXS.min*60000,subj:EXS.subj==='all'?'전 과목':SUBJ[EXS.subj].n,min:EXS.min,done:false};
+  pick.forEach(q=>{if(q.t==='mc')EX.order[q.id]=shuffle(q.c.map((_,k)=>k))});
+  clearInterval(TIMER); TIMER=setInterval(tick,500);
+  go('exam');
+}
+function wshuffle(arr,w){return arr.map(q=>[q,Math.pow(Math.random(),1/w(q))]).sort((a,b)=>b[1]-a[1]).map(x=>x[0])}
+function tick(){
+  if(!EX||EX.done){clearInterval(TIMER);TIMER=null;return}
+  const left=Math.max(0,EX.end-Date.now()); const el=$('#tLeft');
+  if(el){const m=Math.floor(left/60000),s=Math.floor(left%60000/1000);el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');$('#timerBox').classList.toggle('warn',left<60000)}
+  if(left<=0){submitExam(true)}
+}
+function vExam(){
+  if(!EX){go('examSetup');return}
+  if(EX.done){go('examResult');return}
+  setTitle('모의고사 진행 중',false); setTab('exam');
+  let h=`<div class="timer" id="timerBox"><span>⏱️</span><span class="t" id="tLeft">--:--</span><span class="grow">${EX.subj} · ${EX.ids.length}문제</span><button class="btn sm" style="background:#fff;color:var(--ink)" onclick="askConfirm('제출하고 채점할까요?',()=>submitExam())">제출</button></div><div class="qnav" id="qnav"></div>`;
+  EX.ids.forEach((id,k)=>{const q=QMAP[id];
+    h+=`<div class="card exq" id="eq${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>`;
+    if(q.t==='mc'){EX.order[id].forEach((c,j)=>{h+=`<button class="choice ${EX.ans[id]===c?'sel':''}" onclick="exPick('${id}',${c},${k})"><span class="no">${j+1}</span><span>${esc(q.c[c])}</span></button>`})}
+    else h+=`<div class="row" style="margin-top:10px"><input class="inp" ${q.t==='num'?'inputmode="decimal"':''} placeholder="${q.t==='num'?'숫자 입력':'답 입력'}" value="${esc(EX.ans[id]||'')}" oninput="exType('${id}',this.value)">${q.unit?`<span class="unit" style="flex:none">${esc(q.unit)}</span>`:''}</div>`;
+    h+=`</div>`});
+  h+=`<button class="btn" onclick="askConfirm('제출하고 채점할까요?',()=>submitExam())">답안 제출하고 채점하기</button>`;
+  render(h); drawNav(); tick();
+}
+function drawNav(){const n=$('#qnav');if(!n)return;n.innerHTML=EX.ids.map((id,k)=>`<button class="${EX.ans[id]!=null&&EX.ans[id]!==''?'done':''}" onclick="document.getElementById('eq${k}').scrollIntoView({behavior:'smooth',block:'center'})">${k+1}</button>`).join('')}
+function exPick(id,c,k){EX.ans[id]=c;document.querySelectorAll('#eq'+k+' .choice').forEach((b,j)=>b.classList.toggle('sel',EX.order[id][j]===c));drawNav()}
+function exType(id,v){EX.ans[id]=v;drawNav()}
+function submitExam(auto){
+  if(!EX||EX.done)return; EX.done=true; clearInterval(TIMER); TIMER=null;
+  EX.used=Math.min(Date.now(),EX.end)-EX.start; EX.auto=!!auto&&Date.now()>=EX.end;
+  EX.res={}; let sc=0;
+  EX.ids.forEach(id=>{const q=QMAP[id];const v=EX.ans[id];const ok=v!=null&&v!==''&&checkAns(q,v);EX.res[id]=ok;if(ok)sc++;record(id,ok)});
+  EX.sc=sc; const d=new Date();
+  ST.exams.unshift({d:(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'),subj:EX.subj,sc,n:EX.ids.length}); ST.exams=ST.exams.slice(0,30); save();
+  go('examResult',null,false);
+}
+function vExamResult(){
+  if(!EX||!EX.done){go('examSetup');return}
+  setTitle('모의고사 결과',false); setTab('exam');
+  const n=EX.ids.length, m=Math.floor(EX.used/60000), s=Math.floor(EX.used%60000/1000);
+  const bySub={}; EX.ids.forEach(id=>{const q=QMAP[id];bySub[q.s]=bySub[q.s]||[0,0];bySub[q.s][1]++;if(EX.res[id])bySub[q.s][0]++});
+  let h=`<div class="card" style="text-align:center">${EX.auto?'<div class="pill no" style="display:inline-block;margin-bottom:6px">⏰ 시간 종료 · 자동 채점</div>':''}<div class="sub">${EX.subj} 모의고사</div><div class="big">${EX.sc} / ${n}</div><div class="sub">${Math.round(EX.sc/n*100)}점 환산 · 걸린 시간 ${m}분 ${s}초 / ${EX.min}분</div>
+  <div class="chips" style="justify-content:center;margin-top:10px">${Object.keys(bySub).map(k=>`<span class="chip">${SUBJ[k].n} ${bySub[k][0]}/${bySub[k][1]}</span>`).join('')}</div></div>
+  <div class="qnav">${EX.ids.map((id,k)=>`<button class="${EX.res[id]?'ok':'no'}" onclick="document.getElementById('er${k}').scrollIntoView({behavior:'smooth',block:'start'})">${k+1}</button>`).join('')}</div>`;
+  EX.ids.forEach((id,k)=>{const q=QMAP[id],v=EX.ans[id],ok=EX.res[id];
+    h+=`<div class="card" id="er${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>`;
+    if(q.t==='mc'){EX.order[id].forEach((c,j)=>{let cls=c===q.a?'right':(c===v?'wrong':'');h+=`<div class="choice ${cls}"><span class="no">${j+1}</span><span>${esc(q.c[c])}${whyHtml(q,c,v)}</span></div>`})}
+    h+=`<div class="res ${ok?'ok':'no'}"><h4>${ok?'⭕ 정답':'❌ 오답'} ${ok?'':`<span style="font-weight:600">· 정답: ${esc(ansText(q))}</span>`}</h4>${q.t!=='mc'?`<div class="sub">내 답: ${esc(v==null||v===''?'(빈칸)':v)}</div>`:(v==null?'<div class="sub">내 답: (선택 안 함)</div>':'')}<div>${escBr(q.ex)}</div>${q.sol?`<details class="detail"><summary style="cursor:pointer;font-weight:700">📖 자세한 풀이</summary><div style="margin-top:6px">${q.sol}</div></details>`:''}${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div></div>`});
+  h+=`<div class="row"><button class="btn sec" onclick="EX=null;go('examSetup')">새 모의고사</button>${EX.sc<n?`<button class="btn" onclick="startQuiz('mix',EX.ids.filter(i=>!EX.res[i]))">틀린 문제 다시 풀기</button>`:''}</div>`;
+  render(h);
+}
+
+/* ---------- ask (note-based Q&A) ---------- */
+let CHAT=[], ASK_S='all';
+const STOP=['은','는','이','가','을','를','의','에','에서','와','과','로','으로','란','이란','이랑','랑','도','만','에게','하고','야','이야','요','인가요','인가','뭐야','뭐','뭔가요','뭔지','무엇','무엇인가요','설명','설명해줘','알려줘','해줘','줘','좀','왜','어떻게','어떤','대해','대해서','관련','뭐가','있어','있나요','이랑','할때','때','것','거','건가요','되는','하는','되나요','하나요','궁금해','궁금','정리'];
+const SUFFIX=['에서는','에서','으로는','으로','이란','이랑','에게','하고','은','는','이','가','을','를','의','에','와','과','로','도','만','랑','란','야','요'];
+function tokens(s){
+  let raw=s.toLowerCase().replace(/[?!.,~()\[\]{}"'“”‘’:;/\\]/g,' ').split(/\s+/).filter(Boolean);
+  let out=[];
+  raw.forEach(w=>{ if(STOP.includes(w))return; let t=w; for(const sf of SUFFIX){ if(t.length>sf.length+1&&t.endsWith(sf)){t=t.slice(0,-sf.length);break;} } if(STOP.includes(t))return; if(t.length>=1) out.push(t); });
+  return [...new Set(out)];
+}
+function plain(h){return h.replace(/<[^>]+>/g,' ').replace(/&[a-z]+;/g,' ').toLowerCase()}
+function searchKB(qs,subj){
+  const toks=tokens(qs), compact=normTxt(qs);
+  const docs=KB.map(k=>(k.t+' '+k.kw.join(' ')+' '+plain(k.b)).toLowerCase());
+  const idf={}; toks.forEach(t=>{const df=docs.filter(d=>d.includes(t)).length; idf[t]=df?Math.min(2.2,Math.max(0.6,Math.log(1+KB.length/df)/1.6)):1});
+  const res=KB.filter(k=>subj==='all'||k.s===subj).map(k=>{
+    let sc=0; const title=k.t.toLowerCase(), body=plain(k.b), kws=k.kw.map(x=>String(x).toLowerCase());
+    toks.forEach(t=>{ const w=idf[t];
+      if(kws.some(kw=>kw===t)) {sc+=4*w; if(title.includes(t)) sc+=2*w; return;}
+      if(t.length<2) return;
+      if(title.includes(t)) sc+=4*w;
+      if(kws.some(kw=>kw.includes(t)||(kw.length>=2&&t.includes(kw)))) sc+=2.5*w;
+      if(body.includes(t)) sc+=1*w;
+    });
+    kws.forEach(kw=>{const c=normTxt(kw); if(c.length>=2&&compact.includes(c)) sc+=1.5});
+    return {k,sc};
+  }).filter(x=>x.sc>=3.5).sort((a,b)=>b.sc-a.sc);
+  return res;
+}
+function relatedQs(k,exclude){
+  const kws=k.kw.map(x=>normTxt(x)).filter(x=>x.length>=2);
+  return Q.filter(q=>q.s===k.s&&q.id!==exclude).map(q=>{const t=normTxt(q.q+' '+q.u);let sc=0;kws.forEach(w=>{if(t.includes(w))sc++});return [q,sc]}).filter(x=>x[1]>=2).sort((a,b)=>b[1]-a[1]).slice(0,3).map(x=>x[0]);
+}
+function botAnswer(text,ctxQ){
+  const subj=ctxQ?ctxQ.s:ASK_S;
+  let r=searchKB(text+(ctxQ?' '+ctxQ.u+' '+ctxQ.q:''),subj);
+  const compareCue=/차이|비교|vs|다른점|다른 점/.test(text);
+  if(!r.length){
+    const subs=KB.filter(k=>subj==='all'||k.s===subj).slice(0,10);
+    return `<h5>🤔 필기에서 딱 맞는 내용을 찾지 못했어요</h5>단어를 바꿔서 물어봐 주세요 (예: <i>"젖당 오페론 CAP 역할"</i>, <i>"단열팽창 공식"</i>, <i>"헤르츠스프룽 갭"</i>).<br>아래 주제에서 골라도 돼요:<div class="refs">${subs.map(k=>`<button class="ref" onclick="askTopic('${k.id}')">${esc(k.t)}</button>`).join('')}</div>`;
+  }
+  const top=r[0].k; const more=r.slice(1,compareCue?3:3).filter(x=>x.sc>=r[0].sc*0.45);
+  let h='';
+  if(ctxQ){h+=`<h5>📌 이 문제 풀이</h5><div><b>정답:</b> ${esc(ctxQ.t==='essay'?'(모범답안 참고)':ansText(ctxQ))}</div><div style="margin:4px 0 8px">${escBr(ctxQ.ex||'')}</div>${ctxQ.sol?`<div class="detail">${ctxQ.t==='essay'?escBr(ctxQ.sol):ctxQ.sol}</div>`:''}<hr style="border:none;border-top:1px solid #eee;margin:10px 0">`}
+  h+=`<h5>📒 ${esc(top.t)} <span class="tag">${SUBJ[top.s].n}</span></h5><div>${top.b}</div><div class="lbl" style="margin-top:8px">📂 필기·자료에서 보기</div>${refsHtml(top.ref)}`;
+  if(more.length){h+=`<div class="lbl">함께 보면 좋은 내용</div>`+more.map(x=>`<details class="detail"><summary style="cursor:pointer;font-weight:700">${esc(x.k.t)}</summary><div style="margin-top:6px">${x.k.b}</div>${refsHtml(x.k.ref)}</details>`).join('')}
+  const rq=relatedQs(top,ctxQ&&ctxQ.id);
+  if(rq.length){h+=`<div class="lbl">✏️ 관련 문제 바로 풀기</div><div class="refs">${rq.map(q=>`<button class="ref" onclick="startQuiz('${q.s}',['${q.id}'])">${esc(q.q.split('\n')[0].slice(0,34))}…</button>`).join('')}</div>`}
+  return h;
+}
+function vAsk(){
+  setTitle('필기에 질문하기',false); setTab('ask');
+  let h=`<div class="hint">📒 내 필기·수업 PPT·학습지에서 정리한 내용 안에서 답해 주는 <b>필기 검색 도우미</b>예요 (인터넷 없이도 동작). 개념 이름, 공식, "~와 ~ 차이" 처럼 물어보면 잘 찾아요.</div><div class="chips">`;
+  [['all','전체'],...SORDER.map(s=>[s,SUBJ[s].n])].forEach(([k,n])=>{h+=`<button class="chip ${ASK_S===k?'on':''}" onclick="ASK_S='${k}';vAsk()">${n}</button>`});
+  h+=`</div><div class="chat" id="chat">`;
+  if(!CHAT.length){
+    const ex={all:['젖당 오페론에서 CAP 역할','등온팽창과 단열팽창 차이','탈출속도 공식','헤르츠스프룽 갭이 뭐야','브리지 정류회로 원리'],bio:['Oc랑 I- 차이','trp 감쇠 원리','rho 비의존 종결','1유전자 1효소설 실험'],chem:['깁스 자유에너지 자발성','반지름비 배위수','물 상평형 그림 기울기','카르노 효율'],earth:['전향점 의미','주계열 맞추기','세페이드 1형 2형 차이','진입속도와 궤도 모양'],phys:['PN접합 공핍층','다이오드 근사 모델','리플 비율','P형 N형 반도체']}[ASK_S];
+    h+=`<div class="bub bot"><h5>무엇이든 물어보세요 👋</h5>예시:<div class="refs">${ex.map(e=>`<button class="ref" onclick="askSend('${e}')">${e}</button>`).join('')}</div></div>`;
+  }
+  CHAT.forEach(m=>{h+=`<div class="bub ${m.me?'me':'bot'}">${m.me?esc(m.t):m.t}</div>`});
+  h+=`</div><div class="askbar"><input id="askIn" class="inp" placeholder="예: 알로락토오스는 왜 필요해?" onkeydown="if(event.key==='Enter')askSend()"><button class="btn sm" onclick="askSend()">전송</button></div>${CHAT.length?'<button class="btn sec sm" style="width:100%" onclick="CHAT=[];vAsk()">대화 지우기</button>':''}`;
+  render(h); const c=$('#chat'); if(CHAT.length) setTimeout(()=>{c.lastElementChild&&c.lastElementChild.scrollIntoView({block:'start'})},30);
+}
+function askSend(t){const v=(t!=null?t:$('#askIn').value).trim(); if(!v)return; CHAT.push({me:1,t:v}); CHAT.push({t:botAnswer(v)}); vAsk()}
+function askTopic(id){const k=KB.find(x=>x.id===id);CHAT.push({me:1,t:k.t});CHAT.push({t:`<h5>📒 ${esc(k.t)}</h5><div>${k.b}</div>${refsHtml(k.ref)}`});vAsk()}
+function askAbout(id){const q=QMAP[id];if(TIMER){return}CHAT.push({me:1,t:'이 문제 설명해줘: '+q.q.split('\n')[0].slice(0,60)});CHAT.push({t:botAnswer(q.u+' '+q.q,q)});ASK_S=q.s;go('ask')}
+
+/* ---------- library ---------- */
+function vLib(){
+  setTitle('자료실',false); setTab('lib');
+  let h=`<div class="h2">📚 수업 자료 · 내 필기</div><div class="sub">페이지 번호를 누르면 크게 볼 수 있어요 (＋/－ 또는 두 번 탭해서 확대, 손가락으로 확대도 가능)</div>`;
+  SORDER.forEach(s=>{
+    h+=`<div class="lbl" style="font-size:15px;color:var(--ink)">${SUBJ[s].e} ${SUBJ[s].n}</div>`;
+    Object.keys(SRC).filter(k=>SRC[k].s===s).forEach(k=>{const S=SRC[k];
+      h+=`<div class="card" style="padding:12px"><div class="row" style="align-items:flex-start"><div style="flex:none;font-size:22px">${S.note?'✍️':S.ic}</div><div><b style="font-size:14.5px">${esc(S.n)}</b><div class="sub">${S.pages.length}${S.note?'개 영역':'쪽'}</div></div></div><div class="pages">${S.pages.map(p=>`<button onclick="openViewer('${k}','${p}')" ${S.note?'style="text-align:left"':''}>${S.note?esc(S.labels[p]):p}</button>`).join('')}</div></div>`});
+  });
+  render(h);
+}
+
+/* ---------- wrong ---------- */
+function vWrong(){
+  setTitle('오답 노트',false); setTab('wrong');
+  const ids=ST.wrong.filter(i=>QMAP[i]);
+  let h=`<div class="h2">📕 오답 노트</div><div class="sub">틀린 문제는 여기에 모이고, 다시 맞히면 사라져요.</div>`;
+  if(!ids.length){render(h+`<div class="empty">아직 틀린 문제가 없어요 🎉</div>`);return}
+  h+=`<button class="btn" style="margin:12px 0" onclick="startQuiz('mix',shuffle(ST.wrong.filter(i=>QMAP[i])))">오답 전체 다시 풀기 (${ids.length})</button>`;
+  SORDER.forEach(s=>{const l=ids.filter(i=>QMAP[i].s===s); if(!l.length)return;
+    h+=`<div class="card"><div class="row"><b>${SUBJ[s].e} ${SUBJ[s].n} · ${l.length}문제</b><button class="btn sm" style="flex:none" onclick="startQuiz('${s}',${JSON.stringify(l).replace(/"/g,"'")})">다시 풀기</button></div>`;
+    l.forEach(i=>{const q=QMAP[i];h+=`<div class="sumrow"><span style="flex:1">${esc(q.q.split('\n')[0].slice(0,50))}${q.q.length>50?'…':''}</span><span class="tag">${esc(q.u)}</span></div>`});
+    h+=`</div>`});
+  h+=`<button class="btn sec sm" style="width:100%" onclick="askConfirm('오답 노트를 비울까요?',()=>{ST.wrong=[];save();vWrong()})">오답 노트 비우기</button>`;
+  render(h);
+}
+
+/* ---------- boot ---------- */
+SUBJ.mix={n:'오답·복습',e:'📕',c:''};
+window.addEventListener('beforeunload',e=>{if(TIMER){e.preventDefault();e.returnValue=''}});
+go('home');
+</script>
+</body>
+</html>
