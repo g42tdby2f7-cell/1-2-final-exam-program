@@ -289,11 +289,11 @@ function stat(subj){
 }
 function vHome(){
   setTitle('1-2 기말 복습 · 물화생지',false); setTab('home');
-  let h=`<div class="h2">무엇을 복습할까요?</div><div class="sub">수업 PPT·학습지·내 필기로 만든 문제 ${Q.length}개${typeof UPDATED!=='undefined'?' · 업데이트 '+UPDATED:''}</div><div class="grid2" style="margin-top:14px">`;
+  let h=`<a class="card" href="https://g42tdby2f7-cell.github.io/1-2-final-exam-program/" target="_blank" rel="noopener" style="display:flex;gap:10px;align-items:center;padding:11px 13px;margin:0 0 12px;text-decoration:none;color:inherit;background:#eef1fc;border:1.5px solid #c9d3f5"><span style="font-size:20px">🔗</span><span style="flex:1;min-width:0"><b style="font-size:13.5px">온라인 버전 (항상 최신)</b><span style="display:block;font-size:12px;color:var(--acc);word-break:break-all">g42tdby2f7-cell.github.io/1-2-final-exam-program</span></span><span style="font-size:18px;color:var(--acc)">›</span></a><div class="h2">무엇을 복습할까요?</div><div class="sub">수업 PPT·학습지·내 필기로 만든 문제 ${Q.length}개${typeof UPDATED!=='undefined'?' · 업데이트 '+UPDATED:''}</div><div class="grid2" style="margin-top:14px">`;
   SORDER.forEach(s=>{const st=stat(s);const pct=st.n?Math.round(st.done/st.n*100):0;
     h+=`<button class="subj ${SUBJ[s].c}" onclick="go('subject','${s}')"><div class="emo">${SUBJ[s].e}</div><div class="nm">${SUBJ[s].n}</div><div class="ct">${st.n}문제<br>푼 ${st.done} · 맞힘 ${st.ok}</div><div class="bar"><i style="width:${pct}%"></i></div></button>`});
   h+=`</div>
-  <div class="card"><div class="row" style="align-items:flex-start"><div style="font-size:28px;flex:none">⏱️</div><div><b>시험처럼 풀어보기</b><div class="sub">시간이 끝나면 자동 채점되는 모의고사</div></div></div><button class="btn" style="margin-top:12px" onclick="go('examSetup')">모의고사 시작</button></div>
+  <div class="card"><div class="row" style="align-items:flex-start"><div style="font-size:28px;flex:none">⏱️</div><div><b>심화 모의고사</b><div class="sub">고난도 문제 + 서답형 세트로만 구성 · 시간 종료 시 자동 채점</div></div></div><button class="btn" style="margin-top:12px" onclick="go('examSetup')">모의고사 시작</button></div>
   <div class="grid2">
     <button class="card" style="margin:0;text-align:left" onclick="go('ask')"><div style="font-size:24px">💬</div><b>필기에 질문하기</b><div class="sub">개념·공식·차이점</div></button>
     <button class="card" style="margin:0;text-align:left" onclick="go('wrong')"><div style="font-size:24px">📕</div><b>오답 노트</b><div class="sub">${ST.wrong.length}문제 남음</div></button>
@@ -436,85 +436,125 @@ function quizSummary(){
 }
 
 /* ---------- mock exam ---------- */
-let EX=null, TIMER=null, EXS={subj:'all',count:20,min:20,lv:'mix'};
+let EX=null, TIMER=null, EXS={subj:'all',count:10,sets:2,min:40};
+const EXPT=4; // 심화 객관식·단답 1문제 배점
+function exTot(q){return q.t==='set'?q.parts.reduce((s,p)=>s+p.pt,0):EXPT}
 function vExamSetup(){
   setTitle('모의고사',false); setTab('exam');
-  const pool=examPool();
-  let h=`<div class="h2">⏱️ 타임어택 모의고사</div><div class="sub">객관식·단답형으로 출제돼요. 시간이 끝나면 바로 자동 채점돼요.</div><div class="lbl">과목</div><div class="chips">`;
+  const P=examPool();
+  let h=`<div class="h2">⏱️ 심화 모의고사</div><div class="sub">심화(고난도) 객관식·단답과 학원 TEST 스타일 서답형 세트로만 출제돼요. 시간이 끝나면 바로 자동 채점되고, 서답형의 서술 소문항은 채점 기준으로 부분 점수를 매겨요.</div><div class="lbl">과목</div><div class="chips">`;
   [['all','전 과목 섞기'],...SORDER.map(s=>[s,SUBJ[s].n])].forEach(([k,n])=>{h+=`<button class="chip ${EXS.subj===k?'on':''}" onclick="EXS.subj='${k}';vExamSetup()">${n}</button>`});
-  h+=`</div><div class="lbl">난이도</div><div class="chips">`;
-  [['mix','골고루'],['easy','암기 위주'],['hard','계산·심화 위주']].forEach(([k,n])=>{h+=`<button class="chip ${EXS.lv===k?'on':''}" onclick="EXS.lv='${k}';vExamSetup()">${n}</button>`});
-  h+=`</div><div class="lbl">문제 수</div><div class="chips">`;
-  [10,15,20,25,30].forEach(c=>{h+=`<button class="chip ${EXS.count===c?'on':''}" onclick="EXS.count=${c};vExamSetup()">${c}문제</button>`});
+  h+=`</div><div class="lbl">심화 객관식·단답 (문제당 ${EXPT}점)</div><div class="chips">`;
+  [5,8,10,15,20].forEach(c=>{h+=`<button class="chip ${EXS.count===c?'on':''}" onclick="EXS.count=${c};vExamSetup()">${c}문제</button>`});
+  h+=`</div><div class="lbl">서답형 심화 세트</div><div class="chips">`;
+  [0,1,2,3,4].forEach(c=>{h+=`<button class="chip ${EXS.sets===c?'on':''}" onclick="EXS.sets=${c};vExamSetup()">${c?c+'세트':'없음'}</button>`});
   h+=`</div><div class="lbl">제한 시간</div><div class="chips">`;
-  [5,10,15,20,30,40,50].forEach(c=>{h+=`<button class="chip ${EXS.min===c?'on':''}" onclick="EXS.min=${c};vExamSetup()">${c}분</button>`});
-  h+=`</div><div class="hint">출제 가능 ${pool.length}문제 중 ${Math.min(EXS.count,pool.length)}문제를 무작위로 뽑아요. 권장: 문제당 약 1분.</div><button class="btn" onclick="startExam()">시험 시작</button>`;
-  if(ST.exams.length){h+=`<div class="lbl" style="margin-top:22px">최근 기록</div><div class="card">`;ST.exams.slice(0,8).forEach(e=>{h+=`<div class="sumrow"><span>${e.d} · ${e.subj}</span><b>${e.sc} / ${e.n}</b></div>`});h+=`</div>`}
+  [20,30,40,50,60,90].forEach(c=>{h+=`<button class="chip ${EXS.min===c?'on':''}" onclick="EXS.min=${c};vExamSetup()">${c}분</button>`});
+  const ns=Math.min(EXS.count,P.single.length), nt=Math.min(EXS.sets,P.sets.length);
+  h+=`</div><div class="hint">출제 가능: 심화 ${P.single.length}문제 · 세트 ${P.sets.length}개 → 이번 시험 ${ns}문제 + ${nt}세트. 권장: 심화 1문제 약 2분, 세트 1개 약 8~10분.</div><button class="btn" ${ns+nt?'':'disabled'} onclick="startExam()">시험 시작</button>`;
+  if(ST.exams.length){h+=`<div class="lbl" style="margin-top:22px">최근 기록</div><div class="card">`;ST.exams.slice(0,8).forEach(e=>{h+=`<div class="sumrow"><span>${e.d} · ${e.subj}</span><b>${e.sc} / ${e.n}${e.pt?'점':''}</b></div>`});h+=`</div>`}
   render(h);
 }
 function examPool(){
-  let p=Q.filter(q=>q.t!=='essay'&&q.t!=='set'&&(EXS.subj==='all'||q.s===EXS.subj));
-  return p;
+  const ok=q=>EXS.subj==='all'||q.s===EXS.subj;
+  return {single:Q.filter(q=>ok(q)&&q.lv===3&&(q.t==='mc'||q.t==='num'||q.t==='txt')), sets:Q.filter(q=>ok(q)&&q.t==='set')};
+}
+function balPick(arr,n){
+  if(EXS.subj!=='all') return shuffle(arr).slice(0,n);
+  const by={}; SORDER.forEach(s=>by[s]=shuffle(arr.filter(q=>q.s===s))); const out=[]; let k=0;
+  while(out.length<n&&k<4000){const s=SORDER[k%4]; if(by[s].length) out.push(by[s].shift()); k++;}
+  return out;
 }
 function startExam(){
-  let p=examPool(); let pick=[];
-  const n=Math.min(EXS.count,p.length);
-  const w=q=>EXS.lv==='easy'?(q.lv===1?4:q.lv===2?1.5:.5):EXS.lv==='hard'?(q.lv===1?.6:q.lv===2?2:3):1;
-  if(EXS.subj==='all'){ // balance subjects
-    const by={}; SORDER.forEach(s=>by[s]=wshuffle(p.filter(q=>q.s===s),w));
-    let k=0; while(pick.length<n){const s=SORDER[k%4]; if(by[s].length) pick.push(by[s].shift()); k++; if(k>2000)break;}
-    pick=shuffle(pick);
-  } else pick=wshuffle(p,w).slice(0,n);
+  const P=examPool();
+  const singles=shuffle(balPick(P.single,Math.min(EXS.count,P.single.length)));
+  const sets=balPick(P.sets,Math.min(EXS.sets,P.sets.length));
+  const pick=[...singles,...sets];
   EX={ids:pick.map(q=>q.id),ans:{},order:{},start:Date.now(),end:Date.now()+EXS.min*60000,subj:EXS.subj==='all'?'전 과목':SUBJ[EXS.subj].n,min:EXS.min,done:false};
-  pick.forEach(q=>{if(q.t==='mc')EX.order[q.id]=shuffle(q.c.map((_,k)=>k))});
+  pick.forEach(q=>{if(q.t==='mc')EX.order[q.id]=shuffle(q.c.map((_,k)=>k)); if(q.t==='set')EX.ans[q.id]=q.parts.map(()=>'')});
   clearInterval(TIMER); TIMER=setInterval(tick,500);
   go('exam');
 }
-function wshuffle(arr,w){return arr.map(q=>[q,Math.pow(Math.random(),1/w(q))]).sort((a,b)=>b[1]-a[1]).map(x=>x[0])}
 function tick(){
   if(!EX||EX.done){clearInterval(TIMER);TIMER=null;return}
   const left=Math.max(0,EX.end-Date.now()); const el=$('#tLeft');
   if(el){const m=Math.floor(left/60000),s=Math.floor(left%60000/1000);el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');$('#timerBox').classList.toggle('warn',left<60000)}
   if(left<=0){submitExam(true)}
 }
+function exAnswered(id){const v=EX.ans[id];return Array.isArray(v)?v.some(x=>String(x).trim()):(v!=null&&v!=='')}
 function vExam(){
   if(!EX){go('examSetup');return}
   if(EX.done){go('examResult');return}
   setTitle('모의고사 진행 중',false); setTab('exam');
-  let h=`<div class="timer" id="timerBox"><span>⏱️</span><span class="t" id="tLeft">--:--</span><span class="grow">${EX.subj} · ${EX.ids.length}문제</span><button class="btn sm" style="background:#fff;color:var(--ink)" onclick="askConfirm('제출하고 채점할까요?',()=>submitExam())">제출</button></div><div class="qnav" id="qnav"></div>`;
+  const totPt=EX.ids.reduce((s,id)=>s+exTot(QMAP[id]),0);
+  let h=`<div class="timer" id="timerBox"><span>⏱️</span><span class="t" id="tLeft">--:--</span><span class="grow">${EX.subj} · ${EX.ids.length}문항 · ${totPt}점</span><button class="btn sm" style="background:#fff;color:var(--ink)" onclick="askConfirm('제출하고 채점할까요?',()=>submitExam())">제출</button></div><div class="qnav" id="qnav"></div>`;
   EX.ids.forEach((id,k)=>{const q=QMAP[id];
-    h+=`<div class="card exq" id="eq${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>`;
+    if(q.t==='set'){
+      h+=`<div class="card exq" id="eq${k}">${qHead(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>${figHtml(q)}${q.tb?`<div class="tbwrap">${q.tb}</div>`:''}`;
+      q.parts.forEach((p,i)=>{h+=`<div class="part"><div class="ptxt"><b>(${i+1})</b> ${escBr(p.p)} <span class="pts">[${p.pt}점]</span></div>`;
+        if(p.t==='essay') h+=`<textarea class="inp" style="min-height:90px" placeholder="풀이 과정까지 써 보세요" oninput="exSet('${id}',${i},this.value)">${esc(EX.ans[id][i]||'')}</textarea>`;
+        else h+=`<div class="row"><input class="inp" ${p.t==='num'?'inputmode="decimal"':''} placeholder="${p.t==='num'?'숫자 입력':'답 입력'}" value="${esc(EX.ans[id][i]||'')}" oninput="exSet('${id}',${i},this.value)">${p.unit?`<span class="unit" style="flex:none">${esc(p.unit)}</span>`:''}</div>`;
+        h+=`</div>`});
+      h+=`</div>`; return;
+    }
+    h+=`<div class="card exq" id="eq${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)} <span class="pts" style="color:var(--acc);font-size:13px">[${EXPT}점]</span></div>`;
     if(q.t==='mc'){EX.order[id].forEach((c,j)=>{h+=`<button class="choice ${EX.ans[id]===c?'sel':''}" onclick="exPick('${id}',${c},${k})"><span class="no">${j+1}</span><span>${esc(q.c[c])}</span></button>`})}
     else h+=`<div class="row" style="margin-top:10px"><input class="inp" ${q.t==='num'?'inputmode="decimal"':''} placeholder="${q.t==='num'?'숫자 입력':'답 입력'}" value="${esc(EX.ans[id]||'')}" oninput="exType('${id}',this.value)">${q.unit?`<span class="unit" style="flex:none">${esc(q.unit)}</span>`:''}</div>`;
     h+=`</div>`});
   h+=`<button class="btn" onclick="askConfirm('제출하고 채점할까요?',()=>submitExam())">답안 제출하고 채점하기</button>`;
   render(h); drawNav(); tick();
 }
-function drawNav(){const n=$('#qnav');if(!n)return;n.innerHTML=EX.ids.map((id,k)=>`<button class="${EX.ans[id]!=null&&EX.ans[id]!==''?'done':''}" onclick="document.getElementById('eq${k}').scrollIntoView({behavior:'smooth',block:'center'})">${k+1}</button>`).join('')}
+function drawNav(){const n=$('#qnav');if(!n)return;n.innerHTML=EX.ids.map((id,k)=>`<button class="${exAnswered(id)?'done':''}" onclick="document.getElementById('eq${k}').scrollIntoView({behavior:'smooth',block:'center'})">${k+1}${QMAP[id].t==='set'?'★':''}</button>`).join('')}
 function exPick(id,c,k){EX.ans[id]=c;document.querySelectorAll('#eq'+k+' .choice').forEach((b,j)=>b.classList.toggle('sel',EX.order[id][j]===c));drawNav()}
 function exType(id,v){EX.ans[id]=v;drawNav()}
+function exSet(id,i,v){EX.ans[id][i]=v;drawNav()}
+function exScore(){let sc=0,tot=0;EX.ids.forEach(id=>{const q=QMAP[id];tot+=exTot(q);sc+=EX.got[id].reduce((a,b)=>a+(b||0),0)});EX.sc=Math.round(sc*2)/2;EX.tot=tot}
 function submitExam(auto){
   if(!EX||EX.done)return; EX.done=true; clearInterval(TIMER); TIMER=null;
   EX.used=Math.min(Date.now(),EX.end)-EX.start; EX.auto=!!auto&&Date.now()>=EX.end;
-  EX.res={}; let sc=0;
-  EX.ids.forEach(id=>{const q=QMAP[id];const v=EX.ans[id];const ok=v!=null&&v!==''&&checkAns(q,v);EX.res[id]=ok;if(ok)sc++;record(id,ok)});
-  EX.sc=sc; const d=new Date();
-  ST.exams.unshift({d:(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'),subj:EX.subj,sc,n:EX.ids.length}); ST.exams=ST.exams.slice(0,30); save();
+  EX.got={}; EX.pending={};
+  EX.ids.forEach(id=>{const q=QMAP[id];const v=EX.ans[id];
+    if(q.t==='set'){EX.got[id]=q.parts.map((p,i)=>p.t==='essay'?null:((v[i]||'').trim()&&checkAns(p,v[i])?p.pt:0)); if(q.parts.some(p=>p.t==='essay'))EX.pending[id]=true;}
+    else{const ok=v!=null&&v!==''&&checkAns(q,v);EX.got[id]=[ok?EXPT:0];record(id,ok)}});
+  exScore(); const d=new Date();
+  EX.rec={d:(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'),subj:EX.subj,sc:EX.sc,n:EX.tot,pt:1};
+  ST.exams.unshift(EX.rec); ST.exams=ST.exams.slice(0,30); save();
   go('examResult',null,false);
+}
+function exGrade(id,k){
+  const q=QMAP[id];
+  q.parts.forEach((p,i)=>{if(p.t!=='essay')return;const cs=[...document.querySelectorAll(`#er${k} .kpc[data-i="${i}"]`)];const n=cs.filter(c=>c.checked).length;EX.got[id][i]=Math.round(p.pt*n/Math.max(1,cs.length)*2)/2});
+  delete EX.pending[id]; const g=EX.got[id].reduce((a,b)=>a+(b||0),0); record(id,g/exTot(q)>=0.7);
+  exScore(); if(EX.rec){EX.rec.sc=EX.sc;save()} vExamResult(); setTimeout(()=>{const el=document.getElementById('er'+k);if(el)el.scrollIntoView({block:'start'})},50);
 }
 function vExamResult(){
   if(!EX||!EX.done){go('examSetup');return}
   setTitle('모의고사 결과',false); setTab('exam');
-  const n=EX.ids.length, m=Math.floor(EX.used/60000), s=Math.floor(EX.used%60000/1000);
-  const bySub={}; EX.ids.forEach(id=>{const q=QMAP[id];bySub[q.s]=bySub[q.s]||[0,0];bySub[q.s][1]++;if(EX.res[id])bySub[q.s][0]++});
-  let h=`<div class="card" style="text-align:center">${EX.auto?'<div class="pill no" style="display:inline-block;margin-bottom:6px">⏰ 시간 종료 · 자동 채점</div>':''}<div class="sub">${EX.subj} 모의고사</div><div class="big">${EX.sc} / ${n}</div><div class="sub">${Math.round(EX.sc/n*100)}점 환산 · 걸린 시간 ${m}분 ${s}초 / ${EX.min}분</div>
-  <div class="chips" style="justify-content:center;margin-top:10px">${Object.keys(bySub).map(k=>`<span class="chip">${SUBJ[k].n} ${bySub[k][0]}/${bySub[k][1]}</span>`).join('')}</div></div>
-  <div class="qnav">${EX.ids.map((id,k)=>`<button class="${EX.res[id]?'ok':'no'}" onclick="document.getElementById('er${k}').scrollIntoView({behavior:'smooth',block:'start'})">${k+1}</button>`).join('')}</div>`;
-  EX.ids.forEach((id,k)=>{const q=QMAP[id],v=EX.ans[id],ok=EX.res[id];
+  const m=Math.floor(EX.used/60000), s=Math.floor(EX.used%60000/1000);
+  const bySub={}; EX.ids.forEach(id=>{const q=QMAP[id];bySub[q.s]=bySub[q.s]||[0,0];bySub[q.s][1]+=exTot(q);bySub[q.s][0]+=EX.got[id].reduce((a,b)=>a+(b||0),0)});
+  const pend=Object.keys(EX.pending).length;
+  const full=id=>EX.got[id].reduce((a,b)=>a+(b||0),0)>=exTot(QMAP[id]);
+  let h=`<div class="card" style="text-align:center">${EX.auto?'<div class="pill no" style="display:inline-block;margin-bottom:6px">⏰ 시간 종료 · 자동 채점</div>':''}<div class="sub">${EX.subj} 심화 모의고사</div><div class="big">${EX.sc} / ${EX.tot}점</div><div class="sub">${Math.round(EX.sc/EX.tot*100)}점 환산 · 걸린 시간 ${m}분 ${s}초 / ${EX.min}분</div>
+  ${pend?`<div class="pill" style="display:inline-block;margin-top:8px;background:#fff4e0;color:#b26a00">✍️ 서술 소문항 ${pend}세트 채점 대기 — 아래에서 채점 기준을 체크하면 점수에 반영돼요</div>`:''}
+  <div class="chips" style="justify-content:center;margin-top:10px">${Object.keys(bySub).map(k=>`<span class="chip">${SUBJ[k].n} ${Math.round(bySub[k][0]*2)/2}/${bySub[k][1]}</span>`).join('')}</div></div>
+  <div class="qnav">${EX.ids.map((id,k)=>`<button class="${EX.pending[id]?'':(full(id)?'ok':'no')}" onclick="document.getElementById('er${k}').scrollIntoView({behavior:'smooth',block:'start'})">${k+1}${QMAP[id].t==='set'?'★':''}</button>`).join('')}</div>`;
+  EX.ids.forEach((id,k)=>{const q=QMAP[id],v=EX.ans[id];
+    if(q.t==='set'){
+      const g=EX.got[id].reduce((a,b)=>a+(b||0),0);
+      h+=`<div class="card" id="er${k}">${qHead(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>${figHtml(q)}${q.tb?`<div class="tbwrap">${q.tb}</div>`:''}`;
+      q.parts.forEach((p,i)=>{const gi=EX.got[id][i];h+=`<div class="part"><div class="ptxt"><b>(${i+1})</b> ${escBr(p.p)} <span class="pts">[${p.pt}점]</span></div><div class="sub">내 답: ${esc((v[i]||'').trim()||'(빈칸)')}</div>`;
+        if(p.t==='essay'&&EX.pending[id]) h+=`<div class="res es"><b>채점 기준 — 내 답안에 들어간 항목 체크</b>${p.kp.map(x=>`<label class="kp"><input type="checkbox" class="kpc" data-i="${i}"><span>${esc(x)}</span></label>`).join('')}<details class="detail" open><summary style="cursor:pointer;font-weight:700">모범답안</summary><div style="margin-top:6px">${p.sol}</div></details></div>`;
+        else h+=`<div class="res ${gi>=p.pt?'ok':(gi>0?'es':'no')}" style="padding:10px 12px"><h4 style="margin:0 0 4px">${gi>=p.pt?'⭕':(gi>0?'🔺':'❌')} ${gi} / ${p.pt}점${p.t!=='essay'?` · 정답: ${esc(ansText(p))}`:''}</h4><div>${p.sol}</div></div>`;
+        h+=`</div>`});
+      h+=EX.pending[id]?`<button class="btn" style="margin-top:10px" onclick="exGrade('${id}',${k})">서술 채점 반영하기</button>`:`<div class="res ${g/exTot(q)>=0.7?'ok':'no'}"><h4>🏆 ${g} / ${exTot(q)}점</h4>${q.sol?`<details class="detail"><summary style="cursor:pointer;font-weight:700">📖 전체 풀이</summary><div style="margin-top:6px">${q.sol}</div></details>`:''}${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div>`;
+      h+=`</div>`; return;
+    }
+    const ok=EX.got[id][0]>0;
     h+=`<div class="card" id="er${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>`;
     if(q.t==='mc'){EX.order[id].forEach((c,j)=>{let cls=c===q.a?'right':(c===v?'wrong':'');h+=`<div class="choice ${cls}"><span class="no">${j+1}</span><span>${esc(q.c[c])}${whyHtml(q,c,v)}</span></div>`})}
-    h+=`<div class="res ${ok?'ok':'no'}"><h4>${ok?'⭕ 정답':'❌ 오답'} ${ok?'':`<span style="font-weight:600">· 정답: ${esc(ansText(q))}</span>`}</h4>${q.t!=='mc'?`<div class="sub">내 답: ${esc(v==null||v===''?'(빈칸)':v)}</div>`:(v==null?'<div class="sub">내 답: (선택 안 함)</div>':'')}<div>${escBr(q.ex)}</div>${q.sol?`<details class="detail"><summary style="cursor:pointer;font-weight:700">📖 자세한 풀이</summary><div style="margin-top:6px">${q.sol}</div></details>`:''}${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div></div>`});
-  h+=`<div class="row"><button class="btn sec" onclick="EX=null;go('examSetup')">새 모의고사</button>${EX.sc<n?`<button class="btn" onclick="startQuiz('mix',EX.ids.filter(i=>!EX.res[i]))">틀린 문제 다시 풀기</button>`:''}</div>`;
+    h+=`<div class="res ${ok?'ok':'no'}"><h4>${ok?'⭕ 정답':'❌ 오답'} (${ok?EXPT:0}/${EXPT}점) ${ok?'':`<span style="font-weight:600">· 정답: ${esc(ansText(q))}</span>`}</h4>${q.t!=='mc'?`<div class="sub">내 답: ${esc(v==null||v===''?'(빈칸)':v)}</div>`:(v==null?'<div class="sub">내 답: (선택 안 함)</div>':'')}<div>${escBr(q.ex)}</div>${q.sol?`<details class="detail"><summary style="cursor:pointer;font-weight:700">📖 자세한 풀이</summary><div style="margin-top:6px">${q.sol}</div></details>`:''}${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div></div>`});
+  const wrong=EX.ids.filter(i=>!EX.pending[i]&&!full(i));
+  h+=`<div class="row"><button class="btn sec" onclick="EX=null;go('examSetup')">새 모의고사</button>${wrong.length?`<button class="btn" onclick="startQuiz('mix',${JSON.stringify(wrong).replace(/"/g,"'")})">틀린 문제 다시 풀기</button>`:''}</div>`;
   render(h);
 }
 
