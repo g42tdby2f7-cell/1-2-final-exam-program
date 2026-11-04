@@ -61,10 +61,17 @@ for f in sorted(glob.glob(os.path.join(HERE,'..','docs','img','*.webp'))):
     dst=SITE+'/img/'+key+'.webp'
     if not os.path.exists(dst) or os.path.getsize(dst)!=os.path.getsize(f): shutil.copy(f,dst)
 def pkey(p):
-    return (0,int(p)) if p.isdigit() else (1,int(p[1:]))
+    if p.isdigit(): return (0,int(p),0)
+    import re as _r
+    m=_r.match(r'n(\d+)(?:-(\d+))?$',p); return (1,int(m.group(1)),int(m.group(2) or 0))
 for k,S in SRC.items():
     ps=[key.split('_',1)[1] for key in IMG if key.split('_',1)[0]==k]
     S['pages']=sorted(ps,key=pkey)
+    if S.get('note'):
+        for pg in S['pages']:
+            if '-' in pg:
+                base,i=pg.split('-'); N=sum(1 for q in S['pages'] if q.startswith(base+'-'))
+                S['labels'][pg]=S['labels'][base]+f' · 확대 {i}/{N}'
     assert S['pages'],k
 # validate refs
 bad=[]

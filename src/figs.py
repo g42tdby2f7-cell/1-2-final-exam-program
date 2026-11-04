@@ -219,7 +219,7 @@ def lac_map():
 
 def trp_leader():
     b=''; y=70
-    b+=L(10,y,440,y,c=MUT,w=2)+T(12,y-10,"5′",'start',12)+T(440,y-10,"3′",'end',12)
+    b+=L(10,y,440,y,c=MUT,w=2)+T(12,y-10,"5′",'start',12)+T(440,y-10,"3′",'end',12)+T(225,y+52,'trp 리더 mRNA (5′ → 3′, 전사·번역 방향)','middle',11,MUT)
     segs=[('1',60,RED),('2',130,ORG),('3',200,GRN),('4',270,BLUE)]
     for n,x,c in segs:
         b+=R(x,y-9,46,18,fill=c,stroke=c,rx=4)+T(x+23,y+5,n,'middle',13,'#fff','bold')
@@ -227,7 +227,7 @@ def trp_leader():
     b+=P('M83,61 Q 118,10 153,61',c=MUT,w=1.4,dash='3 3')+P('M153,61 Q 188,10 223,61',c=MUT,w=1.4,dash='3 3')+P('M223,61 Q 258,10 293,61',c=MUT,w=1.4,dash='3 3')
     b+=T(118,22,'1:2','middle',11,MUT)+T(188,22,'2:3','middle',11,MUT)+T(258,22,'3:4','middle',11,MUT)
     b+=T(30,y+5,'AUG','middle',11)
-    return svg(450,115,b,maxw=460)
+    return svg(450,130,b,maxw=460)
 
 def diauxic():
     b=''; ox,oy=50,215
