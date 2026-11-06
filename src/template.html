@@ -143,6 +143,7 @@ math{font-size:1.1em}
 .choice .why{display:block;margin-top:6px;padding:7px 9px;border-radius:8px;font-size:13.5px;font-weight:400;line-height:1.55;text-align:left;background:rgba(0,0,0,.035);color:var(--ink,#333)}.choice .why b{display:block;font-size:12px;margin-bottom:2px}.choice .why.y b{color:#1a8f4c}.choice .why.n b{color:#c9423a}
 .res{overflow-x:auto}
 .part{margin:14px 0 4px;padding-top:12px;border-top:1px dashed var(--line)}.part .ptxt{font-size:15px;font-weight:600;line-height:1.6;margin-bottom:8px;word-break:keep-all}.part .pts{color:var(--acc);font-weight:700;font-size:13px}.tbwrap{overflow-x:auto;margin:10px 0}.tbwrap table{border-collapse:collapse;font-size:13.5px;margin:0 auto}.tbwrap td,.tbwrap th{border:1px solid #d9d6cf;padding:6px 9px;text-align:center}.tbwrap th{background:#f4f2ee}
+.bogi{border:1.5px solid #bbb;border-radius:6px;padding:10px 12px;margin:10px 0;font-size:14.5px;line-height:1.7;text-align:left}.bogi .bt{text-align:center;font-weight:700;margin-bottom:4px;letter-spacing:2px}
 .qtext .katex-display,.detail .katex-display{margin:.4em 0;overflow-x:auto;overflow-y:hidden}
 @media (max-width:420px){.subj .nm{font-size:18px}.qtext{font-size:16px}}
 </style>
@@ -356,7 +357,7 @@ function vQuiz(){
   <div class="card">${qHead(q)}${q.t==='set'?'':figHtml(q)}<div class="qtext">${escBr(q.q)}</div>${q.t==='set'?figHtml(q):''}${q.tb?`<div class="tbwrap">${q.tb}</div>`:''}`;
   if(q.t==='set'){ h+=setBlock(q,r); }
   else if(q.t==='mc'){
-    if(!QZ.order[q.id]) QZ.order[q.id]=shuffle(q.c.map((_,k)=>k));
+    if(!QZ.order[q.id]) QZ.order[q.id]=q.fix?q.c.map((_,k)=>k):shuffle(q.c.map((_,k)=>k));
     QZ.order[q.id].forEach((k,j)=>{
       let cls=''; if(r){ if(k===q.a)cls='right'; else if(k===r.val)cls='wrong'; }
       h+=`<button class="choice ${cls}" ${r?'disabled':''} onclick="answerMC(${k})"><span class="no">${j+1}</span><span>${esc(q.c[k])}${r?whyHtml(q,k,r.val):''}</span></button>`;
@@ -473,7 +474,7 @@ function startExam(){
   const sets=balPick(P.sets,Math.min(EXS.sets,P.sets.length));
   const pick=[...singles,...sets];
   EX={ids:pick.map(q=>q.id),ans:{},order:{},start:Date.now(),end:Date.now()+EXS.min*60000,subj:EXS.subj==='all'?'전 과목':SUBJ[EXS.subj].n,min:EXS.min,done:false};
-  pick.forEach(q=>{if(q.t==='mc')EX.order[q.id]=shuffle(q.c.map((_,k)=>k)); if(q.t==='set')EX.ans[q.id]=q.parts.map(()=>'')});
+  pick.forEach(q=>{if(q.t==='mc')EX.order[q.id]=q.fix?q.c.map((_,k)=>k):shuffle(q.c.map((_,k)=>k)); if(q.t==='set')EX.ans[q.id]=q.parts.map(()=>'')});
   clearInterval(TIMER); TIMER=setInterval(tick,500);
   go('exam');
 }
@@ -499,7 +500,7 @@ function vExam(){
         h+=`</div>`});
       h+=`</div>`; return;
     }
-    h+=`<div class="card exq" id="eq${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)} <span class="pts" style="color:var(--acc);font-size:13px">[${EXPT}점]</span></div>`;
+    h+=`<div class="card exq" id="eq${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)} <span class="pts" style="color:var(--acc);font-size:13px">[${EXPT}점]</span></div>`+(q.tb?`<div class="tbwrap">${q.tb}</div>`:'');
     if(q.t==='mc'){EX.order[id].forEach((c,j)=>{h+=`<button class="choice ${EX.ans[id]===c?'sel':''}" onclick="exPick('${id}',${c},${k})"><span class="no">${j+1}</span><span>${esc(q.c[c])}</span></button>`})}
     else h+=`<div class="row" style="margin-top:10px"><input class="inp" ${q.t==='num'?'inputmode="decimal"':''} placeholder="${q.t==='num'?'숫자 입력':'답 입력'}" value="${esc(EX.ans[id]||'')}" oninput="exType('${id}',this.value)">${q.unit?`<span class="unit" style="flex:none">${esc(q.unit)}</span>`:''}</div>`;
     h+=`</div>`});
@@ -552,7 +553,7 @@ function vExamResult(){
       h+=`</div>`; return;
     }
     const ok=EX.got[id][0]>0;
-    h+=`<div class="card" id="er${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>`;
+    h+=`<div class="card" id="er${k}">${qHead(q)}${figHtml(q)}<div class="qtext"><b>${k+1}.</b> ${escBr(q.q)}</div>${q.tb?`<div class="tbwrap">${q.tb}</div>`:''}`;
     if(q.t==='mc'){EX.order[id].forEach((c,j)=>{let cls=c===q.a?'right':(c===v?'wrong':'');h+=`<div class="choice ${cls}"><span class="no">${j+1}</span><span>${esc(q.c[c])}${whyHtml(q,c,v)}</span></div>`})}
     h+=`<div class="res ${ok?'ok':'no'}"><h4>${ok?'⭕ 정답':'❌ 오답'} (${ok?EXPT:0}/${EXPT}점) ${ok?'':`<span style="font-weight:600">· 정답: ${esc(ansText(q))}</span>`}</h4>${q.t!=='mc'?`<div class="sub">내 답: ${esc(v==null||v===''?'(빈칸)':v)}</div>`:(v==null?'<div class="sub">내 답: (선택 안 함)</div>':'')}<div>${escBr(q.ex)}</div>${q.sol?`<details class="detail"><summary style="cursor:pointer;font-weight:700">📖 자세한 풀이</summary><div style="margin-top:6px">${q.sol}</div></details>`:''}${refsHtml(q.ref)}<div class="refs"><button class="ref" onclick="askAbout('${q.id}')">💬 이 문제 질문하기</button></div></div></div>`});
   const wrong=EX.ids.filter(i=>!EX.pending[i]&&!full(i));

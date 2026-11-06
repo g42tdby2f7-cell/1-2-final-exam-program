@@ -507,7 +507,45 @@ def bloch():
     b+=T(cx,cy+r+30,'|ψ⟩ = cos(θ/2)|0⟩ + e<tspan baseline-shift="super" font-size="70%">iφ</tspan> sin(θ/2)|1⟩','middle',12,MUT)
     return svg(420,250,b)
 
-FIGS={'compton':compton,'coll1d':coll1d,'coll2d':coll2d,'bbody':bbody,'bloch':bloch,
+def ek_lambda():
+    b=''; ox,oy=50,200
+    b+=L(ox,oy,ox+330,oy,mk='ar')+L(ox,oy,ox,15,mk='ar')+T(ox+330,oy+18,'파장','end',12)+T(ox+6,14,'Eₖ','start',13)
+    X=lambda l:ox+l*80; 
+    # B: Ek = 2E0*(1/l)^2 (l in λ0) ; A: Ek = E0*(3/l)^2
+    E0=40
+    def curve(f,col,lab,l0,lx,ly):
+        d=''
+        for i in range(0,101):
+            l=l0+i*(4-l0)/100; y=oy-f(l)*E0
+            if y<20: continue
+            d+=('M' if not d else ' L')+f'{X(l):.1f},{y:.1f}'
+        return P(d,c=col,w=2.2)+T(lx,ly,lab,'middle',13,col,'bold')
+    b+=curve(lambda l:2*(1/l)**2,BLUE,'B',0.25,ox+18,30)+curve(lambda l:(3/l)**2,RED,'A',1.0,ox+120,40)
+    b+=L(X(1),oy,X(1),oy-2*E0,c=MUT,w=1,dash='3 3')+L(ox,oy-2*E0,X(1),oy-2*E0,c=MUT,w=1,dash='3 3')
+    b+=L(X(3),oy,X(3),oy-E0,c=MUT,w=1,dash='3 3')+L(ox,oy-E0,X(3),oy-E0,c=MUT,w=1,dash='3 3')
+    b+=T(X(1),oy+16,'λ₀')+T(X(3),oy+16,'3λ₀')+T(ox-6,oy-2*E0+4,'2E₀','end',11)+T(ox-6,oy-E0+4,'E₀','end',11)+T(ox-6,oy+4,'0','end',11)
+    return svg(400,225,b)
+def compton_eq():
+    b=''; cx,cy=200,110
+    b+=_wave(20,cy,cx-12,cy,RED,5,7)+T(70,cy+24,'E₀ = 0.88 MeV','middle',12,RED)
+    b+=L(cx,cy,390,cy,c=MUT,w=1,dash='4 4')
+    th=_m.radians(43)
+    b+=L(cx,cy,cx+120*_m.cos(th),cy-120*_m.sin(th),c=INK,w=1.8,mk='ar')+T(cx+128*_m.cos(th),cy-128*_m.sin(th),'전자','start',12)
+    b+=_wave(cx+10*_m.cos(th),cy+10*_m.sin(th),cx+140*_m.cos(th),cy+140*_m.sin(th),BLUE,4,7)+T(cx+150*_m.cos(th),cy+148*_m.sin(th),'산란 광자','start',12,BLUE)
+    b+=P(f'M{cx+40},{cy} A40,40 0 0,0 {cx+40*_m.cos(th):.1f},{cy-40*_m.sin(th):.1f}',w=1.2)+T(cx+46,cy-12,'θ','start',13,INK,'bold')
+    b+=P(f'M{cx+34},{cy} A34,34 0 0,1 {cx+34*_m.cos(th):.1f},{cy+34*_m.sin(th):.1f}',c=BLUE,w=1.2)+T(cx+40,cy+24,'θ','start',13,BLUE,'bold')
+    b+=C(cx,cy,7,'#ffe08a')
+    return svg(420,230,b)
+def double_scatter():
+    b=''; ax,ay=150,70; bx,by=250,170
+    b+=_wave(20,ay,ax-8,ay,RED,4,6)+T(60,ay-12,'λ','middle',12,RED)+L(ax,ay,330,ay,c=MUT,w=1,dash='4 4')
+    b+=_wave(ax+6,ay+6,bx-6,by-6,ORG,4,5)+T(215,115,"λ′",'start',12,ORG)
+    b+=_wave(bx-8,by,40,by,BLUE,4,8)+T(60,by-12,'λ″ (정반대 방향)','start',12,BLUE)
+    b+=C(ax,ay,6,'#ffe08a')+T(ax,ay-12,'A','middle',12,INK,'bold')+C(bx,by,6,'#ffe08a')+T(bx+12,by-6,'B','start',12,INK,'bold')
+    b+=P(f'M{ax+30},{ay} A30,30 0 0,1 {ax+21},{ay+21}',w=1.2)+T(ax+34,ay+20,'θ','start',12)
+    return svg(400,210,b)
+
+FIGS={'ek_lambda':ek_lambda,'compton_eq':compton_eq,'double_scatter':double_scatter,'compton':compton,'coll1d':coll1d,'coll2d':coll2d,'bbody':bbody,'bloch':bloch,
 
  'cell_sc':lambda:cell('sc'),'cell_bcc':lambda:cell('bcc'),'cell_fcc':lambda:cell('fcc'),'cell_nacl':lambda:cell('nacl'),'cell_cscl':lambda:cell('cscl'),
  'cell_perov':lambda:cell('perov'),'cell_nial':lambda:cell('nial'),'cell_edge':lambda:cell('edgeb'),'lattice2d':lattice2d,

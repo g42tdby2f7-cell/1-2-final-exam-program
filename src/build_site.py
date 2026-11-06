@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -12,6 +12,28 @@ for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_eart
         if q['t']=='essay': q['lv']=0
         for k in ('q','ex','sol'):
             if k in q and isinstance(q[k],str): q[k]=q[k].rstrip('\n')
+        if q.get('bg'):
+            L='ㄱㄴㄷㄹ'[:len(q['bg'])]; truth=[bool(x[1]) for x in q['bg']]
+            corr=', '.join(L[i] for i in range(len(L)) if truth[i])
+            std=['ㄱ','ㄷ','ㄱ, ㄴ','ㄴ, ㄷ','ㄱ, ㄴ, ㄷ']
+            if corr not in std: std=['ㄱ','ㄴ','ㄷ','ㄱ, ㄷ','ㄱ, ㄴ, ㄷ']
+            if corr not in std: std=['ㄱ','ㄴ','ㄱ, ㄴ','ㄴ, ㄷ','ㄱ, ㄴ, ㄷ']
+            assert corr in std, q['id']
+            q['c']=std; q['a']=std.index(corr); q['t']='mc'; q['fix']=1
+            q['tb']=q.get('tb','')+'<div class="bogi"><div class="bt">&lt; 보 기 &gt;</div>'+''.join(f'<div>{L[i]}. {x[0]}</div>' for i,x in enumerate(q['bg']))+'</div>'
+            cx=[]
+            for ch in std:
+                S=set(ch.split(', '))
+                if ch==corr: cx.append('옳은 보기만 정확히 골랐어요. '+' / '.join(f"{L[i]} {'O' if truth[i] else 'X'}" for i in range(len(L)))+'.')
+                else:
+                    m=[]
+                    for i in range(len(L)):
+                        if L[i] in S and not truth[i]: m.append(f"{L[i]}은(는) 틀린 보기예요: {q['bg'][i][2]}")
+                        if L[i] not in S and truth[i]: m.append(f"{L[i]}도 옳은 보기예요: {q['bg'][i][2]}")
+                    cx.append(' / '.join(m))
+            q['cx']=cx
+            q['ex']=(q.get('ex','')+' ' if q.get('ex') else '')+' '.join(f"{L[i]}({'O' if truth[i] else 'X'}) {x[2]}" for i,x in enumerate(q['bg']))
+            del q['bg']
         if q['t']=='mc':
             assert isinstance(q['a'],int) and 0<=q['a']<len(q['c']), q['id']
             q['c']=[str(c) for c in q['c']]
@@ -29,6 +51,7 @@ for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_eart
 CX=yaml.safe_load(open('cx.yaml'))
 for q in QS:
     if q['t']=='mc':
+        if q.get('fix') and q.get('cx'): continue
         assert q['id'] in CX and len(CX[q['id']])==len(q['c']), 'cx '+q['id']
         q['cx']=[str(x) for x in CX[q['id']]]
 from mathify import mathify
@@ -59,6 +82,7 @@ SRC={
  'r2':dict(n='화학 CHEMTAK 손필기본 (Solids · Phase Transitions)',short='CHEMTAK',s='chem',ic='📙'),
  'nc':dict(n='내 필기 · 화학 (열역학·열화학)',short='내 필기',s='chem',note=True,labels={'n1':'화학 열역학 필기 (제1법칙·Cp/Cv·가역/비가역)','n2':'화학 열화학 필기 (열량계·헤스·반응 엔탈피)'}),
  's2':dict(n='물리 「6. 다이오드」 수업 PPT',short='물리 다이오드 PPT',s='phys',ic='📕'),
+ 'qw':dict(n='물리 「전자기와 양자 문제 part Ⅰ」 학습지',short='물리 양자 문제지',s='phys',ic='📕'),
  'qm':dict(n='물리 「양자역학」 수업 PPT·필기 (흑체 복사 ~ 양자 컴퓨터)',short='물리 양자역학',s='phys',ic='📕'),
  's1':dict(n='물리 「다이오드 추가」 PPT (근사 모델·예제)',short='물리 다이오드 추가',s='phys',ic='📕'),
 }

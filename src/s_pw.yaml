@@ -1,0 +1,643 @@
+# ===================== 물리 · 「전자기와 양자 문제 part Ⅰ」 학습지 =====================
+# 상수: hc = 1240 eV·nm = 1240 keV·pm, λc = 2.43 pm, mₑc² = 511 keV, mₚc² = 938 MeV
+- id: pw01
+  u: 콤프턴 효과
+  t: set
+  lv: 2
+  q: '[학습지 1번] 파장이 2.40 pm인 빛을 정지해 있는 자유 전자에 입사시켰다. ($\lambda_c=2.43$ pm) [6점]'
+  fig: compton
+  parts:
+    - p: 입사 방향에 대해 30°의 각도로 산란되는 빛의 파장은 몇 pm인가?
+      t: num
+      a: 2.73
+      tol: 0.01
+      unit: pm
+      pt: 3
+      sol: '$\lambda^{\prime}=\lambda+\lambda_c(1-\cos30°)=2.40+2.43\times0.134=2.73$ pm.'
+    - p: 입사 방향에 대해 120°의 각도로 산란되는 빛의 파장은 몇 pm인가?
+      t: num
+      a: 6.045
+      tol: 0.01
+      unit: pm
+      pt: 3
+      sol: '$\cos120°=-0.5$ → $1-\cos120°=1.5$ → $\lambda^{\prime}=2.40+3.645\approx6.04$ pm. 각이 클수록 파장이 더 늘어나요.'
+  ref: [qw:1, qm:11]
+
+- id: pw02
+  u: 콤프턴 효과
+  t: set
+  lv: 2
+  q: '[학습지 2번] 전자의 정지 에너지(0.511 MeV)와 같은 에너지를 갖는 광자가 있다. ($h=6.63\times10^{-34}$ J·s, $hc=1240$ eV·nm, $1\text{ eV}=1.6\times10^{-19}$ J) [8점]'
+  parts:
+    - p: 이 광자의 운동량 크기는 몇 MeV/c인가?
+      t: num
+      a: 0.511
+      tol: 0.01
+      unit: MeV/c
+      pt: 2
+      sol: '광자는 $p=E/c$ → 0.511 MeV/c. (단위를 eV/c로 물으면 에너지 숫자를 그대로 쓰면 돼요)'
+    - p: 이 광자의 파장은 몇 pm인가?
+      t: num
+      a: 2.43
+      tol: 0.01
+      unit: pm
+      pt: 3
+      sol: '$\lambda=\dfrac{hc}{E}=\dfrac{1240\text{ keV·pm}}{511\text{ keV}}=2.43$ pm $=2.43\times10^{-12}$ m. 전자의 콤프턴 파장 $\lambda_c=\dfrac{h}{m_ec}=\dfrac{hc}{m_ec^2}$와 정확히 같아요!'
+    - p: 이 광자의 진동수는 몇 $\times10^{20}$ Hz인가?
+      t: num
+      a: 1.24
+      tol: 0.02
+      unit: '×10²⁰ Hz'
+      pt: 3
+      sol: '$f=\dfrac{c}{\lambda}=\dfrac{3.0\times10^8}{2.43\times10^{-12}}\approx1.24\times10^{20}$ Hz.'
+  ref: [qw:1, qm:7]
+
+- id: pw03
+  u: 콤프턴 효과
+  t: set
+  lv: 2
+  q: '[학습지 3번] 파장이 35 pm인 X선에 대하여 다음 값을 구하시오. ($c=3.0\times10^8$ m/s, $hc=1240$ eV·nm) [8점]'
+  parts:
+    - p: X선의 진동수는 몇 $\times10^{18}$ Hz인가?
+      t: num
+      a: 8.57
+      tol: 0.01
+      unit: '×10¹⁸ Hz'
+      pt: 2
+      sol: '$f=\dfrac{c}{\lambda}=\dfrac{3.0\times10^8}{35\times10^{-12}}\approx8.57\times10^{18}$ Hz.'
+    - p: X선 광자 1개의 에너지는 몇 keV인가?
+      t: num
+      a: 35.4
+      tol: 0.01
+      unit: keV
+      pt: 3
+      sol: '$E=\dfrac{hc}{\lambda}=\dfrac{1240\text{ eV·nm}}{0.035\text{ nm}}\approx3.54\times10^4$ eV = 35.4 keV.'
+    - p: X선 광자의 운동량 크기는 몇 keV/c인가?
+      t: num
+      a: 35.4
+      tol: 0.01
+      unit: keV/c
+      pt: 3
+      sol: '$p=E/c=35.4$ keV/c.'
+  ref: [qw:1, qm:7]
+
+- id: pw04
+  u: 콤프턴 효과
+  t: num
+  lv: 3
+  q: '[학습지 4번] 광자가 정지해 있는 자유 양성자와 콤프턴 충돌을 할 때 나타날 수 있는 최대 파장 변화량은 몇 $\times10^{-15}$ m인가? ($h=6.63\times10^{-34}$ J·s, $m_p=1.67\times10^{-27}$ kg, $c=3.0\times10^8$ m/s)'
+  a: 2.65
+  tol: 0.02
+  unit: '×10⁻¹⁵ m'
+  ex: '최대는 φ = 180° → $\Delta\lambda=\dfrac{2h}{m_pc}=\dfrac{2\times6.63\times10^{-34}}{1.67\times10^{-27}\times3.0\times10^8}\approx2.65\times10^{-15}$ m. 전자(4.86 pm)보다 약 1836배 작아 무거운 입자에서는 콤프턴 효과가 거의 안 보여요.'
+  ref: [qw:1, qm:11]
+
+- id: pw05
+  u: 콤프턴 효과
+  t: num
+  lv: 3
+  q: '[학습지 5번] 광자가 자유 전자와 충돌하여 콤프턴 산란을 할 때, 광자 에너지가 충돌 전의 75%만큼 감소하였다. 이때 광자의 파장은 몇 % 증가하였는가?'
+  a: 300
+  tol: 0.01
+  unit: '%'
+  ex: '75% 감소 → 남은 에너지 25% → $E^{\prime}=E/4$ → $\lambda^{\prime}=4\lambda$ → 300% 증가. (주의: "75%가 되었다"로 읽으면 33.3% 증가예요. 문장을 꼼꼼히!)'
+  ref: [qw:1]
+
+- id: pw06
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 6번] 파장이 0.01 nm인 X선이 +x 방향으로 진행하여 표적 내의 전자와 콤프턴 충돌을 하였다. X선이 입사 방향과 180°의 각도로 산란되었다. ($\lambda_c=2.43$ pm, $hc=1240$ keV·pm) [12점]'
+  parts:
+    - p: X선의 파장 변화량은 몇 pm인가?
+      t: num
+      a: 4.86
+      tol: 0.01
+      unit: pm
+      pt: 3
+      sol: '$\Delta\lambda=\lambda_c(1-\cos180°)=2\lambda_c=4.86$ pm.'
+    - p: 광자 에너지는 몇 keV 감소하였는가?
+      t: num
+      a: 40.6
+      tol: 0.01
+      unit: keV
+      pt: 3
+      sol: '$\lambda=10$ pm → $E=124$ keV, $\lambda^{\prime}=14.86$ pm → $E^{\prime}=\dfrac{1240}{14.86}=83.4$ keV → 40.6 keV 감소.'
+    - p: 튕겨 나간 전자의 운동 에너지는 몇 keV인가?
+      t: num
+      a: 40.6
+      tol: 0.01
+      unit: keV
+      pt: 2
+      sol: '에너지 보존: 전자가 받은 운동 에너지 = 광자가 잃은 에너지 = 40.6 keV.'
+    - p: +x 방향과 전자의 운동 방향이 이루는 각도는 몇 °인가?
+      t: num
+      a: 0
+      tol: 0.001
+      unit: °
+      pt: 4
+      sol: '광자가 정반대(−x)로 튕겨 나갔으므로, 운동량 보존을 맞추려면 전자는 +x 방향으로 나가야 해요 → 0°. (y 방향 운동량은 처음부터 0)'
+  ref: [qw:1, qm:10]
+
+- id: pw07
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 7번] 산란각이 φ = 90°인 콤프턴 충돌에서, 각 전자기파 영역에 따른 광자 에너지의 변화율(백분율) $\dfrac{\Delta E}{E}=\dfrac{\Delta\lambda}{\lambda^{\prime}}$을 구하시오. ($\lambda_c=2.43$ pm, $hc=1240$ keV·pm) [12점]'
+  parts:
+    - p: '마이크로파($\lambda$ = 3.0 cm): 변화율은 몇 $\times10^{-9}$ %인가?'
+      t: num
+      a: 8.1
+      tol: 0.02
+      unit: '×10⁻⁹ %'
+      pt: 3
+      sol: '$\dfrac{2.43\times10^{-12}}{0.03}\times100\approx8.1\times10^{-9}$ %.'
+    - p: '가시광선($\lambda$ = 500 nm): 변화율은 몇 $\times10^{-4}$ %인가?'
+      t: num
+      a: 4.86
+      tol: 0.02
+      unit: '×10⁻⁴ %'
+      pt: 3
+      sol: '$\dfrac{2.43\times10^{-12}}{5.0\times10^{-7}}\times100\approx4.9\times10^{-4}$ %.'
+    - p: 'X선($\lambda$ = 25 pm): 변화율은 약 몇 %인가?'
+      t: num
+      a: 8.86
+      tol: 0.02
+      unit: '%'
+      pt: 3
+      sol: '$\dfrac{2.43}{25+2.43}\times100\approx8.9$ %.'
+    - p: '감마선(광자 에너지 1.0 MeV): 변화율은 약 몇 %인가?'
+      t: num
+      a: 66.2
+      tol: 0.02
+      unit: '%'
+      pt: 3
+      sol: '$\lambda=\dfrac{1240}{1000}=1.24$ pm → $\dfrac{2.43}{1.24+2.43}\times100\approx66$ %. 결론: 파장이 짧을수록(에너지가 클수록) 콤프턴 효과가 뚜렷해요 → 그래서 X선·감마선으로 실험!'
+  ref: [qw:1, qm:11]
+
+- id: pw08
+  u: 콤프턴 효과
+  t: num
+  lv: 3
+  q: '[학습지 8번] 처음 파장이 $3\times10^{-12}$ m인 광자가 정지해 있는 자유 전자와 콤프턴 산란을 하여 90°로 산란되었다. 충돌 후 전자의 운동 에너지는 약 몇 keV인가? ($\lambda_c=2.43$ pm, $hc=1240$ keV·pm)'
+  a: 185
+  tol: 0.01
+  unit: keV
+  ex: '$\lambda^{\prime}=3+2.43=5.43$ pm → $K=\dfrac{1240}{3}-\dfrac{1240}{5.43}=413.3-228.4\approx185$ keV.'
+  ref: [qw:1]
+
+- id: pw09
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 9번] 입자의 콤프턴 파장 $\lambda_c=\dfrac{h}{mc}$와, 그 파장을 가진 광자의 에너지를 구하시오. ($h=6.63\times10^{-34}$ J·s, $c=3.0\times10^8$ m/s, $m_p=1.67\times10^{-27}$ kg, $m_ec^2=0.511$ MeV, $m_pc^2=938$ MeV) [10점]'
+  parts:
+    - p: 양성자의 콤프턴 파장은 몇 $\times10^{-15}$ m인가?
+      t: num
+      a: 1.32
+      tol: 0.02
+      unit: '×10⁻¹⁵ m'
+      pt: 3
+      sol: '$\lambda_c=\dfrac{h}{m_pc}=\dfrac{6.63\times10^{-34}}{1.67\times10^{-27}\times3.0\times10^8}\approx1.32\times10^{-15}$ m.'
+    - p: 파장이 전자의 콤프턴 파장과 같은 광자의 에너지는 몇 MeV인가?
+      t: num
+      a: 0.511
+      tol: 0.01
+      unit: MeV
+      pt: 2
+      sol: '$E=\dfrac{hc}{\lambda_c}=\dfrac{hc}{h/m_ec}=m_ec^2=0.511$ MeV.'
+    - p: 파장이 양성자의 콤프턴 파장과 같은 광자의 에너지는 몇 MeV인가?
+      t: num
+      a: 938
+      tol: 0.01
+      unit: MeV
+      pt: 2
+      sol: '같은 원리로 $E=m_pc^2=938$ MeV.'
+    - p: (2), (3)의 결과로부터 알 수 있는 일반적인 관계를 쓰시오.
+      t: essay
+      pt: 3
+      kp: ['콤프턴 파장과 같은 파장의 광자 에너지 = 그 입자의 정지 에너지', '$E=\dfrac{hc}{\lambda_c}=\dfrac{hc}{h/mc}=mc^2$', '무거운 입자일수록 콤프턴 파장이 짧음']
+      sol: '입자의 콤프턴 파장과 같은 파장을 가진 광자의 에너지는 $E=\dfrac{hc}{\lambda_c}=\dfrac{hc}{h/mc}=mc^2$로 그 입자의 정지 에너지와 같다. 따라서 무거운 입자일수록 콤프턴 파장이 짧다.'
+  ref: [qw:1, qm:11]
+
+- id: pw10
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 10번] 광자 에너지가 0.511 MeV인 감마선을 알루미늄 표적에 입사시켜 내부의 전자와 산란시켰다. ($\lambda_c=2.43$ pm) [8점]'
+  parts:
+    - p: 입사된 감마선의 파장은 몇 pm인가?
+      t: num
+      a: 2.43
+      tol: 0.01
+      unit: pm
+      pt: 2
+      sol: '$E=m_ec^2$ → $\lambda=\lambda_c=2.43$ pm (9번 결과).'
+    - p: 입사 방향과 90°로 산란된 감마선의 파장은 몇 pm인가?
+      t: num
+      a: 4.86
+      tol: 0.01
+      unit: pm
+      pt: 3
+      sol: '$\Delta\lambda=\lambda_c$ → $\lambda^{\prime}=2\lambda_c=4.86$ pm.'
+    - p: 이 방향으로 산란된 감마선 광자의 에너지는 몇 MeV인가?
+      t: num
+      a: 0.2555
+      tol: 0.01
+      unit: MeV
+      pt: 3
+      sol: '파장 2배 → 에너지 1/2 → $E^{\prime}=0.511/2\approx0.256$ MeV.'
+  ref: [qw:1]
+
+- id: pw11
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 11번] 50 keV의 X선 광자가 정지해 있는 전자와 충돌하여 정반대 방향(180°)으로 산란되고 전자는 정방향으로 튕겨 나갔다. ($m_ec^2=511$ keV, 에너지 형태의 콤프턴 식 $\dfrac{1}{E^{\prime}}-\dfrac1E=\dfrac{1-\cos\phi}{m_ec^2}$) [7점]'
+  parts:
+    - p: 후방 산란된 광자의 에너지는 약 몇 keV인가?
+      t: num
+      a: 41.8
+      tol: 0.01
+      unit: keV
+      pt: 4
+      sol: '$\dfrac{1}{E^{\prime}}=\dfrac{1}{50}+\dfrac{2}{511}$ → $E^{\prime}=\dfrac{50}{1+100/511}\approx41.8$ keV.'
+    - p: 튕겨 나간 전자의 운동 에너지는 약 몇 keV인가?
+      t: num
+      a: 8.18
+      tol: 0.02
+      unit: keV
+      pt: 3
+      sol: '$K=E-E^{\prime}=50-41.8\approx8.2$ keV.'
+  ref: [qw:2]
+
+- id: pw12
+  u: 콤프턴 효과
+  t: essay
+  q: '[학습지 12번] 에너지가 E인 광자가 정지 상태의 자유 전자(정지 질량 m)와 산란될 때, 튕겨 나가는 전자가 가질 수 있는 최대 운동 에너지가 $K_{max}=\dfrac{E^2}{E+\tfrac12mc^2}$임을 증명하시오.'
+  kp: ['전자가 에너지를 가장 많이 받는 것은 광자가 가장 많이 잃을 때 → φ = 180°', '에너지 형태 콤프턴 식: $\dfrac{1}{E^{\prime}}=\dfrac1E+\dfrac{2}{mc^2}$', '$E^{\prime}=\dfrac{Emc^2}{mc^2+2E}$', '$K_{max}=E-E^{\prime}=\dfrac{2E^2}{mc^2+2E}$', '분자·분모를 2로 나누면 $\dfrac{E^2}{E+\tfrac12mc^2}$']
+  sol: '튕겨 나간 전자의 운동 에너지는 광자가 잃은 에너지 $K=E-E^{\prime}$이므로 광자가 가장 많이 잃는 φ = 180°(정면충돌)일 때 최대이다. 콤프턴 식 $\Delta\lambda=\dfrac{h}{mc}(1-\cos\phi)$의 양변을 hc로 나누면 $\dfrac{1}{E^{\prime}}-\dfrac1E=\dfrac{1-\cos\phi}{mc^2}$이고, φ = 180°이면 $\dfrac{1}{E^{\prime}}=\dfrac1E+\dfrac{2}{mc^2}=\dfrac{mc^2+2E}{Emc^2}$, 즉 $E^{\prime}=\dfrac{Emc^2}{mc^2+2E}$이다. 따라서 $K_{max}=E-\dfrac{Emc^2}{mc^2+2E}=\dfrac{2E^2}{mc^2+2E}=\dfrac{E^2}{E+\tfrac12mc^2}$이다.'
+  ref: [qw:2]
+
+- id: pw13
+  u: 콤프턴 효과
+  t: num
+  lv: 3
+  q: '[학습지 13번] 에너지가 200 keV인 광자가 정지해 있는 자유 전자와 산란하여 처음 에너지의 10%를 잃으려면 약 몇 °의 각도로 산란되어야 하는가? ($m_ec^2=511$ keV)'
+  a: 44.3
+  tol: 0.02
+  unit: °
+  ex: '$E^{\prime}=180$ keV. $1-\cos\phi=511\left(\dfrac{1}{180}-\dfrac{1}{200}\right)=0.284$ → $\cos\phi=0.716$ → $\phi\approx44°$.'
+  ref: [qw:2]
+
+- id: pw14
+  u: 콤프턴 효과
+  t: num
+  lv: 3
+  q: '[학습지 14번] 17.5 keV의 X선 빔을 얇은 구리 박편에 입사시켜 콤프턴 산란시켰다. 튀어나오는 전자가 가질 수 있는 최대 운동 에너지는 약 몇 keV인가? ($m_ec^2=511$ keV, 일함수 무시)'
+  a: 1.12
+  tol: 0.02
+  unit: keV
+  ex: '12번 공식: $K_{max}=\dfrac{E^2}{E+\tfrac12mc^2}=\dfrac{17.5^2}{17.5+255.5}\approx1.12$ keV.'
+  ref: [qw:2]
+
+- id: pw15
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 15번] 파장 λ = 590 nm인 빛이 정지해 있는 자유 전자에서 입사 방향과 90°로 산란된다. ($\lambda_c=2.43$ pm, $hc=1240$ eV·nm) [12점]'
+  parts:
+    - p: 상대적 파장 변화율 $\Delta\lambda/\lambda$는 몇 $\times10^{-6}$인가?
+      t: num
+      a: 4.12
+      tol: 0.02
+      unit: '×10⁻⁶'
+      pt: 3
+      sol: '$\Delta\lambda=\lambda_c=2.43$ pm → $\dfrac{2.43\times10^{-12}}{590\times10^{-9}}\approx4.1\times10^{-6}$.'
+    - p: 광자 에너지의 감소량은 몇 $\times10^{-6}$ eV인가?
+      t: num
+      a: 8.66
+      tol: 0.03
+      unit: '×10⁻⁶ eV'
+      pt: 3
+      sol: '$E=\dfrac{1240}{590}=2.10$ eV, $\Delta E=E\dfrac{\Delta\lambda}{\lambda^{\prime}}\approx2.10\times4.1\times10^{-6}\approx8.7\times10^{-6}$ eV.'
+    - p: '광자 에너지가 50 keV인 X선이 90°로 산란될 때의 상대적 파장 변화율 $\Delta\lambda/\lambda$를 구하시오. (소수 셋째 자리까지)'
+      t: num
+      a: 0.098
+      tol: 0.02
+      unit: ''
+      pt: 3
+      sol: '$\lambda=\dfrac{1240}{50}=24.8$ pm → $\dfrac{2.43}{24.8}\approx0.098$.'
+    - p: 위 결과를 비교하여 가시광선에서 콤프턴 효과를 관찰하기 어려운 이유를 쓰시오.
+      t: essay
+      pt: 3
+      kp: ['Δλ는 빛의 종류와 무관하게 같음(90°에서 2.43 pm)', '가시광선은 λ가 커서 변화율이 약 10⁻⁶으로 매우 작음', 'X선은 변화율이 약 10%로 커서 관찰 가능']
+      sol: '90° 산란에서 파장 변화량은 빛의 종류와 관계없이 2.43 pm로 같다. 그러나 가시광선은 파장이 590 nm로 커서 변화율이 약 $4\times10^{-6}$(에너지 변화 약 $10^{-5}$ eV)에 불과하지만, 50 keV X선은 약 10%로 커서 관찰된다. 따라서 콤프턴 효과는 파장이 짧은 빛에서만 뚜렷하다.'
+  ref: [qw:2]
+
+- id: pw16
+  u: 콤프턴 효과
+  t: essay
+  q: '[학습지 16번] 에너지가 E인 광자가 질량이 m인 정지 입자와 콤프턴 산란을 한다. 산란된 광자의 진동수가 f′, 산란각이 φ일 때, 광자의 에너지 손실률이 $\dfrac{\Delta E}{E}=\dfrac{hf^{\prime}}{mc^2}(1-\cos\phi)$임을 증명하시오.'
+  kp: ['에너지 형태 콤프턴 식 $\dfrac{1}{E^{\prime}}-\dfrac1E=\dfrac{1-\cos\phi}{mc^2}$', '통분: $\dfrac{E-E^{\prime}}{EE^{\prime}}=\dfrac{1-\cos\phi}{mc^2}$', '$\Delta E=E-E^{\prime}$ → $\dfrac{\Delta E}{E}=\dfrac{E^{\prime}}{mc^2}(1-\cos\phi)$', '$E^{\prime}=hf^{\prime}$ 대입']
+  sol: '콤프턴 식 $\lambda^{\prime}-\lambda=\dfrac{h}{mc}(1-\cos\phi)$의 양변을 hc로 나누면 $\dfrac{1}{E^{\prime}}-\dfrac1E=\dfrac{1-\cos\phi}{mc^2}$이다. 좌변을 통분하면 $\dfrac{E-E^{\prime}}{EE^{\prime}}=\dfrac{\Delta E}{EE^{\prime}}$이므로 양변에 $E^{\prime}$을 곱하면 $\dfrac{\Delta E}{E}=\dfrac{E^{\prime}}{mc^2}(1-\cos\phi)$이고, 산란 광자의 에너지 $E^{\prime}=hf^{\prime}$을 대입하면 $\dfrac{\Delta E}{E}=\dfrac{hf^{\prime}}{mc^2}(1-\cos\phi)$이다.'
+  ref: [qw:2]
+
+- id: pw17
+  u: 콤프턴 효과
+  t: num
+  lv: 2
+  q: '[학습지 17번] X선이 표적 내 전자와 충돌하여 입사 방향과 55°의 각도로 산란되었다. 산란된 X선의 파장 변화량은 약 몇 pm인가? ($\lambda_c=2.43$ pm, cos 55° = 0.574)'
+  a: 1.04
+  tol: 0.02
+  unit: pm
+  ex: '$\Delta\lambda=2.43\times(1-0.574)\approx1.04$ pm $=1.04\times10^{-12}$ m.'
+  ref: [qw:2]
+
+- id: pw18
+  u: 콤프턴 효과
+  t: num
+  lv: 3
+  q: '[학습지 18번] 그림과 같이 파장 λ인 광자가 위치 A의 정지 전자와 충돌하여 θ만큼 꺾인 파장 λ′의 광자가 된 뒤, 위치 B의 다른 정지 전자와 다시 충돌하여 처음 진행 방향과 정반대로 진행하는 파장 λ″의 광자가 되었다. 전체 파장 변화량 Δλ = λ″ − λ는 몇 pm인가? ($\lambda_c=2.43$ pm)'
+  fig: double_scatter
+  a: 4.86
+  tol: 0.01
+  unit: pm
+  ex: 'B에서 꺾이는 각은 180° − θ. $\Delta\lambda=\lambda_c(1-\cos\theta)+\lambda_c(1-\cos(180°-\theta))=\lambda_c(2-\cos\theta+\cos\theta)=2\lambda_c=4.86$ pm. θ와 무관한 게 포인트!'
+  ref: [qw:2]
+
+- id: pw19
+  u: 콤프턴 효과
+  t: num
+  lv: 3
+  q: '[학습지 19번] 파장이 0.0016 nm인 광자가 정지 자유 전자와 콤프턴 산란을 한다. 튕겨 나간 전자의 운동 에너지가 산란된 광자의 에너지와 같아지는 산란각은 약 몇 °인가? ($\lambda_c=2.43$ pm)'
+  a: 70.0
+  tol: 0.02
+  unit: °
+  ex: '$K=E^{\prime}$이고 $K+E^{\prime}=E$ → $E^{\prime}=E/2$ → $\lambda^{\prime}=2\lambda$ → $\Delta\lambda=1.6$ pm. $1-\cos\phi=\dfrac{1.6}{2.43}=0.658$ → $\phi\approx70°$.'
+  ref: [qw:2]
+
+- id: pw20
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 20번] 파장이 120 pm인 X선이 정지해 있는 전자와 콤프턴 산란을 한다. ($\lambda_c=2.43$ pm, $hc=1240$ keV·pm) [10점]'
+  parts:
+    - p: 산란각 60°일 때 산란된 광자의 파장은 몇 pm인가? (소수 둘째 자리까지)
+      t: num
+      a: 121.22
+      tol: 0.001
+      unit: pm
+      pt: 2
+      sol: '$\lambda^{\prime}=120+2.43\times0.5=121.22$ pm.'
+    - p: 산란각 120°일 때 튕겨 나간 전자의 운동 에너지는 약 몇 eV인가?
+      t: num
+      a: 305
+      tol: 0.03
+      unit: eV
+      pt: 4
+      sol: '$\lambda^{\prime}=120+3.645=123.645$ pm. $K=\dfrac{1240}{120}-\dfrac{1240}{123.645}=10.333-10.029\approx0.305$ keV ≈ 305 eV.'
+    - p: '전자가 가장 큰 운동 에너지를 얻는 산란각은 몇 °인가?'
+      t: num
+      a: 180
+      tol: 0.001
+      unit: °
+      pt: 2
+      sol: '$1-\cos\phi$가 최대인 180°에서 Δλ 최대 → 광자가 가장 많이 잃음 → 전자가 가장 많이 받음.'
+    - p: (3)을 수치 계산 없이 판별할 수 있는 이유를 쓰시오.
+      t: essay
+      pt: 2
+      kp: ['Δλ = λc(1 − cos φ)는 φ = 180°에서 최대', '파장 증가가 클수록 광자 에너지 감소가 큼', '광자가 잃은 에너지 = 전자 운동 에너지 → 정면충돌에서 최대']
+      sol: '$\Delta\lambda=\lambda_c(1-\cos\phi)$는 $\cos\phi=-1$인 180°에서 최대이고, 파장이 가장 많이 늘어날 때 광자가 에너지를 가장 많이 잃는다. 광자가 잃은 에너지가 곧 전자의 운동 에너지이므로 계산하지 않아도 정면충돌(180°)에서 최대임을 알 수 있다.'
+  ref: [qw:3]
+
+- id: pw21
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 21번] 그림과 같이 에너지 $E_0$ = 0.88 MeV인 광자가 정지한 자유 전자와 충돌하여, 산란된 광자의 산란각과 튕겨 나간 전자의 산란각이 모두 θ로 같았다. ($m_ec^2=0.511$ MeV) [12점]'
+  fig: compton_eq
+  parts:
+    - p: '산란 광자의 에너지는 약 몇 MeV인가? (힌트: y 방향 운동량 보존 → $p^{\prime}=p_e$)'
+      t: num
+      a: 0.602
+      tol: 0.01
+      unit: MeV
+      pt: 5
+      sol: 'y: $p^{\prime}\sin\theta=p_e\sin\theta$ → $p_ec=E^{\prime}$. 에너지: $E_0+m_ec^2=E^{\prime}+\sqrt{E^{\prime2}+(m_ec^2)^2}$ → $E^{\prime}=\dfrac{(E_0+m_ec^2)^2-(m_ec^2)^2}{2(E_0+m_ec^2)}=\dfrac{1.391^2-0.511^2}{2\times1.391}\approx0.602$ MeV.'
+    - p: 각도 θ는 약 몇 °인가?
+      t: num
+      a: 43
+      tol: 0.02
+      unit: °
+      pt: 4
+      sol: 'x: $E_0=E^{\prime}\cos\theta+p_ec\cos\theta=2E^{\prime}\cos\theta$ → $\cos\theta=\dfrac{0.88}{1.204}=0.731$ → θ ≈ 43°.'
+    - p: 튕겨 나간 전자의 운동 에너지는 약 몇 MeV인가?
+      t: num
+      a: 0.278
+      tol: 0.02
+      unit: MeV
+      pt: 3
+      sol: '$K=E_0-E^{\prime}=0.88-0.602\approx0.278$ MeV, 운동량 $p_e=p^{\prime}=0.602$ MeV/c.'
+  ref: [qw:3]
+
+- id: pw22
+  u: 콤프턴 효과
+  t: essay
+  q: '[학습지 22번] 에너지 $E_0$인 광자가 정지한 자유 전자(정지 에너지 $mc^2$)와 충돌하여 산란 광자와 전자가 입사 방향에 대해 같은 각도 θ로 산란되었다. $\cos\theta$, 산란 광자의 에너지 $E^{\prime}$, 전자의 운동 에너지 K를 $E_0$와 $mc^2$로 나타내시오.'
+  kp: ['y 방향 운동량 보존 → $p^{\prime}=p_e$ (같은 각도)', '에너지 보존 $E_0+mc^2=E^{\prime}+\sqrt{E^{\prime2}+(mc^2)^2}$ 에서 $E^{\prime}=\dfrac{E_0(E_0+2mc^2)}{2(E_0+mc^2)}$', 'x 방향: $E_0=2E^{\prime}\cos\theta$ → $\cos\theta=\dfrac{E_0+mc^2}{E_0+2mc^2}$', '$K=E_0-E^{\prime}=\dfrac{E_0^2}{2(E_0+mc^2)}$', '$p_e=p^{\prime}=E^{\prime}/c$']
+  sol: '두 입자가 같은 각도로 반대쪽에 나가므로 y 방향 운동량 보존에서 $p^{\prime}=p_e$, 즉 $p_ec=E^{\prime}$이다. 에너지 보존 $E_0+mc^2=E^{\prime}+\sqrt{E^{\prime2}+(mc^2)^2}$을 정리하면 $E^{\prime}=\dfrac{(E_0+mc^2)^2-(mc^2)^2}{2(E_0+mc^2)}=\dfrac{E_0(E_0+2mc^2)}{2(E_0+mc^2)}$이다. x 방향 운동량 보존 $E_0=E^{\prime}\cos\theta+p_ec\cos\theta=2E^{\prime}\cos\theta$에서 $\cos\theta=\dfrac{E_0}{2E^{\prime}}=\dfrac{E_0+mc^2}{E_0+2mc^2}$이고, 전자의 운동 에너지는 $K=E_0-E^{\prime}=\dfrac{E_0^2}{2(E_0+mc^2)}$, 운동량은 $p_e=p^{\prime}=E^{\prime}/c$이다. ($E_0$ = 0.88 MeV를 넣으면 21번 결과와 같다.)'
+  ref: [qw:3]
+
+- id: pw23
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 23번] 에너지가 300 keV인 X선이 표적에서 콤프턴 산란을 한 후, 입사 방향과 37°의 각도로 산란되는 X선이 검출되었다. ($\lambda_c=2.43$ pm, $hc=1240$ keV·pm, cos 37° = 0.8) [9점]'
+  parts:
+    - p: 이 각도에서의 파장 변화량은 몇 pm인가?
+      t: num
+      a: 0.486
+      tol: 0.01
+      unit: pm
+      pt: 2
+      sol: '$\Delta\lambda=2.43\times(1-0.8)=0.486$ pm.'
+    - p: 산란된 X선 광자의 에너지는 약 몇 keV인가?
+      t: num
+      a: 268.4
+      tol: 0.01
+      unit: keV
+      pt: 4
+      sol: '$\lambda=\dfrac{1240}{300}=4.133$ pm → $\lambda^{\prime}=4.619$ pm → $E^{\prime}=\dfrac{1240}{4.619}\approx268$ keV.'
+    - p: 튕겨 나간 전자의 운동 에너지는 약 몇 keV인가?
+      t: num
+      a: 31.6
+      tol: 0.03
+      unit: keV
+      pt: 3
+      sol: '$K=300-268.4\approx31.6$ keV.'
+  ref: [qw:3]
+
+- id: pw24
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 24번] 파장이 0.8 nm인 X선 광자가 정지해 있는 자유 전자와 산란한 후, 전자가 $1.4\times10^6$ m/s의 속력으로 튕겨 나갔다. ($m_e=9.11\times10^{-31}$ kg, $1\text{ eV}=1.602\times10^{-19}$ J, $hc=1240$ eV·nm, $\lambda_c=2.43$ pm) [8점]'
+  parts:
+    - p: 광자의 파장 변화량은 약 몇 pm인가?
+      t: num
+      a: 2.89
+      tol: 0.04
+      unit: pm
+      pt: 5
+      sol: '$K=\tfrac12m_ev^2=5.57$ eV. $E=\dfrac{1240}{0.8}=1550$ eV → $E^{\prime}=1544.43$ eV → $\lambda^{\prime}=\dfrac{1240}{1544.43}$ nm = 802.89 pm → Δλ ≈ 2.9 pm. (Δλ가 λ에 비해 아주 작으니 유효숫자를 넉넉히!)'
+    - p: 광자의 산란각은 약 몇 °인가?
+      t: num
+      a: 101
+      tol: 0.03
+      unit: °
+      pt: 3
+      sol: '$1-\cos\phi=\dfrac{2.89}{2.43}=1.19$ → $\cos\phi=-0.19$ → φ ≈ 101°.'
+  ref: [qw:3]
+
+- id: pw25
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 25번] 정지 자유 전자에 X선 광자를 입사시켰더니 광자가 17.4°로 산란되었고 전자는 2180 km/s로 튕겨 나갔다. ($m_e=9.11\times10^{-31}$ kg, $\lambda_c=2.43$ pm, $hc=1240$ eV·nm) [10점]'
+  parts:
+    - p: 입사된 광자의 파장은 약 몇 nm인가? (소수 셋째 자리까지)
+      t: num
+      a: 0.101
+      tol: 0.03
+      unit: nm
+      pt: 5
+      sol: '$K=\tfrac12m_ev^2=13.5$ eV, $\Delta\lambda=2.43(1-\cos17.4°)=0.111$ pm. $K=hc\left(\dfrac1\lambda-\dfrac{1}{\lambda+\Delta\lambda}\right)\approx\dfrac{hc\,\Delta\lambda}{\lambda^2}$ → $\lambda\approx\sqrt{\dfrac{1240\times0.111\times10^{-3}}{13.5}}$ nm ≈ 0.101 nm.'
+    - p: 전자가 튕겨 나간 방향과 입사 방향이 이루는 각도는 약 몇 °인가?
+      t: num
+      a: 81
+      tol: 0.02
+      unit: °
+      pt: 5
+      sol: '운동량 보존: $\tan\theta_e=\dfrac{p^{\prime}\sin\phi}{p-p^{\prime}\cos\phi}$. $p^{\prime}\approx p$이므로 $\tan\theta_e\approx\dfrac{\sin17.4°}{1-\cos17.4°}$ → $\theta_e\approx81°$ ($=90°-\phi/2$).'
+  ref: [qw:3]
+
+- id: pw26
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 26번] 콤프턴 산란 실험에서 광자가 90°로 산란되었을 때, 전자는 광자의 처음 진행 방향과 20°의 각도를 이루며 튕겨 나갔다. ($\lambda_c=2.43$ pm, tan 20° = 0.364) [9점]'
+  parts:
+    - p: 산란된 광자의 파장은 약 몇 pm인가?
+      t: num
+      a: 3.82
+      tol: 0.02
+      unit: pm
+      pt: 5
+      sol: 'φ = 90° → 광자는 y축 방향 → $\tan\theta_e=\dfrac{p^{\prime}}{p}=\dfrac{\lambda}{\lambda^{\prime}}=0.364$. 콤프턴: $\lambda^{\prime}-\lambda=2.43$ → $\lambda^{\prime}(1-0.364)=2.43$ → $\lambda^{\prime}\approx3.82$ pm.'
+    - p: 주어진 정보만으로 산란 광자의 파장을 유일하게 결정할 수 있는 이유를 설명하시오.
+      t: essay
+      pt: 4
+      kp: ['미지수: λ, λ′ 두 개', '콤프턴 식이 차이(λ′ − λ = λc)를 줌', '운동량 보존(전자 각도)이 비(λ/λ′ = tan θe)를 줌', '독립된 식 2개 → 해가 하나로 결정']
+      sol: '미지수는 입사 파장 λ와 산란 파장 λ′ 두 개다. 콤프턴 식에서 φ = 90°이면 $\lambda^{\prime}-\lambda=\lambda_c$로 두 파장의 차이가 정해지고, 운동량 보존에서 광자가 y축으로 가므로 전자의 각도가 $\tan\theta_e=\lambda/\lambda^{\prime}$로 두 파장의 비를 알려 준다. 독립된 식이 두 개이므로 두 미지수가 유일하게 결정된다.'
+  ref: [qw:3]
+
+- id: pw27
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[학습지 27번] 에너지 0.511 MeV인 감마선 광자가 콤프턴 산란을 할 때 나타날 수 있는 최대 에너지 손실 비율 ΔE/E를 구하시오. ($m_ec^2=0.511$ MeV, $m_pc^2=938$ MeV) [6점]'
+  parts:
+    - p: 정지 자유 전자와 충돌할 때 최대 손실 비율은 약 몇 %인가?
+      t: num
+      a: 66.7
+      tol: 0.01
+      unit: '%'
+      pt: 3
+      sol: '16번 결과 φ = 180°: $\dfrac{\Delta E}{E}=\dfrac{2E/mc^2}{1+2E/mc^2}=\dfrac{2}{3}\approx66.7$%.'
+    - p: 정지 자유 양성자와 충돌할 때 최대 손실 비율은 약 몇 %인가? (소수 둘째 자리까지)
+      t: num
+      a: 0.109
+      tol: 0.03
+      unit: '%'
+      pt: 3
+      sol: '$\dfrac{2E}{m_pc^2}=\dfrac{1.022}{938}=1.09\times10^{-3}$ → $\dfrac{1.09\times10^{-3}}{1+1.09\times10^{-3}}\approx0.11$%. 무거운 입자와 부딪히면 에너지를 거의 안 잃어요.'
+  ref: [qw:3]
+
+- id: pw28
+  u: 콤프턴 효과
+  t: essay
+  q: '[학습지 28번] 상대론적 운동을 하는 전자(총 에너지 E, 정지 질량 $m_e$)에 대하여, 전자의 콤프턴 파장 $\lambda_c$와 물질파 파장 $\lambda=\dfrac hp$의 비가 $\dfrac{\lambda_c}{\lambda}=\sqrt{\left(\dfrac{E}{m_ec^2}\right)^2-1}$임을 증명하시오.'
+  kp: ['$\dfrac{\lambda_c}{\lambda}=\dfrac{h/m_ec}{h/p}=\dfrac{p}{m_ec}=\dfrac{pc}{m_ec^2}$ (h 약분)', '상대론 관계 $E^2=(pc)^2+(m_ec^2)^2$', '$pc=\sqrt{E^2-(m_ec^2)^2}$', '대입하면 $\sqrt{(E/m_ec^2)^2-1}$']
+  sol: '$\dfrac{\lambda_c}{\lambda}=\dfrac{h/(m_ec)}{h/p}=\dfrac{p}{m_ec}=\dfrac{pc}{m_ec^2}$로 h가 약분된다. 상대론적 에너지–운동량 관계 $E^2=(pc)^2+(m_ec^2)^2$에서 $pc=\sqrt{E^2-(m_ec^2)^2}$이므로 $\dfrac{\lambda_c}{\lambda}=\dfrac{\sqrt{E^2-(m_ec^2)^2}}{m_ec^2}=\sqrt{\left(\dfrac{E}{m_ec^2}\right)^2-1}$이다.'
+  ref: [qw:4]
+
+- id: pw29
+  u: 물질파·이중슬릿
+  t: mc
+  lv: 3
+  q: '[학습지 29번] 정지해 있던 전자를 일정한 가속 전압으로 가속시켜 전자총에서 방출시켰다. 표는 가속 전압과 방출된 전자의 물질파 파장이다. 이에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은? (단, 기본 전하량은 e이다.)'
+  tb: '<table><tr><th>실험</th><th>가속 전압</th><th>물질파 파장</th></tr><tr><td>Ⅰ</td><td>$V_0$</td><td>$\lambda_0$</td></tr><tr><td>Ⅱ</td><td>㉠</td><td>$\sqrt2\lambda_0$</td></tr></table>'
+  bg:
+    - ['전자총에서 방출된 전자의 운동량의 크기는 Ⅰ에서가 Ⅱ에서의 $\sqrt2$배이다.', true, '$p=h/\lambda$ → $p_Ⅰ/p_Ⅱ=\sqrt2\lambda_0/\lambda_0=\sqrt2$.']
+    - ['Ⅰ에서 가속 전압에 의한 전자 1개의 운동 에너지 증가량은 $eV_0$이다.', true, '전기력이 한 일 = 운동 에너지 증가 = $eV_0$.']
+    - ['㉠은 $2V_0$이다.', false, '$\lambda\propto1/\sqrt V$ → 파장 $\sqrt2$배면 전압은 1/2배 → ㉠ = $V_0/2$.']
+  ref: [qw:4, qm:12]
+
+- id: pw30
+  u: 물질파·이중슬릿
+  t: mc
+  lv: 3
+  q: '[학습지 30번] (가) 금속판 P에 파장 $\lambda_0$, $2\lambda_0$인 단색광을 비추었더니 최대 운동 에너지가 각각 $E_1$, $E_2$인 광전자가 방출되었다. (나) 전자총에서 나온 전자가 이중 슬릿을 지나 만든 간섭무늬의 이웃한 밝은 무늬 간격 Δx는 전자의 운동 에너지가 $E_1$일 때 $\tfrac12x_0$, $E_2$일 때 $x_0$이다. P의 일함수는? (빛의 속력 c, 플랑크 상수 h)'
+  c: ['$\dfrac{hc}{3\lambda_0}$', '$\dfrac{hc}{2\lambda_0}$', '$\dfrac{hc}{4\lambda_0}$', '$\dfrac{2hc}{3\lambda_0}$']
+  a: 0
+  ex: '$\Delta x=\dfrac{L\lambda}{d}\propto\lambda_{전자}\propto\dfrac{1}{\sqrt{E}}$ → $\dfrac{\Delta x_1}{\Delta x_2}=\dfrac12$ → $E_1=4E_2$. 광전 효과: $\dfrac{hc}{\lambda_0}-W=4\left(\dfrac{hc}{2\lambda_0}-W\right)$ → $3W=\dfrac{hc}{\lambda_0}$ → $W=\dfrac{hc}{3\lambda_0}$.'
+  ref: [qw:4]
+
+- id: pw31
+  u: 물질파·이중슬릿
+  t: mc
+  lv: 3
+  q: '[학습지 31번] 금속판 P, Q에 진동수 $f_1$, $f_2$인 단색광을 비추었다. 표는 광전자의 최대 운동 에너지와 물질파 파장의 최솟값이다. 금속판의 일함수는 P가 Q의 $\tfrac32$배이다. 이에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은?'
+  tb: '<table><tr><th>금속판</th><th>진동수</th><th>최대 운동 에너지</th><th>물질파 파장 최솟값</th></tr><tr><td>P</td><td>$f_1$</td><td>$4E_0$</td><td>$\lambda_1$</td></tr><tr><td>Q</td><td>$f_1$</td><td>$9E_0$</td><td>$\lambda_2$</td></tr><tr><td>Q</td><td>$f_2$</td><td>$E_0$</td><td>?</td></tr></table>'
+  bg:
+    - ['$\dfrac{f_1}{f_2}=\dfrac32$이다.', false, '$W_P-W_Q=5E_0$, $W_P=1.5W_Q$ → $W_Q=10E_0$, $W_P=15E_0$ → $hf_1=19E_0$, $hf_2=11E_0$ → $f_1/f_2=19/11$.']
+    - ['P의 문턱 진동수는 $\dfrac{15}{11}f_2$이다.', true, '$\dfrac{W_P}{h}=\dfrac{15E_0}{h}=\dfrac{15}{11}f_2$.']
+    - ['$\dfrac{\lambda_1}{\lambda_2}=\dfrac32$이다.', true, '$\lambda\propto1/\sqrt{E_k}$ → $\sqrt{9E_0/4E_0}=3/2$.']
+  ref: [qw:4]
+
+- id: pw32
+  u: 물질파·이중슬릿
+  t: mc
+  lv: 3
+  q: '[학습지 32번] 가속된 전자가 이중 슬릿 $S_1$, $S_2$(간격 d)를 지나 거리 L인 형광판에 간섭무늬를 만들었다. O는 가장 밝은 무늬의 중심, P는 O로부터 첫 번째 어두운 무늬이다. 표는 가속 전압에 따른 O와 P 사이의 간격 Δx이다. 옳은 것만을 <보기>에서 있는 대로 고른 것은? (기본 전하량 e, 전자 질량 m, 플랑크 상수 h)'
+  tb: '<table><tr><th>가속 전압</th><th>Δx (O–P)</th></tr><tr><td>$V_0$</td><td>$x_0$</td></tr><tr><td>$2V_0$</td><td>$x_1$</td></tr></table>'
+  bg:
+    - ['가속 전압이 $V_0$일 때 전자의 운동량의 크기는 $\dfrac{Lh}{dx_0}$이다.', false, 'O→P는 밝은 무늬 간격의 절반: $x_0=\dfrac{L\lambda}{2d}$ → $p=\dfrac{h}{\lambda}=\dfrac{Lh}{2dx_0}$ (2가 빠진 함정).']
+    - ['$V_0=\dfrac{L^2h^2}{8med^2x_0^2}$이다.', true, '$eV_0=\dfrac{p^2}{2m}=\dfrac{L^2h^2}{8md^2x_0^2}$.']
+    - ['$x_1=\dfrac12x_0$이다.', false, '전압 2배 → λ는 $1/\sqrt2$배 → $x_1=x_0/\sqrt2$.']
+  ref: [qw:5]
+
+- id: pw33
+  u: 물질파·이중슬릿
+  t: mc
+  lv: 3
+  q: '[학습지 33번] 세기가 일정한 단색광 A, B, C를 금속판에 동시에 비추며 광전류의 최댓값 $I_{max}$와 정지 전압 $V_s$, 최대 운동 에너지에 해당하는 물질파 파장 λ를 측정하였다. 옳은 것만을 <보기>에서 있는 대로 고른 것은?'
+  tb: '<table><tr><th>단색광</th><th>$I_{max}$</th><th>$V_s$</th><th>λ</th></tr><tr><td>A</td><td>$I_0$</td><td>㉠</td><td>$\tfrac12\lambda_0$</td></tr><tr><td>A, B</td><td>$2I_0$</td><td>$4V_0$</td><td>$\tfrac12\lambda_0$</td></tr><tr><td>B, C</td><td>$I_0$</td><td>$V_0$</td><td>㉡</td></tr></table>'
+  bg:
+    - ['진동수는 B가 C보다 크다.', true, 'A+B에서 $2I_0$ → B도 광전자 방출. B+C에서 $I_0$ → C는 광전자를 못 냄(문턱 진동수 미만) → $f_B>f_C$.']
+    - ['㉠은 $4V_0$이다.', true, 'A 혼자와 A+B의 λ가 같음 → 최대 운동 에너지 같음 → A의 정지 전압 = $4V_0$.']
+    - ['㉡은 $\lambda_0$이다.', true, 'B의 $E_k$는 A의 1/4 → $\lambda\propto1/\sqrt{E_k}$로 2배 → $\tfrac12\lambda_0\times2=\lambda_0$.']
+  ref: [qw:5]
+
+- id: pw34
+  u: 물질파·이중슬릿
+  t: mc
+  lv: 3
+  q: '[학습지 34번] 그림은 질량이 각각 $m_A$, $m_B$인 입자 A, B의 운동 에너지($E_k$)를 물질파 파장에 따라 나타낸 것이다. 옳은 것만을 <보기>에서 있는 대로 고른 것은?'
+  fig: ek_lambda
+  bg:
+    - ['$m_B=\dfrac92m_A$이다.', true, '$E_k=\dfrac{h^2}{2m\lambda^2}$ → $m=\dfrac{h^2}{2E_k\lambda^2}$. A: $(3\lambda_0,E_0)$, B: $(\lambda_0,2E_0)$ → $\dfrac{m_B}{m_A}=\dfrac{E_0\cdot9\lambda_0^2}{2E_0\cdot\lambda_0^2}=\dfrac92$.']
+    - ['A의 물질파 파장이 $\lambda_0$일 때, A의 운동 에너지는 $9E_0$이다.', true, '$E_k\propto1/\lambda^2$ → 파장 1/3배면 9배 → $9E_0$.']
+    - ['A, B의 운동 에너지가 각각 $2E_0$일 때, 운동량의 크기는 A가 B보다 작다.', true, '$p=\sqrt{2mE_k}$, 같은 $E_k$에서 질량이 작은 A의 운동량이 작음.']
+  ref: [qw:5]
