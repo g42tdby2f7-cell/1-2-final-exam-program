@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -71,6 +71,7 @@ for k in KB: k['kw']=[str(x) for x in k['kw']]; k['ref']=[str(r) for r in k.get(
 NB={'n1':'생물 1차시 필기 (유전자와 단백질·비들테이텀·헤모글로빈)','n2':'생물 1차시 백신 수업 (영양요구성·원핵 RNA 중합효소·σ·rho)','n3':'1학기 중심원리 필기 (전사·번역·tRNA·리보솜)','n4':'생물 2차시 필기 (중심원리 보충·진핵/원핵 조절)','n5':'젖당 오페론 정리 (구조·알로락토오스·cis/trans)','n6':'박신 학원: 유도/구성/불능 판정·생장 그래프','n7':'심화 1~4 (알로락토오스·more/less·Oᶜ·보조작동자)','n8':'서술형 기출 (작동자 실험·도메인)','n9':'3차시 lac: 조절유전자 돌연변이·포도당 효과·이중생장','n10':'3차시 trp 오페론·감쇠'}
 SRC={
  'bio5':dict(n='생물 5차시 PPT 「유전자와 단백질」',short='생물 5차시 PPT',s='bio',ic='📘'),
+ 'bx':dict(n='박신학원 「유전자 발현의 조절 2」 (trp·lac 연습·심층문제)',short='학원 발현조절 2',s='bio',ic='📒'),
  'bio7':dict(n='생물 7차시 PPT 「lac 오페론, trp 오페론」',short='생물 7차시 PPT',s='bio',ic='📘'),
  'bio6':dict(n='생물 6차시 PPT 「유전자 발현의 조절」',short='생물 6차시 PPT',s='bio',ic='📘'),
  'nb':dict(n='내 필기 · 생물 (1-2 기말 복습노트)',short='내 필기',s='bio',note=True,labels=NB),
