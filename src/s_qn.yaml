@@ -1,0 +1,156 @@
+# ===================== 물리 · 양자역학 수업 필기 (흑체 ~ 양자 컴퓨터, 손필기) =====================
+- id: qn01
+  u: 양자 컴퓨터
+  t: mc
+  lv: 1
+  q: 큐비트 구현 방식과 그 특징·관련 기관을 바르게 짝지은 것은?
+  c: ['초전도 – 극저온에서 초전도체와 마이크로파 이용, 속도가 빠르지만 결맞음 시간이 짧음 – 구글, IBM', '이온트랩 – 인공 양자점을 마이크로파로 제어 – 인텔', '위상물질 – 원자의 이온을 레이저로 포획, 게이트 신뢰도가 높음 – 아이온큐', '반도체 양자점 – 오류가 없을 것으로 예측되지만 아직 이론 단계 – 마이크로소프트']
+  a: 0
+  ex: '단일 원자 전자스핀(IBS) / 초전도(구글·IBM) / 이온트랩(아이온큐: 레이저 포획, 신뢰도↑ 속도↓) / 반도체 양자점(인텔: 기존 반도체 기반, 상호작용 제어 어려움) / 위상물질(MS: 오류 없을 것으로 예측, 이론 단계).'
+  ref: [qn:27]
+
+- id: qn02
+  u: 양자 컴퓨터
+  t: mc
+  lv: 1
+  q: '표면 위 원자의 전자스핀을 큐비트로 활용하며, 배열 조작이 쉽지만 신규 플랫폼이라 후속 연구가 필요한 방식과 관련 기관은?'
+  c: ['단일 원자 전자스핀 – IBS 양자나노과학연구단', '이온트랩 – 아이온큐(IonQ)', '초전도 – 구글, IBM', '위상물질 – 마이크로소프트']
+  a: 0
+  ex: '표의 첫 번째 칸(IBS 기초과학연구원)이에요.'
+  ref: [qn:27]
+
+- id: qn03
+  u: 흑체 복사
+  t: set
+  lv: 3
+  q: '[필기 심화] 플랑크 식 $u(\lambda,T)=\dfrac{8\pi hc}{\lambda^5}\dfrac{1}{e^{hc/\lambda kT}-1}$에 대해 답하시오. [10점]'
+  fig: bbody
+  parts:
+    - p: '파장이 매우 길 때($hc/\lambda kT\ll1$, $e^x\approx1+x$) 플랑크 식이 어떤 식이 되는지 유도하시오.'
+      t: essay
+      pt: 3
+      kp: ['$e^x-1\approx x=hc/\lambda kT$', '$u\approx\dfrac{8\pi hc}{\lambda^5}\cdot\dfrac{\lambda kT}{hc}=\dfrac{8\pi kT}{\lambda^4}$', '레일리–진스 식과 같아짐(평균 에너지 → kT)']
+      sol: '$x=hc/\lambda kT\ll1$이면 $e^x-1\approx x$이므로 $u\approx\dfrac{8\pi hc}{\lambda^5}\cdot\dfrac{\lambda kT}{hc}=\dfrac{8\pi kT}{\lambda^4}$ → 레일리–진스 식. 긴 파장에서 두 식이 일치한다.'
+    - p: '$x=hc/\lambda kT$로 두면 $u\propto\dfrac{x^5}{e^x-1}$이다. 최대 조건이 $5(1-e^{-x})=x$임을 보이시오.'
+      t: essay
+      pt: 4
+      kp: ['$f(x)=x^5/(e^x-1)$의 미분 = 0', '$5x^4(e^x-1)-x^5e^x=0$', '$5(e^x-1)=xe^x$ → $5(1-e^{-x})=x$']
+      sol: '$f^{\prime}(x)=\dfrac{5x^4(e^x-1)-x^5e^x}{(e^x-1)^2}=0$ → $5(e^x-1)=xe^x$ → 양변을 $e^x$로 나누면 $5(1-e^{-x})=x$.'
+    - p: '해가 $x\approx4.965$일 때 $\lambda_{max}T$는 몇 $\times10^{-3}$ m·K인가? ($hc/k=1.44\times10^{-2}$ m·K)'
+      t: num
+      a: 2.90
+      tol: 0.02
+      unit: '×10⁻³ m·K'
+      pt: 3
+      sol: '$\lambda_{max}T=\dfrac{hc}{4.965k}=\dfrac{1.44\times10^{-2}}{4.965}\approx2.90\times10^{-3}$ m·K → 빈의 변위 법칙.'
+  ref: [qn:1, qn:2]
+
+- id: qn04
+  u: 스핀
+  t: set
+  lv: 3
+  q: '[필기 증명] 슈테른–게를라흐 실험에서 $\mu_z=\pm\mu_B$인 은 원자(질량 m, 속력 v, 운동 에너지 KE)가 길이 L의 불균일 자기장을 지나며 $F=\mu_z\dfrac{\partial B}{\partial z}$의 힘을 받는다. ($\mu_B=9.27\times10^{-24}$ J/T) [9점]'
+  parts:
+    - p: '빠져나올 때 z 방향 변위가 $z=\pm\dfrac{\mu_BL^2}{4KE}\dfrac{\partial B}{\partial z}$임을 증명하시오.'
+      t: essay
+      pt: 4
+      kp: ['$a=F/m$, 통과 시간 $t=L/v$', '$z=\tfrac12at^2=\dfrac{FL^2}{2mv^2}$', '$mv^2=2KE$ 대입 → $\dfrac{FL^2}{4KE}$']
+      sol: '$z=\tfrac12\dfrac{F}{m}\left(\dfrac{L}{v}\right)^2=\dfrac{FL^2}{2mv^2}$이고 $mv^2=2KE$이므로 $z=\dfrac{FL^2}{4KE}=\pm\dfrac{\mu_BL^2}{4KE}\dfrac{\partial B}{\partial z}$.'
+    - p: '$\partial B/\partial z=1.0\times10^3$ T/m, L = 0.10 m, KE = 2.0×10⁻²⁰ J일 때 두 선 사이 간격은 몇 mm인가?'
+      t: num
+      a: 2.32
+      tol: 0.05
+      unit: mm
+      pt: 3
+      sol: '$z=\dfrac{9.27\times10^{-24}\times0.01\times10^3}{4\times2.0\times10^{-20}}\approx1.16\times10^{-3}$ m → 간격 $2z\approx2.32$ mm.'
+    - p: '전자 스핀 벡터와 z축이 이루는 각은 약 몇 °인가? ($|S|=\tfrac{\sqrt3}{2}\hbar$, $S_z=\tfrac12\hbar$)'
+      t: num
+      a: 54.7
+      tol: 0.5
+      unit: '°'
+      pt: 2
+      sol: '$\cos\alpha=\dfrac{1/2}{\sqrt3/2}=\dfrac1{\sqrt3}$ → $\alpha\approx54.7°$. 스핀은 z축과 정확히 나란할 수 없어요.'
+  ref: [qn:21, qn:20]
+
+- id: qn05
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[심화] 에너지 0.88 MeV인 광자가 정지한 전자와 충돌한 뒤, 산란 광자와 전자가 입사 방향과 같은 각 θ를 이루며 대칭으로 튀어 나갔다. ($m_0c^2=0.511$ MeV) [9점]'
+  fig: compton_eq
+  parts:
+    - p: '산란 광자의 에너지는 약 몇 MeV인가?'
+      t: num
+      a: 0.60
+      tol: 0.02
+      unit: MeV
+      pt: 5
+      sol: 'y: $p_{\gamma^{\prime}}\sin\theta=p_e\sin\theta$ → $p_e=p_{\gamma^{\prime}}$, $p_ec=E^{\prime}$. E: $E_0+m_0c^2=E^{\prime}+\sqrt{E^{\prime2}+m_0^2c^4}$ → $E^{\prime}=\dfrac{E_0(E_0+2m_0c^2)}{2(E_0+m_0c^2)}=\dfrac{0.88\times1.902}{2\times1.391}\approx0.60$ MeV.'
+    - p: 'θ는 약 몇 °인가?'
+      t: num
+      a: 43
+      tol: 1
+      unit: '°'
+      pt: 4
+      sol: 'x: $p_\gamma=2p_{\gamma^{\prime}}\cos\theta$ → $\cos\theta=\dfrac{E_0}{2E^{\prime}}=\dfrac{0.88}{1.203}\approx0.731$ → θ ≈ 43°. 검산: $\dfrac1{E^{\prime}}-\dfrac1{E_0}=0.526=\dfrac{1-\cos\theta}{0.511}$ ✓'
+  ref: [qn:10, qn:9]
+
+- id: qn06
+  u: 콤프턴 효과
+  t: set
+  lv: 3
+  q: '[심화] 파장 λ인 X선이 전자 A에 의해 θ 방향으로 산란된 뒤, 정지한 전자 B에 의해 다시 산란되어 처음 입사 방향과 정반대로 진행하였다(최종 파장 λ″). ($\lambda_c=2.43$ pm) [6점]'
+  fig: double_scatter
+  parts:
+    - p: 'B에서의 산란각은? (θ를 이용, 단위 °)'
+      t: txt
+      a: ['180-θ', '180°-θ', '180-theta', '180 - θ', '180° - θ']
+      pt: 2
+      sol: '진행 방향이 θ → 180°로 바뀌므로 산란각은 $180°-\theta$.'
+    - p: 'λ″ − λ는 몇 pm인가?'
+      t: num
+      a: 4.86
+      tol: 0.02
+      unit: pm
+      pt: 4
+      sol: '$\lambda_c(1-\cos\theta)+\lambda_c(1+\cos\theta)=2\lambda_c=4.86$ pm → θ와 무관하고, 한 번에 180° 산란한 것과 같아요.'
+  ref: [qn:10, qn:11]
+
+- id: qn07
+  u: 탄성 충돌
+  t: set
+  lv: 3
+  q: '[필기 응용] 중성자(질량 1)가 정지한 원자핵(질량 A)에 정면 탄성 충돌한다. [7점]'
+  fig: coll1d
+  parts:
+    - p: '원자핵에 전달되는 운동 에너지 비율을 A로 나타내는 과정을 쓰시오.'
+      t: essay
+      pt: 4
+      kp: ['$v_{2,f}=\dfrac{2m_1}{m_1+m_2}v_{1,i}=\dfrac{2}{1+A}v_{1,i}$', '비율 $=\dfrac{\frac12Av_{2,f}^2}{\frac12v_{1,i}^2}$', '$=\dfrac{4A}{(1+A)^2}$']
+      sol: '$v_{2,f}=\dfrac{2}{1+A}v_{1,i}$ → 비율 $=A\left(\dfrac{2}{1+A}\right)^2=\dfrac{4A}{(1+A)^2}$. 질량이 같을수록(A=1) 에너지를 전부 전달.'
+    - p: '탄소(A = 12)일 때 비율은? (소수 둘째 자리)'
+      t: num
+      a: 0.28
+      tol: 0.01
+      pt: 3
+      sol: '$48/169\approx0.28$ (수소는 1) → 감속재로는 수소가 많은 물이 효과적.'
+  ref: [qn:4]
+
+- id: qn08
+  u: 탄성 충돌
+  t: essay
+  q: '[필기 증명] 1차원 탄성 충돌에서 $v_{2,i}\neq0$일 때($v_{1,i}>v_{2,i}$), "m₂ 정지 관점"을 이용하여 $v_{1,f},\,v_{2,f}$를 구하고, 상대 속도에 대해 성립하는 관계를 쓰시오. [6점]'
+  fig: coll1d
+  kp: ['$v_{2,i}=0$일 때 결과: $v_{1,f}=\frac{m_1-m_2}{m_1+m_2}v_{1,i}$, $v_{2,f}=\frac{2m_1}{m_1+m_2}v_{1,i}$', 'm₂ 정지 관점: $v_{1,i}\to v_{1,i}-v_{2,i}$로 바꾼 뒤 $v_{2,i}$를 더함', '$v_{1,f}=\frac{m_1-m_2}{m_1+m_2}v_{1,i}+\frac{2m_2}{m_1+m_2}v_{2,i}$', '$v_{2,f}=\frac{2m_1}{m_1+m_2}v_{1,i}-\frac{m_1-m_2}{m_1+m_2}v_{2,i}$', '$v_{1,f}-v_{2,f}=-(v_{1,i}-v_{2,i})$ (반발 계수 1)']
+  sol: 'm₂와 함께 움직이는 관점에서는 m₂가 정지해 있고 m₁의 속도는 $v_{1,i}-v_{2,i}$이다. 정지 표적의 결과를 쓰고 다시 $v_{2,i}$를 더하면 $v_{1,f}=\frac{m_1-m_2}{m_1+m_2}(v_{1,i}-v_{2,i})+v_{2,i}=\frac{m_1-m_2}{m_1+m_2}v_{1,i}+\frac{2m_2}{m_1+m_2}v_{2,i}$, $v_{2,f}=\frac{2m_1}{m_1+m_2}(v_{1,i}-v_{2,i})+v_{2,i}=\frac{2m_1}{m_1+m_2}v_{1,i}-\frac{m_1-m_2}{m_1+m_2}v_{2,i}$. 두 식을 빼면 $v_{1,f}-v_{2,f}=-(v_{1,i}-v_{2,i})$로, 탄성 충돌에서는 상대 속도의 크기가 보존되고 방향만 바뀐다.'
+  ref: [qn:4]
+
+- id: qn09
+  u: 양자 얽힘
+  t: mc
+  lv: 2
+  q: '두 전자가 $|\psi\rangle=\frac1{\sqrt2}(|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle)$에 있다. 이 상태에 대한 설명으로 옳은 것은?'
+  c: ['전자 1을 측정해 ↑가 나오면 전자 2는 반드시 ↓이지만, 이것으로 빛보다 빠르게 정보를 보낼 수는 없다', '전자 1이 ↑일 확률은 1이다', '이 상태는 (전자 1 상태)×(전자 2 상태)로 나누어 쓸 수 있다', '전자 1을 측정하면 신호가 전자 2로 빛보다 빠르게 전달된다']
+  a: 0
+  ex: '각 결과는 1/2 확률로 무작위이고, 상관관계는 결과를 일반 통신으로 비교해야 보여요. 얽힌 상태는 전체 시스템의 파동함수로만 기술돼요(필기: "정보의 전송이 아니라 하나의 전체 상태가 붕괴").'
+  ref: [qn:19]
