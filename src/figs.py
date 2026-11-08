@@ -545,7 +545,35 @@ def double_scatter():
     b+=P(f'M{ax+30},{ay} A30,30 0 0,1 {ax+21},{ay+21}',w=1.2)+T(ax+34,ay+20,'θ','start',12)
     return svg(400,210,b)
 
-FIGS={'ek_lambda':ek_lambda,'compton_eq':compton_eq,'double_scatter':double_scatter,'compton':compton,'coll1d':coll1d,'coll2d':coll2d,'bbody':bbody,'bloch':bloch,
+def _res_h(x,y,w=40):
+    d=f'M{x},{y}'; n=6; st=w/n
+    for i in range(n): d+=f' L{x+st*(i+0.5):.1f},{y+(-6 if i%2==0 else 6)} '
+    d+=f' L{x+w},{y}'; return P(d,w=1.6)
+def _res_v(x,y,h=40):
+    d=f'M{x},{y}'; n=6; st=h/n
+    for i in range(n): d+=f' L{x+(-6 if i%2==0 else 6)},{y+st*(i+0.5):.1f} '
+    d+=f' L{x},{y+h}'; return P(d,w=1.6)
+def _batt_v(x,y,lab,left=True):
+    b=L(x-12,y,x+12,y,w=2.4)+L(x-6,y+8,x+6,y+8,w=2.4)
+    return b+T(x+(-16 if left else 16),y+8,lab,'end' if left else 'start',12)+T(x+(-16 if left else 16),y-4,'+','end' if left else 'start',11)
+def _npn(cx,cy,pnp=False):
+    b=L(cx-14,cy-18,cx-14,cy+18,w=2.6)
+    b+=L(cx-14,cy-7,cx+10,cy-22,w=1.8)+L(cx-14,cy+7,cx+10,cy+22,w=1.8)
+    if pnp: b+=P(f'M{cx-6},{cy+19} L{cx-14},{cy+8} L{cx-1},{cy+10} z',fill=INK,w=1)
+    else: b+=P(f'M{cx+10},{cy+22} L{cx+1},{cy+13} L{cx-2},{cy+20} z',fill=INK,w=1)
+    b+=f'<circle cx="{cx-2}" cy="{cy}" r="24" fill="none" stroke="{INK}" stroke-width="1.2"/>'
+    return b
+def tr_bias(vbb='V_BB',rb='R_B',rc='R_C',vcc='V_CC',pnp=False):
+    b=''; cx,cy=230,120
+    b+=_npn(cx,cy,pnp)
+    b+=L(cx-14,cy,cx-40,cy)+_res_h(cx-90,cy,50)+L(cx-90,cy,60,cy)+T(cx-65,cy-14,rb,'middle',12)
+    b+=L(60,cy,60,cy+30)+_batt_v(60,cy+30,vbb)+L(60,cy+38,60,220)
+    b+=L(cx+10,cy-22,cx+10,70)+_res_v(cx+10,30,40)+T(cx+22,52,rc,'start',12)+L(cx+10,30,330,30)+L(330,30,330,100)+_batt_v(330,100,vcc,False)+L(330,108,330,220)
+    b+=L(cx+10,cy+22,cx+10,220)+L(60,220,330,220)
+    b+=T(cx-30,cy-6,'B','middle',12,BLUE,'bold')+T(cx+22,cy-30,'C','start',12,BLUE,'bold')+T(cx+22,cy+34,'E','start',12,BLUE,'bold')
+    return svg(400,235,b)
+
+FIGS={'tr_bias':tr_bias,'tr_bias2':lambda:tr_bias('3.0 V','20 kΩ','500 Ω','12 V'),'tr_bias34':lambda:tr_bias('5 V','10 kΩ','100 Ω','10 V'),'ek_lambda':ek_lambda,'compton_eq':compton_eq,'double_scatter':double_scatter,'compton':compton,'coll1d':coll1d,'coll2d':coll2d,'bbody':bbody,'bloch':bloch,
 
  'cell_sc':lambda:cell('sc'),'cell_bcc':lambda:cell('bcc'),'cell_fcc':lambda:cell('fcc'),'cell_nacl':lambda:cell('nacl'),'cell_cscl':lambda:cell('cscl'),
  'cell_perov':lambda:cell('perov'),'cell_nial':lambda:cell('nial'),'cell_edge':lambda:cell('edgeb'),'lattice2d':lattice2d,
