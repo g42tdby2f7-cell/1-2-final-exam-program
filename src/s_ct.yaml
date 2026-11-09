@@ -1,0 +1,324 @@
+# ===================== 화학 · 학원(KNR 최석곤T) 열역학·열화학·자발성 =====================
+- id: ct01
+  u: 열역학 제1법칙
+  t: set
+  lv: 3
+  q: '[학원 SET 1번] 4.00 mol의 수소($c_p=28.8$ J/K·mol)가 400 K에서 12.0 L → 30.0 L로 가역 등온 팽창한다. (R = 8.314 J/K·mol, w는 기체에 해 준 일) [8점]'
+  parts:
+    - p: '기체에 해 준 일 w는 몇 kJ인가?'
+      t: num
+      a: -12.2
+      tol: 0.1
+      unit: kJ
+      pt: 3
+      sol: '$w=-nRT\ln\dfrac{V_2}{V_1}=-4\times8.314\times400\times\ln2.5\approx-12.2$ kJ. 등온이라 $\Delta U=\Delta H=0$, $q=-w=+12.2$ kJ.'
+    - p: '계의 엔트로피 변화 ΔS는 몇 J/K인가?'
+      t: num
+      a: 30.5
+      tol: 0.2
+      unit: J/K
+      pt: 3
+      sol: '$\Delta S=\dfrac{q_{rev}}{T}=nR\ln\dfrac{V_2}{V_1}=\dfrac{12190}{400}\approx30.5$ J/K.'
+    - p: '이 과정에서 $c_p$ 값이 필요 없는 이유를 쓰시오.'
+      t: essay
+      pt: 2
+      kp: ['등온 과정 → 온도 변화 없음', '이상 기체의 U, H는 온도만의 함수 → ΔU = ΔH = 0']
+      sol: '온도가 일정하므로 이상 기체의 내부 에너지와 엔탈피가 변하지 않아 열용량을 쓸 일이 없다.'
+  ref: [ct:1, ct:11]
+
+- id: ct02
+  u: 열역학 제1법칙
+  t: set
+  lv: 3
+  q: '[학원 SET 2번] HBr(g) 60.0 g(0.742 mol)을 일정 부피에서 300 → 500 K로 가역 가열한 뒤, 가역 등온 팽창시켜 원래 압력으로 되돌렸다. ($c_p=29.1$ J/K·mol, 이상 기체) [10점]'
+  parts:
+    - p: 'ΔU는 몇 kJ인가?'
+      t: num
+      a: 3.08
+      tol: 0.03
+      unit: kJ
+      pt: 3
+      sol: '$c_v=c_p-R=20.8$ → $\Delta U=nc_v\Delta T=0.742\times20.8\times200\approx3.08$ kJ (등온 과정은 ΔU = 0).'
+    - p: '기체에 해 준 일 w는 몇 kJ인가?'
+      t: num
+      a: -1.58
+      tol: 0.03
+      unit: kJ
+      pt: 4
+      sol: '등적 가열로 압력이 5/3배 → 원래 압력까지 등온 팽창하면 부피도 5/3배. $w=-nRT\ln\dfrac53=-0.742\times8.314\times500\times0.511\approx-1.58$ kJ.'
+    - p: 'ΔS는 몇 J/K인가?'
+      t: num
+      a: 11.0
+      tol: 0.2
+      unit: J/K
+      pt: 3
+      sol: '$\Delta S=nc_v\ln\dfrac{500}{300}+nR\ln\dfrac53=nc_p\ln\dfrac53\approx11.0$ J/K. ($q=\Delta U-w=4.66$ kJ, $\Delta H=nc_p\Delta T=4.32$ kJ)'
+  ref: [ct:1, ct:11]
+
+- id: ct03
+  u: 엔트로피
+  t: set
+  lv: 3
+  q: '[학원 SET 3·4번] 엔트로피 변화를 계산하시오. ($c_p$: 얼음 38, 물 75(75.4), 수증기 36.0 J/K·mol, $\Delta H_{용융}=6007$ J/mol, $\Delta H_{증발}=40.68$ kJ/mol) [10점]'
+  parts:
+    - p: '얼음 1 mol을 −20 ℃ → 0 ℃ 가열, 녹인 뒤 20 ℃까지 가역 가열할 때 ΔS계(J/K)는?'
+      t: num
+      a: 30.2
+      tol: 0.2
+      unit: J/K
+      pt: 4
+      sol: '$38\ln\dfrac{273}{253}+\dfrac{6007}{273}+75\ln\dfrac{293}{273}\approx2.89+22.0+5.30=30.2$ J/K. 가역이므로 ΔS주위 = −30.2, ΔS우주 = 0.'
+    - p: '25 ℃ 물 1.00 mol이 150 ℃ 다리미 위에서 순간 증발해 150 ℃ 수증기가 될 때, ΔS물(J/K)은?'
+      t: num
+      a: 130
+      tol: 1.5
+      unit: J/K
+      pt: 3
+      sol: '$75.4\ln\dfrac{373}{298}+\dfrac{40680}{373}+36\ln\dfrac{423}{373}\approx16.9+109.1+4.5=130.5$ J/K.'
+    - p: '이때 ΔS전체(J/K)는?'
+      t: num
+      a: 17
+      tol: 1.5
+      unit: J/K
+      pt: 3
+      sol: '다리미가 잃은 열 $q=75.4\times75+40680+36\times50=48135$ J → $\Delta S_{다리미}=-\dfrac{48135}{423}\approx-113.8$ J/K → 전체 ≈ +17 J/K > 0 (자발적).'
+  ref: [ct:2, ct:11]
+
+- id: ct04
+  u: 자발성
+  t: set
+  lv: 3
+  q: '[학원 SET 6·10번] 깁스 자유 에너지를 계산하시오. [8점]'
+  parts:
+    - p: '"과열된" 얼음 1.00 mol이 25 ℃에서 녹는다(ΔH = 6007 J/mol, 얼음·물 비열 같음). ΔG(J)는?'
+      t: num
+      a: -550
+      tol: 5
+      unit: J
+      pt: 4
+      sol: '비열이 같으면 ΔH, ΔS가 온도에 무관 → $\Delta S=\dfrac{6007}{273}=22.0$ J/K, $\Delta G=6007-298\times22.0\approx-550$ J (자발적).'
+    - p: '2NO₂ ⇄ N₂O₄의 ΔH° = −58.03 kJ, ΔS° = −176.6 J/K일 때, ΔG° = 0인 온도(K)는?'
+      t: num
+      a: 328.6
+      tol: 1
+      unit: K
+      pt: 4
+      sol: '$T=\dfrac{\Delta H^\circ}{\Delta S^\circ}=\dfrac{58030}{176.6}\approx328.6$ K. 298 K에서 ΔG° = −5.40 kJ. ΔH<0, ΔS<0 → 328.6 K보다 낮은 온도에서 자발적.'
+  ref: [ct:3, ct:5, ct:11]
+
+- id: ct05
+  u: 열역학 제1법칙
+  t: set
+  lv: 3
+  q: '[학원 SET 12·14번] 비가역 팽창 (1 L·atm = 101.3 J, R = 0.08206 L·atm/K·mol) [10점]'
+  parts:
+    - p: '273 K, 1.00 atm의 네온 0.500 mol을 외부 압력 0.100 atm에 대해 0.200 atm, 210 K가 될 때까지 팽창시켰다. 기체에 해 준 일(L·atm)은?'
+      t: num
+      a: -3.19
+      tol: 0.03
+      unit: L·atm
+      pt: 3
+      sol: '$V_1=11.2$ L, $V_2=\dfrac{0.5\times0.08206\times210}{0.2}=43.1$ L → $w=-0.100\times31.9=-3.19$ L·atm.'
+    - p: '이때 기체가 흡수한 열 q(L·atm)는?'
+      t: num
+      a: -0.69
+      tol: 0.03
+      unit: L·atm
+      pt: 3
+      sol: '$\Delta U=\tfrac32nR\Delta T=1.5\times0.5\times0.08206\times(-63)=-3.88$ L·atm → $q=\Delta U-w=-0.69$ L·atm.'
+    - p: '단원자 이상 기체 2.00 mol(3.00 atm, 350 K)이 1.00 atm 외부 압력에 대해 부피가 2배가 될 때까지 비가역 단열 팽창한다. 최종 온도(K)는?'
+      t: num
+      a: 272
+      tol: 1
+      unit: K
+      pt: 4
+      sol: '$V_1=19.15$ L → $w=-1\times19.15$ L·atm $=-1940$ J $=\Delta U=\tfrac32nR\Delta T$ → $\Delta T=-77.8$ → $T_2\approx272$ K.'
+  ref: [ct:6, ct:7, ct:11]
+
+- id: ct06
+  u: 열역학 제1법칙
+  t: set
+  lv: 3
+  q: '[학원 SET 19·20번] 가역 단열 과정 ($TV^{\gamma-1}$ = 일정, $T P^{-R/c_p}$ = 일정) [9점]'
+  parts:
+    - p: '단원자 이상 기체 2.00 mol이 300 K에서 20.0 L → 60.0 L로 가역 단열 팽창한다. 최종 온도(K)는?'
+      t: num
+      a: 144
+      tol: 1
+      unit: K
+      pt: 3
+      sol: '$\gamma=\dfrac53$ → $T_2=300\times\left(\dfrac13\right)^{2/3}\approx144$ K.'
+    - p: '이때 ΔH(kJ)는?'
+      t: num
+      a: -6.48
+      tol: 0.05
+      unit: kJ
+      pt: 3
+      sol: '$\Delta U=w=\tfrac32nR\Delta T=-3.89$ kJ, $\Delta H=\tfrac52nR\Delta T=-6.48$ kJ.'
+    - p: '이상 기체 2.00 mol($c_p=29.3$)을 0 ℃, 1.00 atm에서 2.00 atm으로 가역 단열 압축한다. 기체에 해 준 일(kJ)은?'
+      t: num
+      a: 2.5
+      tol: 0.05
+      unit: kJ
+      pt: 3
+      sol: '$T_2=273\times2^{R/c_p}=273\times2^{0.284}\approx333$ K → $w=\Delta U=nc_v\Delta T=2\times21.0\times59.6\approx2.5$ kJ.'
+  ref: [ct:9, ct:10, ct:11]
+
+- id: ct07
+  u: 열화학
+  t: set
+  lv: 3
+  q: '[물질과 에너지 과제 1번] N₂H₄(g)→2N+4H: 1724, NH₃(g)→N+3H: 1170, N₂→2N: 942, H₂→2H: 433 (kJ) [8점]'
+  parts:
+    - p: 'N–H 평균 결합 에너지(kJ/mol)는?'
+      t: num
+      a: 390
+      tol: 1
+      unit: kJ/mol
+      pt: 2
+      sol: '$1170/3=390$.'
+    - p: 'N–N 결합 에너지(kJ/mol)는?'
+      t: num
+      a: 164
+      tol: 1
+      unit: kJ/mol
+      pt: 3
+      sol: 'N₂H₄에는 N–H 4개 + N–N 1개 → $1724-4\times390=164$.'
+    - p: 'N₂H₄(g)의 표준 생성 엔탈피(kJ/mol)는?'
+      t: num
+      a: 84
+      tol: 1
+      unit: kJ/mol
+      pt: 3
+      sol: '$N_2+2H_2\to N_2H_4$: $942+2\times433-1724=84$ kJ/mol.'
+  ref: [ct:12, ct:18]
+
+- id: ct08
+  u: 열량계
+  t: set
+  lv: 3
+  q: '[물질과 에너지 과제 9·10번] 일정 부피(통) 열량계 [10점]'
+  parts:
+    - p: '열용량 20 kJ/K인 고립된 통 열량계에서 A(g) 1 mol + B(g) 1 mol → C(g) 반응 후 온도가 5 ℃ 올랐다. ΔU = a (kJ)에서 a는?'
+      t: num
+      a: -100
+      tol: 1
+      unit: kJ
+      pt: 3
+      sol: '$q_V=\Delta U=-C\Delta T=-20\times5=-100$ kJ (고립계 전체의 내부 에너지는 불변).'
+    - p: '같은 반응을 일정 압력에서 하면 방출 열은 100 kJ보다 큰가, 작은가?'
+      t: txt
+      a: ['크다', '크다.', '더 크다', '큼']
+      pt: 3
+      sol: '$\Delta H=\Delta U+\Delta n RT$, Δn = −1 < 0 → ΔH < −100 kJ → 방출 열이 더 크다.'
+    - p: '연소열 3 kJ/g인 X 2 g으로 1 ℃, Y(분자량 40) 1 g으로 2 ℃, X·Y 혼합물 1 g으로 1.4 ℃ 올랐다. 혼합물 속 Y의 질량 백분율(%)은?'
+      t: num
+      a: 60
+      tol: 1
+      unit: '%'
+      pt: 4
+      sol: '열용량 6 kJ/℃, Y 연소열 12 kJ/g(ΔE = −480 kJ/mol). $3a+12(1-a)=8.4$ → a = 0.4 g → Y 60 %.'
+  ref: [ct:16, ct:19]
+
+- id: ct09
+  u: 열화학
+  t: set
+  lv: 3
+  q: '[물질과 에너지 과제 11번] 2N₂+6H₂+3O₂ → 4NH₃+3O₂: −180 kJ, 4NH₃+3O₂ → 2N₂+6H₂O(g): −1260 kJ, 2N₂H₄+2H₂O(g)+2O₂ → 2N₂+6H₂O(g): −1040 kJ [8점]'
+  parts:
+    - p: 'NH₃(g)의 표준 생성 엔탈피(kJ/mol)는?'
+      t: num
+      a: -45
+      tol: 0.5
+      unit: kJ/mol
+      pt: 2
+      sol: '$-180/4=-45$.'
+    - p: 'H₂O(g)의 표준 생성 엔탈피(kJ/mol)는?'
+      t: num
+      a: -240
+      tol: 1
+      unit: kJ/mol
+      pt: 3
+      sol: '$(-180-1260)/6=-240$.'
+    - p: 'N₂H₄(g)+H₂(g) → 2NH₃(g)의 ΔU(kJ)는?'
+      t: num
+      a: -130
+      tol: 1
+      unit: kJ
+      pt: 3
+      sol: '$\Delta H_f(N_2H_4)=+40$ → $\Delta H=-90-40=-130$ kJ, Δn = 0 → ΔU = −130 kJ.'
+  ref: [ct:17, ct:19]
+
+- id: ct10
+  u: 열역학 제1법칙
+  t: mc
+  lv: 3
+  q: '[학원 4번] 2 atm인 X(g)를 실린더 위 추 2개로 누르고 있다. 추를 하나씩 제거해 1.5 atm, 1 atm(대기압)에서 각각 평형에 도달하게 하는 비가역 등온 팽창에서 흡수한 열을 $q_1, q_2$라 할 때 $q_1/q_2$는?'
+  c: ['3/4', '1/2', '2/3', '4/5']
+  a: 0
+  ex: '등온 → q = −w = P외부ΔV. 부피 V → 4V/3 → 2V. $q_1=1.5\times\dfrac V3$, $q_2=1\times\dfrac{2V}3$ → 3/4.'
+  ref: [ct:27, ct:34]
+
+- id: ct11
+  u: 열량계
+  t: mc
+  lv: 3
+  q: '[학원 5번] 열용량 5.0 kJ/℃인 열량계에서 X(g) + aY(g) → bZ(g)를 일정 부피(20→38 ℃)와 일정 압력(20→39 ℃, 부피 V → V − x)으로 각각 완결시켰다. 옳은 것만을 <보기>에서 있는 대로 고른 것은? (1 atm·L = 100 J)'
+  bg:
+    - ['a + 1 > b이다.', true, '일정 압력에서 부피가 줄었으므로 기체 분자 수 감소.']
+    - ['이 반응의 ΔH는 −95 kJ이다.', true, '$q_P=5\times19=95$ kJ 방출.']
+    - ['x = 50이다.', true, '$\Delta H-\Delta E=P\Delta V=-5$ kJ = −5000 atm·L·(J) → ΔV = −50 L.']
+  ref: [ct:28, ct:34]
+
+- id: ct12
+  u: 열화학
+  t: mc
+  lv: 3
+  q: '[학원 7번] C(흑연)+O₂ → CO₂: ΔH = −394 kJ/mol, 2CO(g)+O₂ → 2CO₂: ΔE = −564 kJ/mol. 25 ℃, 1 atm에서 CO(g)의 생성 엔탈피(kJ/mol)는? (RT = 2 kJ/mol)'
+  c: ['−111', '−113', '−675', '−677']
+  a: 0
+  ex: '$\Delta H=\Delta E+\Delta nRT=-564+(-1)(2)=-566$ → CO + ½O₂ → CO₂: −283 → $\Delta H_f(CO)=-394+283=-111$.'
+  ref: [ct:29, ct:34]
+
+- id: ct13
+  u: 자발성
+  t: mc
+  lv: 3
+  q: '[학원 20번] 273 K, 1 atm에서 H₂O(s) 2 mol을 가열해 H₂O(l) 2 mol로 만들었다(용융열 6 kJ/mol, 정상 녹는점 273 K). 옳은 것만을 <보기>에서 있는 대로 고른 것은?'
+  bg:
+    - ['깁스 자유 에너지 변화 ΔG는 0이다.', true, '정상 녹는점에서 두 상은 평형.']
+    - ['엔트로피 변화는 2000/91 J/K이다.', false, '$\Delta S=\dfrac{12000}{273}=\dfrac{4000}{91}$ J/K.']
+    - ['ΔU/ΔH < 1이다.', false, '녹으면 부피 감소 → Δ(PV)<0 → ΔU > ΔH → 비 > 1.']
+  ref: [ct:48, ct:52]
+
+- id: ct14
+  u: 자발성
+  t: mc
+  lv: 3
+  q: '[학원 15번] 400 K에서 2NO(g) → N₂(g)+O₂(g), ΔH° = −180 kJ/mol, ΔS° = −25.0 J/K·mol이다. 옳지 않은 것은?'
+  c: ['NO(g)의 표준 생성 깁스 에너지는 85 kJ/mol보다 크다.', '이 반응은 발열 반응이다.', '이 반응에 의해 우주의 엔트로피는 증가한다.', '이 반응의 ΔU°는 −180 kJ/mol이다.', 'NO(g)의 표준 몰 엔트로피는 12.5 J/K·mol보다 크다.']
+  a: 0
+  ex: '$\Delta G^\circ=-180-400(-0.025)=-170$ kJ → NO 1 mol의 $\Delta G_f^\circ=+85$ kJ/mol (크지 않고 같음). Δn = 0 → ΔU = ΔH.'
+  ref: [ct:46, ct:51]
+
+- id: ct15
+  u: 자발성
+  t: mc
+  lv: 3
+  q: '[학원 14번] 300 K에서 A(g)+3B(g) → 2C(g). ΔHf°: A 0, B 0, C −45 kJ/mol, S°: A 200, B 133, C 200 J/mol·K. 옳은 것만을 <보기>에서 있는 대로 고른 것은?'
+  bg:
+    - ['이 반응은 발열 반응이다.', true, 'ΔH = 2(−45) = −90 kJ.']
+    - ['ΔS계 = −133 J/K이다.', false, '$2(200)-(200+3\times133)=-199$ J/K.']
+    - ['|ΔS계+주위| > |ΔS계|이다.', false, 'ΔS주위 = 90000/300 = +300 → 합 +101, |101| < |−199|.']
+  ref: [ct:46, ct:51]
+
+- id: ct16
+  u: 자발성
+  t: mc
+  lv: 3
+  q: '[학원 11번] T에서 X 2 mol(3 L)과 Y 1 mol(3 L)이 고정 장치로 분리된 상태 → 고정 장치 제거 후 평형(압력 같아짐) → 피스톤 제거 후 섞임(6 L). 옳은 것만을 <보기>에서 있는 대로 고른 것은? (RT = 1 kJ/mol)'
+  bg:
+    - ['ΔU < 0이다.', false, '등온 이상 기체 → ΔU = 0.']
+    - ['(나)→(다)의 ΔG = (2ln2 − 3ln3) kJ이다.', true, 'X: 4 L→6 L, Y: 2 L→6 L → ΔS = 2Rln(3/2)+Rln3 = R(3ln3 − 2ln2), ΔG = −TΔS.']
+    - ['(가)에서 (다)로 바로 가도 전체 엔트로피 변화는 ΔS₁+ΔS₂와 같다.', true, '엔트로피는 상태 함수.']
+  ref: [ct:44, ct:50]
