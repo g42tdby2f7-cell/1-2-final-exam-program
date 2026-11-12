@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -87,6 +87,7 @@ SRC={
  'tr':dict(n='물리 「트랜지스터」 문제집 (박신학원)',short='물리 트랜지스터',s='phys',ic='📕'),
  'qw':dict(n='물리 「전자기와 양자 문제 part Ⅰ」 학습지',short='물리 양자 문제지',s='phys',ic='📕'),
  'qm':dict(n='물리 「양자역학」 수업 PPT·필기 (흑체 복사 ~ 양자 컴퓨터)',short='물리 양자역학',s='phys',ic='📕'),
+ 'mx':dict(n='화학 물질과 에너지 2회 고사 · 대비 연습 문항 (문제·해설·내 풀이)',short='화학 2회 고사',s='chem',ic='📙'),
  'ge':dict(n='생물 「유전자에서 단백질까지」 유전공학 (cDNA · 벡터 · 블롯팅 · RT-PCR)',short='생물 유전공학',s='bio',ic='📘'),
  'qy':dict(n='물리 작년 양자역학 PPT 사진·판서 (광전 효과 · 콤프턴 · 보어)',short='물리 작년 양자 PPT',s='phys',ic='📕'),
  'sw':dict(n='지학 02 「태양 활동 및 우주 위험 감시」 (우주 기상 · 우주 물체)',short='지학 우주 기상',s='earth',ic='📗'),
