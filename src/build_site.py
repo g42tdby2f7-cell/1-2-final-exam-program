@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox'),('phys','s_ts')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -87,6 +87,7 @@ SRC={
  'tr':dict(n='물리 「트랜지스터」 문제집 (박신학원)',short='물리 트랜지스터',s='phys',ic='📕'),
  'qw':dict(n='물리 「전자기와 양자 문제 part Ⅰ」 학습지',short='물리 양자 문제지',s='phys',ic='📕'),
  'qm':dict(n='물리 「양자역학」 수업 PPT·필기 (흑체 복사 ~ 양자 컴퓨터)',short='물리 양자역학',s='phys',ic='📕'),
+ 'ts':dict(n='물리 「7. 트랜지스터」 학교 PPT (Part 3: 구조·바이어스·스위칭·증폭)',short='물리 트랜지스터 PPT',s='phys',ic='📕'),
  'ox':dict(n='지학 내 오답 (KNR 은하 학습지 채점본)',short='지학 내 오답',s='earth',ic='📗'),
  'c4':dict(n='지학 행성우주과학 III-4 「우리은하의 질량과 암흑 물질」 (학교 PPT)',short='지학 III-4 암흑 물질',s='earth',ic='📗'),
  'c3':dict(n='지학 행성우주과학 III-3 「성간 물질」 (학교 PPT·필기)',short='지학 III-3 성간 물질',s='earth',ic='📗'),
