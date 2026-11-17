@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox'),('phys','s_ts')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox'),('phys','s_ts'),(None,'s_add')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -51,7 +51,7 @@ for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_eart
 CX=yaml.safe_load(open('cx.yaml'))
 for q in QS:
     if q['t']=='mc':
-        if q.get('fix') and q.get('cx'): continue
+        if q.get('cx'): q['cx']=[str(x) for x in q['cx']]; assert len(q['cx'])==len(q['c']),'cx '+q['id']; continue
         assert q['id'] in CX and len(CX[q['id']])==len(q['c']), 'cx '+q['id']
         q['cx']=[str(x) for x in CX[q['id']]]
 from mathify import mathify
