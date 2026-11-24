@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2A47C9">
+<title>캠탁 명명법 퀴즈</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=STIX+Two+Text:wght@500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#EEF1F5; --panel:#FFFFFF; --ink:#141B2D; --muted:#5B6478; --line:#D5DBE5;
+  --accent:#2A47C9; --accent-soft:#E3E8FB; --ok:#1E7A4C; --ok-soft:#DFF2E7; --bad:#B42A2A; --bad-soft:#FBE4E4;
+  --f-body:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --f-chem:"STIX Two Text","Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1320; --panel:#171E2F; --ink:#E7EBF3; --muted:#9AA4BA; --line:#2A3348;
+  --accent:#8EA2FF; --accent-soft:#232C4D; --ok:#6FD39E; --ok-soft:#163327; --bad:#FF8C8C; --bad-soft:#3A1C1F; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;padding-inline:16px;padding-block:18px 40px;padding-top:max(18px,env(safe-area-inset-top));padding-bottom:max(40px,env(safe-area-inset-bottom))}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.back{display:inline-block;font-size:13px;color:var(--accent);text-decoration:none;margin-bottom:6px}
+header h1{font-size:22px;font-weight:700;margin:0;letter-spacing:-0.01em;text-wrap:balance}
+header p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px}
+.tabs button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:9px 4px;border-radius:9px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--panel)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);color:var(--muted);font:500 13px var(--f-body);padding:6px 11px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.chip.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar select{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:4px 6px}
+.prog{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 18px;display:flex;flex-direction:column;gap:14px}
+.tag{font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.prompt{font:600 26px/1.25 var(--f-body);letter-spacing:-0.01em;text-wrap:balance;word-break:keep-all}
+.chem{font-family:var(--f-chem);font-weight:500}
+.chem sub{font-size:.68em;vertical-align:-.28em;line-height:0}
+.chem sup{font-size:.66em;vertical-align:.62em;line-height:0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:16px 8px;font-size:26px;cursor:pointer;min-height:68px}
+.opt:hover{border-color:var(--accent)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.opt:disabled{cursor:default}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.field input{width:100%;font:500 22px var(--f-mono);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.field input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.charges{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.charges button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:9px 0;font:500 15px var(--f-mono);cursor:pointer}
+.charges button.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.preview{font-size:13px;color:var(--muted)}
+.preview .chem{font-size:22px;color:var(--ink)}
+.err{color:var(--bad);font-size:13px;min-height:1em}
+.go{border:0;background:var(--accent);color:var(--panel);font:600 15px var(--f-body);padding:13px;border-radius:12px;cursor:pointer;width:100%}
+.ghost{border:1px solid var(--line);background:var(--panel);color:var(--ink);font:500 14px var(--f-body);padding:11px;border-radius:12px;cursor:pointer;width:100%}
+.fb{border-radius:12px;padding:12px 14px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.fb.ok{background:var(--ok-soft);color:var(--ok)}
+.fb.no{background:var(--bad-soft);color:var(--bad)}
+.fb .ans{font-size:24px;color:var(--ink)}
+.fb .ko{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--bg);border-radius:10px;padding:10px;text-align:center}
+.stat b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.list{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:10px;align-items:center;padding:10px 2px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .en{font-weight:600;word-break:break-word}
+.row .ko{font-size:12px;color:var(--muted)}
+.row .f{font-size:21px;text-align:right}
+.row.hide .f{color:transparent;background:var(--line);border-radius:6px}
+.search{width:100%;font:15px var(--f-body);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
+.missed{display:flex;flex-direction:column;gap:6px}
+.missed div{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.missed .chem{font-size:19px}
+button:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="index.html">← 1-2 기말 복습 프로그램</a>
+    <h1>캠탁 명명법 퀴즈</h1>
+    <p>영어 이름을 보고 화학식을 떠올리는 연습 · CHEMTAK 1 (20–24쪽) · CHEMTAK 3 고체·상전이 · Matter and Energy 워크북</p>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button id="t-mc" role="tab" aria-selected="true">객관식</button>
+    <button id="t-type" role="tab" aria-selected="false">직접 쓰기</button>
+    <button id="t-list" role="tab" aria-selected="false">암기표</button>
+  </nav>
+
+  <div class="chips" id="cats"></div>
+
+  <section id="quiz">
+    <div class="bar" style="margin-bottom:8px">
+      <span id="count">1 / 20</span>
+      <label>문제 수
+        <select id="size"><option value="10">10</option><option value="20" selected>20</option><option value="999">전부</option></select>
+      </label>
+    </div>
+    <div class="prog" style="margin-bottom:12px"><i id="progbar"></i></div>
+    <div class="card" id="qcard"></div>
+  </section>
+
+  <section id="listview" hidden>
+    <div class="card" style="gap:10px">
+      <input class="search" id="q" placeholder="sulfate, propane, 황산…" autocomplete="off">
+      <button class="ghost" id="hideBtn">화학식 가리기</button>
+      <div class="list" id="list"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+const CATS=[["all","전체"],["cat","단원자 양이온"],["an","단원자 음이온"],["poly","다원자 이온"],["tm","전이금속"],["ion","이온 화합물"],["mol","분자"],["oxy","산소산"],["acid","기타 산"],["sol","고체·상전이"],["wb","M&E 워크북"]];
+const RAW=`cat|hydrogen ion|H^+|수소 이온
+cat|lithium ion|Li^+|리튬 이온
+cat|sodium ion|Na^+|소듐 이온
+cat|potassium ion|K^+|포타슘 이온
+cat|cesium ion|Cs^+|세슘 이온
+cat|magnesium ion|Mg^2+|마그네슘 이온
+cat|calcium ion|Ca^2+|칼슘 이온
+cat|barium ion|Ba^2+|바륨 이온
+cat|aluminum ion|Al^3+|알루미늄 이온
+cat|silver ion|Ag^+|은 이온
+an|hydride|H^-|수소화 이온
+an|fluoride|F^-|플루오린화 이온
+an|chloride|Cl^-|염화 이온
+an|bromide|Br^-|브로민화 이온
+an|iodide|I^-|아이오딘화 이온
+an|oxide|O^2-|산화 이온
+an|sulfide|S^2-|황화 이온
+an|nitride|N^3-|질화 이온
+an|phosphide|P^3-|인화 이온
+an|carbide|C^4-|탄화 이온
+an|silicide|Si^4-|규소화 이온
+an|selenide|Se^2-|셀레늄화 이온
+poly|ammonium|NH4^+|암모늄
+poly|carbonate|CO3^2-|탄산
+poly|hydrogen carbonate|HCO3^-|탄산수소
+poly|hypochlorite|ClO^-|차아염소산
+poly|chlorite|ClO2^-|아염소산
+poly|chlorate|ClO3^-|염소산
+poly|perchlorate|ClO4^-|과염소산
+poly|dihydrogen phosphate|H2PO4^-|인산이수소
+poly|hydrogen phosphate|HPO4^2-|인산수소
+poly|phosphate|PO4^3-|인산
+poly|sulfate|SO4^2-|황산
+poly|hydrogen sulfate|HSO4^-|황산수소
+poly|sulfite|SO3^2-|아황산
+poly|nitrate|NO3^-|질산
+poly|nitrite|NO2^-|아질산
+poly|acetate|CH3COO^-|아세트산|C2H3O2
+poly|formate|HCOO^-|폼산
+poly|cyanide|CN^-|사이안화
+poly|hydroxide|OH^-|수산화
+poly|permanganate|MnO4^-|과망가니즈산
+poly|chromate|CrO4^2-|크로뮴산
+poly|dichromate|Cr2O7^2-|중크로뮴산
+poly|oxalate|C2O4^2-|옥살산
+poly|peroxide|O2^2-|과산화
+poly|superoxide|O2^-|초과산화
+poly|ozonide|O3^-|오존화
+poly|thiosulfate|S2O3^2-|싸이오황산
+poly|azide|N3^-|아자이드화
+poly|amide|NH2^-|아마이드화
+poly|imide|NH^2-|이마이드화
+poly|acetylide|C2^2-|아세틸화
+tm|ferrous ion|Fe^2+|제일철 이온
+tm|ferric ion|Fe^3+|제이철 이온
+tm|cuprous ion|Cu^+|제일구리 이온
+tm|cupric ion|Cu^2+|제이구리 이온
+tm|mercurous ion|Hg2^2+|제일수은 이온
+tm|mercuric ion|Hg^2+|제이수은 이온
+tm|stannous ion|Sn^2+|제일주석 이온
+tm|stannic ion|Sn^4+|제이주석 이온
+tm|iron(II) ion|Fe^2+|철(II) 이온
+tm|iron(III) ion|Fe^3+|철(III) 이온
+tm|copper(I) ion|Cu^+|구리(I) 이온
+tm|copper(II) ion|Cu^2+|구리(II) 이온
+tm|manganese(II) ion|Mn^2+|망가니즈(II) 이온
+tm|manganese(III) ion|Mn^3+|망가니즈(III) 이온
+tm|manganese(IV) ion|Mn^4+|망가니즈(IV) 이온
+tm|cobalt(II) ion|Co^2+|코발트(II) 이온
+tm|cobalt(III) ion|Co^3+|코발트(III) 이온
+tm|tin(II) ion|Sn^2+|주석(II) 이온
+tm|tin(IV) ion|Sn^4+|주석(IV) 이온
+tm|lead(II) ion|Pb^2+|납(II) 이온
+tm|lead(IV) ion|Pb^4+|납(IV) 이온
+tm|mercury(I) ion|Hg2^2+|수은(I) 이온
+tm|mercury(II) ion|Hg^2+|수은(II) 이온
+tm|zinc ion|Zn^2+|아연 이온
+tm|cadmium ion|Cd^2+|카드뮴 이온
+ion|iron(II) chloride|FeCl2|염화 철(II)
+ion|iron(III) chloride|FeCl3|염화 철(III)
+ion,wb,sol|sodium chloride|NaCl|염화 소듐
+ion|potassium bromide|KBr|브로민화 포타슘
+ion|potassium cyanide|KCN|사이안화 포타슘
+ion,wb|sodium hydrogen carbonate|NaHCO3|탄산수소 소듐
+ion,wb|ammonium chloride|NH4Cl|염화 암모늄
+ion,wb|calcium carbonate|CaCO3|탄산 칼슘
+ion,wb,sol|calcium oxide|CaO|산화 칼슘
+ion,wb|calcium sulfite|CaSO3|아황산 칼슘
+mol,wb|hydrogen chloride|HCl|염화수소
+mol,wb|hydrogen bromide|HBr|브로민화수소
+mol|silicon carbide|SiC|탄화규소
+mol,wb|carbon monoxide|CO|일산화탄소
+mol,wb,sol|carbon dioxide|CO2|이산화탄소 (드라이아이스)
+mol|dinitrogen oxide|N2O|산화이질소
+mol,wb|nitrogen dioxide|NO2|이산화질소
+mol|dinitrogen tetraoxide|N2O4|사산화이질소
+mol,wb|sulfur dioxide|SO2|이산화황
+mol,wb|sulfur trioxide|SO3|삼산화황
+mol|diborane|B2H6|다이보레인
+mol,wb|silane|SiH4|실레인
+mol,wb|phosphine|PH3|포스파인
+mol,wb,sol|methane|CH4|메테인 (LNG)
+mol,wb|ammonia|NH3|암모니아
+mol,wb,sol|water|H2O|물 (얼음)
+oxy|perchloric acid|HClO4|과염소산
+oxy|chloric acid|HClO3|염소산
+oxy|chlorous acid|HClO2|아염소산
+oxy|hypochlorous acid|HClO|차아염소산
+oxy|nitrous acid|HNO2|아질산
+oxy,wb|nitric acid|HNO3|질산
+oxy|sulfurous acid|H2SO3|아황산
+oxy,wb|sulfuric acid|H2SO4|황산
+oxy|phosphoric acid|H3PO4|인산
+oxy|carbonic acid|H2CO3|탄산
+acid|hydrofluoric acid|HF|플루오린화수소산
+acid,wb|hydrochloric acid|HCl|염산
+acid|hydrobromic acid|HBr|브로민화수소산
+acid|hydroiodic acid|HI|아이오딘화수소산
+acid|hydrocyanic acid|HCN|사이안화수소산
+acid,wb|acetic acid|CH3COOH|아세트산|HC2H3O2
+acid|formic acid|HCOOH|폼산
+acid|oxalic acid|H2C2O4|옥살산
+wb|hydrogen|H2|수소
+wb|nitrogen|N2|질소
+wb|oxygen|O2|산소
+wb|ozone|O3|오존
+wb|fluorine|F2|플루오린
+wb|chlorine|Cl2|염소
+wb|bromine|Br2|브로민
+wb,sol|iodine|I2|아이오딘
+wb|helium|He|헬륨
+wb|neon|Ne|네온
+wb|argon|Ar|아르곤
+wb|krypton|Kr|크립톤
+wb,sol|mercury|Hg|수은
+wb|hydrogen peroxide|H2O2|과산화수소
+wb|nitrogen monoxide (nitric oxide)|NO|일산화질소
+wb|hydrogen fluoride|HF|플루오린화수소
+wb|hydrogen iodide|HI|아이오딘화수소
+wb|hydrogen sulfide|H2S|황화수소
+wb|hydrogen selenide|H2Se|셀레늄화수소
+wb|hydrogen telluride|H2Te|텔루륨화수소
+wb|arsine|AsH3|아르신
+wb|stibine|SbH3|스티빈
+wb|germane|GeH4|저메인
+wb|stannane|SnH4|스태네인
+wb|boron triiodide|BI3|삼아이오딘화붕소
+wb|phosphorus trichloride|PCl3|삼염화인
+wb|uranium hexafluoride|UF6|육플루오린화우라늄
+wb,sol|silicon dioxide|SiO2|이산화규소 (석영)
+wb|ethane|C2H6|에테인
+wb,sol|propane|C3H8|프로페인 (LPG)
+wb,sol|butane|C4H10|뷰테인 (LPG)
+wb,sol|pentane|C5H12|펜테인
+wb|acetone|C3H6O|아세톤|CH3COCH3
+wb|glycerol|C3H8O3|글리세롤|C3H5(OH)3
+wb|dichlorodifluoromethane (CFC)|CF2Cl2|다이클로로다이플루오로메테인|CCl2F2
+sol|naphthalene|C10H8|나프탈렌 (분자 결정)
+sol|sodium fluoride|NaF|플루오린화 소듐
+sol|potassium iodide|KI|아이오딘화 포타슘
+sol|magnesium oxide|MgO|산화 마그네슘
+sol|zinc sulfide (zinc blende)|ZnS|황화 아연 (섬아연석)
+sol|calcium fluoride (fluorite)|CaF2|플루오린화 칼슘 (형석)
+sol|cesium chloride|CsCl|염화 세슘
+sol|silver|Ag|은
+sol|copper|Cu|구리
+sol|aluminum|Al|알루미늄
+sol|iron|Fe|철
+sol|lead|Pb|납
+sol|potassium|K|포타슘`;
+const ITEMS=RAW.split("\n").map((l,i)=>{const [cc,en,f,ko,alt]=l.split("|");const cs=cc.split(",");const [body,ch=""]=f.split("^");return{id:i,c:cs[0],cs,en,f,body,ch,ko,alt:alt||""}});
+const CHARGES=["","+","2+","3+","4+","-","2-","3-","4-"];
+
+const $=id=>document.getElementById(id);
+function chem(f){const [b,ch]=f.split("^");let h=b.replace(/(\d+)/g,"<sub>$1</sub>");if(ch!==undefined)h+="<sup>"+ch.replace("-","−")+"</sup>";return '<span class="chem">'+h+"</span>"}
+function chargeLabel(c){return c===""?"없음":c.replace("-","−")}
+let stats={};try{stats=JSON.parse(localStorage.getItem("ctk-nom-v1")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("ctk-nom-v1",JSON.stringify(stats))}catch(e){}}
+function rec(id,ok){const s=stats[id]||[0,0];ok?s[0]++:s[1]++;stats[id]=s;save()}
+function weight(it){const s=stats[it.id]||[0,0];return Math.max(.4,1+s[1]*1.5-s[0]*.5)}
+
+let mode="mc",cat="all",deck=[],idx=0,right=0,missed=[],answered=false,chargePick=null;
+function pool(){return ITEMS.filter(it=>cat==="all"||it.cs.includes(cat))}
+function sample(list,n){const a=list.slice(),out=[];while(a.length&&out.length<n){let t=a.reduce((s,x)=>s+weight(x),0),r=Math.random()*t,k=0;for(;k<a.length;k++){r-=weight(a[k]);if(r<=0)break}out.push(a.splice(Math.min(k,a.length-1),1)[0])}return out}
+function newRound(list){const n=+$("size").value;deck=list?list.slice().sort(()=>Math.random()-.5):sample(pool(),n);idx=0;right=0;missed=[];show()}
+
+function toks(b){return b.match(/[A-Z][a-z]?/g)||[]}
+function distractors(it){const t=toks(it.body);const seen=new Set([it.f]);const src=ITEMS.filter(x=>x.cs.some(k=>it.cs.includes(k))).concat(ITEMS);
+  const cand=[];src.forEach(x=>{if(seen.has(x.f))return;seen.add(x.f);const xt=toks(x.body);let s=xt.filter(e=>t.includes(e)).length*2+(x.ch===it.ch?1:0)+(x.cs.some(k=>it.cs.includes(k))?1.5:0)+Math.random()*1.6;cand.push([s,x.f])});
+  cand.sort((a,b)=>b[0]-a[0]);return cand.slice(0,3).map(c=>c[1])}
+
+function header(it){return '<div class="tag">'+CATS.find(c=>c[0]===(it.cs.includes(cat)?cat:it.c))[1]+'</div><div class="prompt">'+it.en+'</div>'}
+function show(){answered=false;chargePick=null;
+  $("progbar").style.width=(deck.length?idx/deck.length*100:0)+"%";
+  if(idx>=deck.length)return summary();
+  $("count").textContent=(idx+1)+" / "+deck.length;
+  const it=deck[idx],card=$("qcard");
+  if(mode==="mc"){const opts=[it.f,...distractors(it)].sort(()=>Math.random()-.5);
+    card.innerHTML=header(it)+'<div class="opts">'+opts.map(o=>'<button class="opt" data-f="'+o+'">'+chem(o)+'</button>').join("")+'</div><div id="fb"></div>';
+    card.querySelectorAll(".opt").forEach(b=>b.onclick=()=>pickMC(b,it));
+  }else{
+    card.innerHTML=header(it)+'<div class="field"><label for="body">화학식 (대소문자 구분: Co ≠ CO)</label><input id="body" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="SO4"></div>'+
+      '<div><div class="preview" style="margin-bottom:6px">전하</div><div class="charges">'+CHARGES.map(c=>'<button data-c="'+c+'">'+chargeLabel(c)+'</button>').join("")+'</div></div>'+
+      '<div class="preview">미리보기 <span id="pv"></span></div><div class="err" id="err"></div><button class="go" id="check">확인</button><div id="fb"></div>';
+    const inp=$("body");inp.oninput=()=>{$("err").textContent="";pv()};inp.onkeydown=e=>{if(e.key==="Enter")checkType(it)};
+    card.querySelectorAll(".charges button").forEach(b=>b.onclick=()=>{chargePick=b.dataset.c;card.querySelectorAll(".charges button").forEach(x=>x.classList.toggle("on",x===b));$("err").textContent="";pv()});
+    $("check").onclick=()=>checkType(it);pv();inp.focus({preventScroll:true});
+  }
+}
+function norm(s){return s.replace(/\s+/g,"").replace(/[₀-₉]/g,d=>String(d.charCodeAt(0)-8320))}
+function pv(){const b=norm($("body").value);$("pv").innerHTML=b?chem(b+(chargePick?"^"+chargePick:"")):""}
+function feedback(it,ok){
+  $("fb").innerHTML='<div class="fb '+(ok?"ok":"no")+'"><div>'+(ok?"정답":"오답")+'</div><div class="ans">'+chem(it.f)+'</div><div class="ko">'+it.en+' · '+it.ko+'</div></div><button class="go" id="next" style="margin-top:10px">'+(idx+1<deck.length?"다음 문제":"결과 보기")+'</button>';
+  $("next").onclick=()=>{idx++;show()};$("next").focus({preventScroll:true})}
+function settle(it,ok){answered=true;rec(it.id,ok);if(ok)right++;else missed.push(it);feedback(it,ok)}
+function pickMC(b,it){if(answered)return;const ok=b.dataset.f===it.f;
+  $("qcard").querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.f===it.f)x.classList.add("right")});if(!ok)b.classList.add("wrong");settle(it,ok)}
+function checkType(it){if(answered){idx++;return show()}
+  const b=norm($("body").value);if(!b){$("err").textContent="화학식을 먼저 입력하세요";return}
+  if(chargePick===null){$("err").textContent="전하를 고르세요 (중성이면 '없음')";return}
+  const ok=(b===it.body||(it.alt&&b===it.alt))&&chargePick===it.ch;$("check").hidden=true;settle(it,ok)}
+function summary(){$("count").textContent=deck.length+" / "+deck.length;const pct=deck.length?Math.round(right/deck.length*100):0;
+  $("qcard").innerHTML='<div class="tag">라운드 결과</div><div class="stats"><div class="stat"><b>'+pct+'%</b><span>정답률</span></div><div class="stat"><b>'+right+'</b><span>맞힘</span></div><div class="stat"><b>'+missed.length+'</b><span>틀림</span></div></div>'+
+   (missed.length?'<div class="tag">틀린 문제</div><div class="missed">'+missed.map(m=>'<div><span>'+m.en+'</span>'+chem(m.f)+'</div>').join("")+'</div><button class="go" id="redo">틀린 것만 다시</button>':'<p style="margin:0">전부 맞혔어요. 다른 단원도 풀어 보세요.</p>')+
+   '<button class="ghost" id="again">새 라운드</button>';
+  if($("redo"))$("redo").onclick=()=>newRound(missed);$("again").onclick=()=>newRound()}
+
+let hideF=false;
+function renderList(){const q=$("q").value.trim().toLowerCase();
+  const rows=pool().filter(it=>!q||(it.en+" "+it.ko+" "+it.body).toLowerCase().includes(q));
+  $("list").innerHTML=rows.map(it=>'<div class="row'+(hideF?" hide":"")+'"><div style="min-width:0"><div class="en">'+it.en+'</div><div class="ko">'+it.ko+'</div></div><div class="f">'+chem(it.f)+'</div></div>').join("")||'<p style="color:var(--muted);margin:8px 0">찾는 항목이 없어요.</p>';
+  $("list").querySelectorAll(".row").forEach(r=>r.onclick=()=>r.classList.toggle("hide"))}
+$("q").oninput=renderList;
+$("hideBtn").onclick=()=>{hideF=!hideF;$("hideBtn").textContent=hideF?"화학식 보이기":"화학식 가리기";renderList()};
+
+function chips(){$("cats").innerHTML=CATS.map(([k,v])=>'<button class="chip'+(k===cat?" on":"")+'" data-k="'+k+'">'+v+'</button>').join("");
+  $("cats").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{cat=b.dataset.k;chips();mode==="list"?renderList():newRound()})}
+function setMode(m){mode=m;[["mc","t-mc"],["type","t-type"],["list","t-list"]].forEach(([k,id])=>$(id).setAttribute("aria-selected",k===m));
+  $("quiz").hidden=m==="list";$("listview").hidden=m!=="list";m==="list"?renderList():newRound()}
+$("t-mc").onclick=()=>setMode("mc");$("t-type").onclick=()=>setMode("type");$("t-list").onclick=()=>setMode("list");
+$("size").onchange=()=>newRound();
+chips();newRound();
+</script>
+</body>
+</html>

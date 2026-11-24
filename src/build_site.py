@@ -151,4 +151,5 @@ out=SITE+'/index.html'
 open(out,'w').write(t)
 from collections import Counter
 print('figQ',sum(1 for q in QS if q.get('fig')));print('Q',len(QS),Counter((q['s'],q['t']) for q in QS)); print('KB',len(KB),'IMG',len(IMG)); print('data KB',os.path.getsize(SITE+'/data.js')/1e3,'index KB',os.path.getsize(out)/1e3)
+shutil.copy(os.path.join(HERE,'nomen.html'),os.path.join(SITE,'nomen.html'))
 exec(open(os.path.join(HERE,'build_memo.py'),encoding='utf-8').read())
