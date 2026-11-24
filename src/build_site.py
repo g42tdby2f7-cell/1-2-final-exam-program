@@ -3,7 +3,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); os.chdir(HERE)
 QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox'),('phys','s_ts'),(None,'s_add'),('bio','s_b2'),('phys','s_p25')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox'),('phys','s_ts'),(None,'s_add'),(None,'s_b2'),('phys','s_p25')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -95,6 +95,10 @@ SRC={
  'bio8':dict(n='생물 8차시 PPT 「유전자 발현 조절」 (진핵생물 · 발생)',short='생물 8차시 PPT',s='bio',ic='📘'),
  'b8n':dict(n='내 필기 · 생물 8차시 「진핵생물의 유전자 발현 조절」 (손필기)',short='생물 8차시 필기',s='bio',ic='📝'),
  'p25':dict(n='물리 2025 (전자기와 양자) 2회 고사 기출 1~3쪽 (내 풀이)',short='물리 작년 2회 고사',s='phys',ic='📕'),
+ 'rs':dict(n='지학 III-5 「은하의 적색 이동 탐사」 PPT (분광 관측 · 허블–르메트르 · 전천 탐사)',short='지학 III-5 적색 이동',s='earth',ic='📗'),
+ 'tk':dict(n='화학 TAK 심층면접 05 「액체와 고체 / 물질의 상태 변화」 (문제 + 모범 답안)',short='화학 TAK 심층면접',s='chem',ic='📙'),
+ 'tm':dict(n='화학 물질과 에너지 「열역학 심화 모의고사」 10문항',short='화학 열역학 모의고사',s='chem',ic='📙'),
+ 'gc':dict(n='부산과학고 1-2 기출 모음 (2024 물리Ⅱ·화학Ⅱ·생명Ⅱ·지구Ⅱ, 2025 생물 2회·행성우주 2회)',short='1-2 기출 모음',s='earth',ic='🗂️'),
  'b2':dict(n='생물 필기 캔버스 2 (유전자 발현 조절 · lac/trp 학원 학습지 · 진핵생물 조절)',short='생물 필기 2',s='bio',ic='📘',labels={'1':'lac·trp 정리합시다 (음·양의 조절, POS, 그래프 해석, 주·보조작동자)','2':'Trp 오페론 정리 (종류·구조 POLA S·조절방식)','3':'trp 연습문제 1 (어테뉴에이션 서술)','4':'trp 연습문제 2·3 (RHO 의존성, trpR⁻/trpL⁻ 억제 효과)','5':'lac 연습문제 1·2 (부분 2배체, 생장곡선)','6':'lac 연습문제 5·6 (구간 해석, β-gal 활성)','7':'lac 연습문제 7·8 (Iˢ/Oᶜ 발현량, cAMP)','8':'김나리T 2nd 수업 복습 (유도성·상시성·불능 판정, 심화 1~4)','9':'젖당 오페론 논술 [문제 2] · 제시문 문제','10':'진핵생물 발현 조절 필기 1 (전사 전·염색질·히스톤)','11':'진핵생물 발현 조절 필기 2 (메틸화·Xist·스플라이싱)','12':'진핵생물 발현 조절 필기 3 (miRNA·siRNA·SRP·유비퀴틴)','13':'세포 분화·MyoD·Hox·ABC 모델 필기','14':'젖당 오페론(원핵) 필기','15':'유전공학 필기 1 (cDNA)','16':'유전공학 필기 2 (블롯팅)','17':'유전공학 필기 3 (도네가와·qPCR·DNA칩)'}),
  'ge':dict(n='생물 「유전자에서 단백질까지」 유전공학 (cDNA · 벡터 · 블롯팅 · RT-PCR)',short='생물 유전공학',s='bio',ic='📘'),
  'qy':dict(n='물리 작년 양자역학 PPT 사진·판서 (광전 효과 · 콤프턴 · 보어)',short='물리 작년 양자 PPT',s='phys',ic='📕'),
