@@ -2295,3 +2295,1005 @@
     kp:
     - '작고 반사율이 낮아 어두우며, 태양 방향에서 접근하면 관측이 어렵다. 방법: 전천 탐사 망원경·레이더로 궤도를 추적해 충돌 확률을 계산하고, 충돌체를 부딪쳐 궤도를 바꾸는 기술(예: DART) 개발.'
   ex: '원본: 2025 임용 지구과학 A-5 (한국교육과정평가원 중등교사 임용시험 1차). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_phys01
+  s: phys
+  u: 현대물리
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2013 MEET 자연과학Ⅱ 42 변형] 그림은 금속판 A, B에 단색광을 비출 때 방출되는 광전자의 최대 운동 에너지를 빛의 진동수에 따라 나타낸 것이다. A, B의 한계 진동수는 각각 $f_0$, $2f_0$이고, A의 일함수는 $\phi_0$이다. 진동수 $4f_0$인 빛을 비출 때 A에서 나오는 광전자의 최대 운동 에너지는 $E_0$이다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 플랑크 상수 $h$, 전자의 질량 $m$. 상대론적 효과는 무시한다.</div></details>
+  fig: xm_phys01
+  parts:
+  - p: 플랑크 상수를 $E_0$, $f_0$으로 나타내고, B의 일함수를 $\phi_0$으로 나타내시오.
+    pt: 6
+    sol: $E_0=h(4f_0-f_0)$ → <span class="fin">$h=\dfrac{E_0}{3f_0}$</span>. $\phi=hf_{한계}$ → B의 일함수 <span class="fin">$2\phi_0$</span>
+    t: essay
+    kp:
+    - $E_0=h(4f_0-f_0)$ → $h=\dfrac{E_0}{3f_0}$. $\phi=hf_{한계}$ → B의 일함수 $2\phi_0$
+  - p: B에 진동수 $5f_0$인 빛을 비출 때 광전자의 최대 운동 에너지를 $E_0$으로 나타내고, 두 직선의 기울기가 같은 이유를 쓰시오.
+    pt: 4
+    sol: $h(5f_0-2f_0)=3hf_0=$ <span class="fin">$E_0$</span>. 기울기는 금속과 무관한 <b>플랑크 상수 $h$</b>이기 때문($K_{max}=hf-\phi$).
+    t: essay
+    kp:
+    - $h(5f_0-2f_0)=3hf_0=$ $E_0$. 기울기는 금속과 무관한 플랑크 상수 $h$이기 때문($K_{max}=hf-\phi$).
+  ex: '원본: 2013 MEET 자연과학Ⅱ 42 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_phys02
+  s: phys
+  u: 현대물리
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2014 MEET 자연과학Ⅱ 42 변형] 보어의 수소 원자 모형에서 전자의 물질파가 궤도 둘레에 정상파를 이룬다. 궤도 (가)에는 물질파 파장 3개, 궤도 (나)에는 파장 5개가 들어간다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 플랑크 상수 $h$, 전자의 질량 $m$. 상대론적 효과는 무시한다.</div></details>
+  parts:
+  - p: 정상파 조건 $2\pi r=n\lambda$로부터 보어의 양자 조건(각운동량)을 유도하시오.
+    pt: 4
+    sol: '$\lambda=\dfrac{h}{mv}$를 대입: $2\pi r=\dfrac{nh}{mv}$ → <span class="fin">$mvr=\dfrac{nh}{2\pi}$</span>'
+    t: essay
+    kp:
+    - '$\lambda=\dfrac{h}{mv}$를 대입: $2\pi r=\dfrac{nh}{mv}$ → $mvr=\dfrac{nh}{2\pi}$'
+  - p: '(가)와 (나)의 각운동량, 궤도 반지름, 전자에 작용하는 전기력, 운동 에너지의 비 (가) : (나)를 각각 구하시오. ($r\propto n^2$)'
+    pt: 6
+    sol: 각운동량 $3:5$, 반지름 $9:25$, 전기력($\propto1/r^2$) $625:81$, 운동 에너지($\propto1/n^2$) $25:9$ → 전기력과 운동 에너지는 (가)가 크다.
+    t: essay
+    kp:
+    - 각운동량 $3:5$, 반지름 $9:25$, 전기력($\propto1/r^2$) $625:81$, 운동 에너지($\propto1/n^2$) $25:9$ → 전기력과 운동 에너지는 (가)가 크다.
+  ex: '원본: 2014 MEET 자연과학Ⅱ 42 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_phys03
+  s: phys
+  u: 현대물리
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2016 MEET 자연과학Ⅱ 41 변형] 그림은 입자 A와 B의 물질파 파장을 운동 에너지에 따라 나타낸 것이다. A의 운동 에너지가 $3E_0$일 때와 B의 운동 에너지가 $E_0$일 때 물질파 파장은 $\lambda_0$으로 같다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 플랑크 상수 $h$, 전자의 질량 $m$. 상대론적 효과는 무시한다.</div></details>
+  fig: xm_phys03
+  parts:
+  - p: 물질파 파장을 질량 $m$과 운동 에너지 $K$로 나타내고, B의 질량은 A의 몇 배인지 구하시오.
+    pt: 6
+    sol: $\lambda=\dfrac{h}{\sqrt{2mK}}$. $m_A(3E_0)=m_B E_0$ → <span class="fin">$m_B=3m_A$</span>
+    t: essay
+    kp:
+    - $\lambda=\dfrac{h}{\sqrt{2mK}}$. $m_A(3E_0)=m_B E_0$ → $m_B=3m_A$
+  - p: A와 B의 운동 에너지가 같을 때, 운동량의 크기와 속력은 B가 A의 몇 배인지 쓰시오.
+    pt: 4
+    sol: $p=\sqrt{2mK}$ → <span class="fin">$\sqrt3$배</span>, $v=\sqrt{2K/m}$ → <span class="fin">$\dfrac1{\sqrt3}$배</span>
+    t: essay
+    kp:
+    - $p=\sqrt{2mK}$ → $\sqrt3$배, $v=\sqrt{2K/m}$ → $\dfrac1{\sqrt3}$배
+  ex: '원본: 2016 MEET 자연과학Ⅱ 41 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_phys04
+  s: phys
+  u: 현대물리
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2016 MEET 자연과학Ⅱ 42 변형] 폭이 $2L$인 1차원 퍼텐셜 우물($|x|\le L$에서 $V=0$, $|x|\gt L$에서 $V=V_0$)에 바닥 상태의 전자가 있다. 전자의 에너지 $E$는 $V_0$보다 작다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 플랑크 상수 $h$, 전자의 질량 $m$. 상대론적 효과는 무시한다.</div></details>
+  parts:
+  - p: $|x|\gt L$에서 전자를 발견할 확률이 0인지 판단하고, 고전 역학의 예측과 비교하시오.
+    pt: 4
+    sol: <b>0이 아니다</b>. 파동 함수가 우물 밖에서 지수적으로 줄지만 0이 되지 않는다(터널 효과와 같은 원리). 고전 역학에서는 $E\lt V_0$인 영역에 들어갈 수 없어 확률 0.
+    t: essay
+    kp:
+    - 0이 아니다. 파동 함수가 우물 밖에서 지수적으로 줄지만 0이 되지 않는다(터널 효과와 같은 원리). 고전 역학에서는 $E\lt V_0$인 영역에 들어갈 수 없어 확률 0.
+  - p: $V_0$이 커지면 $|x|\le L$에서 전자를 발견할 확률은 어떻게 되는지 쓰고, $V_0$이 무한대일 때 바닥 상태 에너지가 0이 될 수 없는 이유를 불확정성 원리로 설명하시오.
+    pt: 6
+    sol: 우물 밖으로 스며드는 정도가 줄어 우물 안 확률이 <b>커진다</b>. 무한 우물에서도 전자는 폭 $2L$ 안에 갇혀 $\Delta x$가 유한하므로 $\Delta p\ne0$ → 운동 에너지가 0일 수 없다(영점 에너지 $E_1=\dfrac{h^2}{32mL^2}\gt0$).
+    t: essay
+    kp:
+    - 우물 밖으로 스며드는 정도가 줄어 우물 안 확률이 커진다. 무한 우물에서도 전자는 폭 $2L$ 안에 갇혀 $\Delta x$가 유한하므로 $\Delta p\ne0$ → 운동 에너지가 0일 수 없다(영점 에너지 $E_1=\dfrac{h^2}{32mL^2}\gt0$).
+  ex: '원본: 2016 MEET 자연과학Ⅱ 42 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem01
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2017 MDEET 자연과학Ⅱ 6 변형] nickel(Ni) 결정은 면심 입방 구조이고 단위 세포 모서리 길이는 $352\,\mathrm{pm}$이다. 단위 세포의 윗면, 아랫면과, 단위 세포를 높이 방향으로 이등분하는 단면을 생각한다. (Ni의 원자량 58.7)'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: 윗면과 이등분 단면에 놓인 원자 중심의 위치를 각각 설명하시오.
+    pt: 4
+    sol: '윗면(아랫면): 네 꼭짓점 + 면의 중심(5개). 이등분 단면: 옆면 4개의 중심이 단면 정사각형의 <b>네 변의 가운데</b>에 놓인다(4개).'
+    t: essay
+    kp:
+    - '윗면(아랫면): 네 꼭짓점 + 면의 중심(5개). 이등분 단면: 옆면 4개의 중심이 단면 정사각형의 네 변의 가운데에 놓인다(4개).'
+  - p: 배위수, 단위 세포당 원자 수, 가장 가까운 원자 사이의 거리(pm)를 구하시오.
+    pt: 4
+    sol: 배위수 <span class="fin">12</span>, <span class="fin">4개</span>, $\dfrac{\sqrt2}{2}\times352\approx$ <span class="fin">249 pm</span>
+    t: essay
+    kp:
+    - 배위수 12, 4개, $\dfrac{\sqrt2}{2}\times352\approx$ 249 pm
+  - p: Ni의 밀도(g/cm³)를 구하시오.
+    pt: 4
+    sol: $\dfrac{4\times58.7}{6.0\times10^{23}\times(3.52\times10^{-8})^3}\approx$ <span class="fin">$8.97\,\mathrm{g/cm^3}$</span>
+    t: num
+    a: 8.97
+    tol: 0.02
+    unit: g/cm³
+  ex: '원본: 2017 MDEET 자연과학Ⅱ 6 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem02
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2025 MDEET 5 · 2018 MDEET 7 · 2019 MDEET 6 변형] sodium chloride(NaCl, 암염형)와 calcium fluoride(CaF$_2$, 형석형) 결정의 입방 단위 세포를 비교한다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: 두 결정에서 음이온의 배열과, 양이온이 들어가는 구멍(또는 위치)을 각각 쓰시오.
+    pt: 4
+    sol: 'NaCl: Cl$^-$ 면심 입방, Na$^+$는 <b>팔면체 구멍 전부</b>. CaF$_2$: Ca$^{2+}$이 면심 입방이고 F$^-$이 사면체 구멍 전부를 채움 → 음이온(F$^-$)만 보면 <b>단순 입방</b> 배열이고 Ca$^{2+}$은 F$^-$ 정육면체의 중심(하나 건너)에 들어간다.'
+    t: essay
+    kp:
+    - 'NaCl: Cl$^-$ 면심 입방, Na$^+$는 팔면체 구멍 전부. CaF$_2$: Ca$^{2+}$이 면심 입방이고 F$^-$이 사면체 구멍 전부를 채움 → 음이온(F$^-$)만 보면 단순 입방 배열이고 Ca$^{2+}$은 F$^-$ 정육면체의 중심(하나 건너)에 들어간다.'
+  - p: 양이온의 배위수와 단위 세포당 양이온·음이온 수를 각각 비교하시오.
+    pt: 4
+    sol: 'NaCl: Na$^+$ 배위수 6, Na$^+$ 4개·Cl$^-$ 4개. CaF$_2$: Ca$^{2+}$ 배위수 8, Ca$^{2+}$ 4개·F$^-$ 8개.'
+    t: essay
+    kp:
+    - 'NaCl: Na$^+$ 배위수 6, Na$^+$ 4개·Cl$^-$ 4개. CaF$_2$: Ca$^{2+}$ 배위수 8, Ca$^{2+}$ 4개·F$^-$ 8개.'
+  - p: 섬아연석형 zinc sulfide(ZnS)에서 S$^{2-}$의 배위수를 쓰고, 이 구조에서 Zn$^{2+}$이 채우는 사면체 구멍의 비율을 쓰시오.
+    pt: 2
+    sol: S$^{2-}$ 배위수 <span class="fin">4</span>, 사면체 구멍의 <span class="fin">절반</span>
+    t: essay
+    kp:
+    - S$^{2-}$ 배위수 4, 사면체 구멍의 절반
+  ex: '원본: 2025 MDEET 5 · 2018 MDEET 7 · 2019 MDEET 6 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem03
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2020 MDEET 자연과학Ⅱ 7 변형] (가)는 입방 조밀 쌓임 구조를 갖는 금속 nickel의 단위 세포이고, (나)는 Ni$^{2+}$이 면심 입방 구조로 배열된 nickel(II) oxide(NiO)의 단위 세포이다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: (가)의 충전율(원자가 차지하는 부피 비율)을 $\pi$로 나타내시오.
+    pt: 4
+    sol: $4r=\sqrt2a$ → $\dfrac{4\cdot\frac43\pi r^3}{a^3}=$ <span class="fin">$\dfrac{\sqrt2\pi}{6}$</span> (약 74 %)
+    t: essay
+    kp:
+    - $4r=\sqrt2a$ → $\dfrac{4\cdot\frac43\pi r^3}{a^3}=$ $\dfrac{\sqrt2\pi}{6}$ (약 74 %)
+  - p: (나)에서 O$^{2-}$이 채우는 구멍의 종류를 쓰고, (가)의 Ni 배위수와 (나)의 O$^{2-}$ 배위수를 비교하시오.
+    pt: 4
+    sol: Ni$^{2+}$ 격자의 <b>팔면체 구멍 전부</b>(암염형). (가) Ni 배위수 12, (나) O$^{2-}$ 배위수 6 → (가)가 2배.
+    t: essay
+    kp:
+    - Ni$^{2+}$ 격자의 팔면체 구멍 전부(암염형). (가) Ni 배위수 12, (나) O$^{2-}$ 배위수 6 → (가)가 2배.
+  ex: '원본: 2020 MDEET 자연과학Ⅱ 7 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem04
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2021 MDEET 자연과학Ⅱ 5 변형] lithium bromide(LiBr)는 암염형 구조이고 단위 세포 모서리 길이는 $550\,\mathrm{pm}$이다. (Li 6.9, Br 80.0)'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: Br$^-$에서 가장 가까운 Br$^-$의 개수와 그 거리(pm)를 구하시오.
+    pt: 4
+    sol: <span class="fin">12개</span>, $\dfrac{550}{\sqrt2}\approx$ <span class="fin">389 pm</span>
+    t: essay
+    kp:
+    - 12개, $\dfrac{550}{\sqrt2}\approx$ 389 pm
+  - p: Li$^+$이 Br$^-$ 배열의 사면체 구멍과 팔면체 구멍 중 어디에 있는지 쓰고, LiBr의 밀도(g/cm³)를 구하시오.
+    pt: 6
+    sol: <b>팔면체 구멍</b>. $\dfrac{4\times86.9}{6.0\times10^{23}\times(5.50\times10^{-8})^3}\approx$ <span class="fin">$3.48\,\mathrm{g/cm^3}$</span>
+    t: essay
+    kp:
+    - 팔면체 구멍. $\dfrac{4\times86.9}{6.0\times10^{23}\times(5.50\times10^{-8})^3}\approx$ $3.48\,\mathrm{g/cm^3}$
+  ex: '원본: 2021 MDEET 자연과학Ⅱ 5 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem05
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2023 MDEET 자연과학Ⅱ 7 변형] iron(Fe)은 상온에서 체심 입방 구조(α-Fe, 모서리 $a_1$), 고온에서 면심 입방 구조(γ-Fe, 모서리 $a_2$)를 갖는다. 두 구조에서 가장 가까운 원자 사이의 거리는 같다고 가정한다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: 배위수는 γ-Fe가 α-Fe의 몇 배인지 쓰시오.
+    pt: 2
+    sol: $12/8=$ <span class="fin">1.5배</span>
+    t: num
+    a: 1.5
+    tol: 0.01
+    unit: 배
+  - p: $a_2/a_1$을 구하시오.
+    pt: 4
+    sol: '최단 거리: $\dfrac{\sqrt3}{2}a_1=\dfrac{\sqrt2}{2}a_2$ → $\dfrac{a_2}{a_1}=\sqrt{\dfrac32}\approx$ <span class="fin">1.22</span>'
+    t: num
+    a: 1.22
+    tol: 0.02
+  - p: 밀도는 γ-Fe가 α-Fe의 몇 배인지 구하고, 가열할 때 α → γ 전이에서 부피 변화를 쓰시오.
+    pt: 4
+    sol: $\dfrac{4/a_2^3}{2/a_1^3}=\dfrac{2}{(1.5)^{1.5}}\approx$ <span class="fin">1.09배</span> → γ-Fe가 더 조밀하므로 전이 때 <b>부피가 줄어든다</b>.
+    t: essay
+    kp:
+    - $\dfrac{4/a_2^3}{2/a_1^3}=\dfrac{2}{(1.5)^{1.5}}\approx$ 1.09배 → γ-Fe가 더 조밀하므로 전이 때 부피가 줄어든다.
+  ex: '원본: 2023 MDEET 자연과학Ⅱ 7 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem06
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2024 MDEET 자연과학Ⅱ 7 변형] 이온 결정 cesium chloride(CsCl), potassium chloride(KCl, 암염형), copper(I) chloride(CuCl, 섬아연석형)의 입방 단위 세포를 비교한다. CsCl 단위 세포는 꼭짓점에 Cl$^-$, 중심에 Cs$^+$이 있다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: CsCl의 단위 세포가 체심 입방 구조가 아닌 이유를 쓰고, 어떤 격자로 볼 수 있는지 쓰시오.
+    pt: 4
+    sol: 꼭짓점(Cl$^-$)과 중심(Cs$^+$)의 입자 종류가 달라 같은 격자점이 아니다 → Cl$^-$와 Cs$^+$이 각각 만든 <b>단순 입방 격자 두 개가 엇갈려 겹친</b> 구조.
+    t: essay
+    kp:
+    - 꼭짓점(Cl$^-$)과 중심(Cs$^+$)의 입자 종류가 달라 같은 격자점이 아니다 → Cl$^-$와 Cs$^+$이 각각 만든 단순 입방 격자 두 개가 엇갈려 겹친 구조.
+  - p: Cl$^-$의 배위수를 세 결정에서 각각 쓰고, 단위 세포당 Cl$^-$ 수는 CuCl이 CsCl의 몇 배인지 쓰시오.
+    pt: 6
+    sol: '배위수: CsCl 8, KCl 6, CuCl 4. Cl$^-$ 수: CuCl 4, CsCl 1 → <span class="fin">4배</span>'
+    t: essay
+    kp:
+    - '배위수: CsCl 8, KCl 6, CuCl 4. Cl$^-$ 수: CuCl 4, CsCl 1 → 4배'
+  ex: '원본: 2024 MDEET 자연과학Ⅱ 7 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem07
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2026 MDEET 자연과학Ⅱ 6 변형] 어떤 금속 M의 산화물 MO$_n$의 입방 단위 세포에서 M 이온은 모든 꼭짓점에, O$^{2-}$은 모든 모서리의 중심에 놓여 있다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: $n$을 구하는 과정을 쓰고, M 이온의 전하를 쓰시오.
+    pt: 4
+    sol: 'M: $8\times\frac18=1$, O: $12\times\frac14=3$ → <span class="fin">$n=3$</span>, M$^{6+}$'
+    t: essay
+    kp:
+    - 'M: $8\times\frac18=1$, O: $12\times\frac14=3$ → $n=3$, M$^{6+}$'
+  - p: O$^{2-}$의 배위수와 M 이온의 배위수, M 이온이 이루는 격자의 종류를 쓰시오.
+    pt: 4
+    sol: 'O$^{2-}$: <span class="fin">2</span>(양쪽 꼭짓점의 M), M: <span class="fin">6</span>, M은 <b>단순 입방</b> 격자'
+    t: essay
+    kp:
+    - 'O$^{2-}$: 2(양쪽 꼭짓점의 M), M: 6, M은 단순 입방 격자'
+  ex: '원본: 2026 MDEET 자연과학Ⅱ 6 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem08
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2027 MDEET 자연과학Ⅱ 4 변형] KCl은 대기압에서 암염형(모서리 $a_1$), 높은 압력에서 CsCl형(모서리 $a_2$) 구조를 갖는다. 두 구조에서 인접한 K$^+$과 Cl$^-$ 사이의 거리는 같다고 가정한다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: Cl$^-$의 배위수는 고압 구조가 대기압 구조의 몇 배인지, 단위 세포당 K$^+$ 수는 대기압 구조가 고압 구조의 몇 배인지 쓰시오.
+    pt: 4
+    sol: 배위수 $8/6=$ <span class="fin">$\frac43$배</span>, K$^+$ 수 $4/1=$ <span class="fin">4배</span>
+    t: essay
+    kp:
+    - 배위수 $8/6=$ $\frac43$배, K$^+$ 수 $4/1=$ 4배
+  - p: $a_1/a_2$를 구하고, 고압에서 이 전이가 일어나는 이유를 밀도로 설명하시오.
+    pt: 6
+    sol: $\dfrac{a_1}{2}=\dfrac{\sqrt3}{2}a_2$ → <span class="fin">$a_1/a_2=\sqrt3$</span>. 밀도비(고압/대기압) $=\dfrac{1/a_2^3}{4/a_1^3}=\dfrac{3\sqrt3}{4}\approx1.3$ → 고압 구조가 더 조밀(부피가 작음)하므로 압력이 높으면 안정하다.
+    t: essay
+    kp:
+    - $\dfrac{a_1}{2}=\dfrac{\sqrt3}{2}a_2$ → $a_1/a_2=\sqrt3$. 밀도비(고압/대기압) $=\dfrac{1/a_2^3}{4/a_1^3}=\dfrac{3\sqrt3}{4}\approx1.3$ → 고압 구조가 더 조밀(부피가 작음)하므로 압력이 높으면 안정하다.
+  ex: '원본: 2027 MDEET 자연과학Ⅱ 4 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem09
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2022 MDEET 5 · 2014 MEET 4 변형] 그림은 어떤 물질 X의 상그림이고, 상 Ⅰ~Ⅳ 중 기체상은 1개, 액체상은 1개, 고체상은 2개이다. 점 p는 상 Ⅱ와 상 Ⅲ의 경계선 위에 있다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  fig: xm_chem09
+  parts:
+  - p: 상 Ⅰ~Ⅳ가 각각 고체·액체·기체 중 무엇인지 쓰고, 삼중점의 개수를 쓰시오.
+    pt: 4
+    sol: Ⅰ 고체(고압), Ⅱ 고체, Ⅲ 액체, Ⅳ 기체. 삼중점 <span class="fin">2개</span>
+    t: essay
+    kp:
+    - Ⅰ 고체(고압), Ⅱ 고체, Ⅲ 액체, Ⅳ 기체. 삼중점 2개
+  - p: p에서 밀도는 상 Ⅱ와 상 Ⅲ 중 어느 쪽이 큰지 근거와 함께 쓰고, p에서 온도를 일정하게 하고 압력을 높이면 어떤 상변화가 일어나는지 쓰시오.
+    pt: 6
+    sol: Ⅱ–Ⅲ 경계선 기울기가 음수 → 클라페이롱 식 $\frac{dP}{dT}=\frac{\Delta H}{T\Delta V}$에서 녹을 때 $\Delta V<0$ → <b>액체(Ⅲ)의 밀도가 더 크다</b>. 압력을 높이면 밀도가 큰 쪽으로 → <b>상 Ⅱ가 상 Ⅲ(액체)으로 녹는다</b>.
+    t: essay
+    kp:
+    - Ⅱ–Ⅲ 경계선 기울기가 음수 → 클라페이롱 식 $\frac{dP}{dT}=\frac{\Delta H}{T\Delta V}$에서 녹을 때 $\Delta V<0$ → 액체(Ⅲ)의 밀도가 더 크다. 압력을 높이면 밀도가 큰 쪽으로 → 상 Ⅱ가 상 Ⅲ(액체)으로 녹는다.
+  ex: '원본: 2022 MDEET 5 · 2014 MEET 4 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem10
+  s: chem
+  u: 고체·상전이
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2026 MDEET 자연과학Ⅱ 7 변형] 피스톤이 달린 실린더에 $400\,\mathrm{K}$, $4\,\mathrm{L}$, $1.5\,\mathrm{atm}$의 A(g)가 들어 있다. A를 $300\,\mathrm{K}$로 냉각한 뒤 고정 장치를 옮겨 부피를 바꾸며 평형 (가)~(라)에 도달시켰다. 온도는 $300\,\mathrm{K}$로 일정하고, A는 기체 또는 액체로 존재한다(액체 부피 무시).'
+  tb: <div class="bogi"><div class="bt">&lt; 평형 &gt;</div><table class="dt"><tr><th></th><th>(가)</th><th>(나)</th><th>(다)</th><th>(라)</th></tr><tr><td>부피 (L)</td><td>3</td><td>6</td><td>10</td><td>12</td></tr><tr><td>A(g) 압력 (atm)</td><td>$a$</td><td>$a$</td><td>$x$</td><td>$\frac34a$</td></tr></table></div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: (가)와 (나)에서 압력이 같은 이유를 쓰고, $a$를 구하시오.
+    pt: 6
+    sol: '두 평형 모두 액체와 기체가 공존하므로 압력은 300 K의 <b>증기 압력</b>으로 같다. (라)는 압력이 증기 압력보다 낮으므로 모두 기체: $P=\dfrac{1.5\times4\times\frac{300}{400}}{12}=0.375=\frac34a$ → <span class="fin">$a=0.5$</span>'
+    t: essay
+    kp:
+    - '두 평형 모두 액체와 기체가 공존하므로 압력은 300 K의 증기 압력으로 같다. (라)는 압력이 증기 압력보다 낮으므로 모두 기체: $P=\dfrac{1.5\times4\times\frac{300}{400}}{12}=0.375=\frac34a$ → $a=0.5$'
+  - p: $x$를 구하고, A(l)의 몰수는 (가)가 (나)의 몇 배인지 구하시오.
+    pt: 4
+    sol: '전체 $nRT=4.5\,\mathrm{atm\cdot L}$. (다) 모두 기체면 $4.5/10=0.45\lt0.5$ → <span class="fin">$x=0.45$</span>. 액체(atm·L 단위): (가) $4.5-1.5=3.0$, (나) $4.5-3.0=1.5$ → <span class="fin">2배</span>'
+    t: essay
+    kp:
+    - '전체 $nRT=4.5\,\mathrm{atm\cdot L}$. (다) 모두 기체면 $4.5/10=0.45\lt0.5$ → $x=0.45$. 액체(atm·L 단위): (가) $4.5-1.5=3.0$, (나) $4.5-3.0=1.5$ → 2배'
+  ex: '원본: 2026 MDEET 자연과학Ⅱ 7 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem11
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2017 MDEET 자연과학Ⅱ 8 변형] 그림은 1기압에서 oxygen(O$_2$)의 표준 몰 엔트로피를 온도에 따라 나타낸 것이다. 엔트로피는 54 K에서 59 → 67, 90 K에서 94 → 170 J/(mol·K)로 수직으로 증가한다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  fig: xm_chem11
+  parts:
+  - p: O$_2$의 녹는점과 끓는점을 쓰고, 70 K에서 O$_2$의 상태를 쓰시오.
+    pt: 2
+    sol: 녹는점 54 K, 끓는점 90 K, 70 K에서 <b>액체</b>
+    t: essay
+    kp:
+    - 녹는점 54 K, 끓는점 90 K, 70 K에서 액체
+  - p: 몰 융해 엔탈피와 몰 기화 엔탈피를 구하시오.
+    pt: 4
+    sol: $\Delta H_{fus}=54\times(67-59)=$ <span class="fin">432 J/mol</span>, $\Delta H_{vap}=90\times(170-94)=$ <span class="fin">6840 J/mol</span>
+    t: essay
+    kp:
+    - $\Delta H_{fus}=54\times(67-59)=$ 432 J/mol, $\Delta H_{vap}=90\times(170-94)=$ 6840 J/mol
+  - p: a → b 과정의 자유 에너지 변화를 쓰고, 기화할 때의 엔트로피 증가가 융해보다 훨씬 큰 이유를 쓰시오.
+    pt: 4
+    sol: 끓는점에서의 평형 상변화 → <b>$\Delta G=0$</b>. 기체가 되면 분자가 차지하는 부피와 운동의 자유도가 액체보다 훨씬 커져 무질서도가 크게 증가한다.
+    t: essay
+    kp:
+    - 끓는점에서의 평형 상변화 → $\Delta G=0$. 기체가 되면 분자가 차지하는 부피와 운동의 자유도가 액체보다 훨씬 커져 무질서도가 크게 증가한다.
+  ex: '원본: 2017 MDEET 자연과학Ⅱ 8 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem12
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2017 MDEET 자연과학Ⅱ 9 변형] 25 °C에서 propane의 연소 반응은 C$_3$H$_8$(g) + 5O$_2$(g) → 3CO$_2$(g) + 4H$_2$O(l), $\Delta H^\circ=-2220\,\mathrm{kJ}$이다. CO$_2$(g)와 H$_2$O(l)의 표준 생성 엔탈피는 각각 $-394$, $-286\,\mathrm{kJ/mol}$이다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: C$_3$H$_8$(g)의 표준 생성 엔탈피를 구하시오.
+    pt: 4
+    sol: $-2220=3(-394)+4(-286)-\Delta H_f$ → <span class="fin">$\Delta H_f=-106\,\mathrm{kJ/mol}$</span>
+    t: num
+    a: -106
+    tol: 0.01
+    unit: kJ/mol
+  - p: 이 반응의 엔트로피 변화 부호를 쓰고, 표준 반응 내부 에너지 변화 $\Delta E^\circ$를 구하시오.
+    pt: 6
+    sol: 기체 몰수 6 → 3으로 감소 → <b>$\Delta S\lt0$</b>. $\Delta E=\Delta H-\Delta n_gRT=-2220+3\times8.3\times298\times10^{-3}\approx$ <span class="fin">$-2212.6\,\mathrm{kJ}$</span> ($\Delta E\gt\Delta H$)
+    t: essay
+    kp:
+    - 기체 몰수 6 → 3으로 감소 → $\Delta S\lt0$. $\Delta E=\Delta H-\Delta n_gRT=-2220+3\times8.3\times298\times10^{-3}\approx$ $-2212.6\,\mathrm{kJ}$ ($\Delta E\gt\Delta H$)
+  ex: '원본: 2017 MDEET 자연과학Ⅱ 9 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem13
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2017 MDEET 자연과학Ⅱ 10 변형] calcium carbonate의 분해 반응 CaCO$_3$(s) ⇌ CaO(s) + CO$_2$(g)의 $\Delta H^\circ=178\,\mathrm{kJ}$, $\Delta S^\circ=161\,\mathrm{J/K}$이고 온도에 무관하다. 온도 $T$에서 $K_p=1$이다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: $T$를 구하고, 이때 평형에서 CO$_2$의 압력을 쓰시오.
+    pt: 4
+    sol: $K_p=1$ → $\Delta G^\circ=0$ → $T=\dfrac{178000}{161}\approx$ <span class="fin">1106 K</span>, $P_{CO_2}=K_p=$ <span class="fin">1 atm</span>
+    t: essay
+    kp:
+    - $K_p=1$ → $\Delta G^\circ=0$ → $T=\dfrac{178000}{161}\approx$ 1106 K, $P_{CO_2}=K_p=$ 1 atm
+  - p: 평형 상태에서 CaO(s)를 더 넣을 때와 부피를 절반으로 줄일 때 CO$_2$의 평형 압력이 각각 어떻게 되는지 쓰시오(CaCO$_3$은 남아 있다).
+    pt: 4
+    sol: 두 경우 모두 <b>변하지 않는다</b>. $K_p=P_{CO_2}$로 고체의 양·부피와 무관하므로, 부피를 줄이면 CO$_2$ 일부가 CaO와 반응해 원래 압력으로 돌아온다.
+    t: essay
+    kp:
+    - 두 경우 모두 변하지 않는다. $K_p=P_{CO_2}$로 고체의 양·부피와 무관하므로, 부피를 줄이면 CO$_2$ 일부가 CaO와 반응해 원래 압력으로 돌아온다.
+  ex: '원본: 2017 MDEET 자연과학Ⅱ 10 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem14
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2019 MDEET 자연과학Ⅱ 11 변형] 298 K에서 (가) PCl$_5$(g) ⇌ PCl$_3$(g) + Cl$_2$(g)의 $\Delta H^\circ=88$, $\Delta G^\circ=38\,\mathrm{kJ}$이고, (나) P(s, 백린) + $\frac52$Cl$_2$(g) ⇌ PCl$_5$(g)의 $\Delta H^\circ=-375$, $\Delta G^\circ=-305\,\mathrm{kJ}$이다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: PCl$_3$(g)의 표준 생성 자유 에너지를 구하시오.
+    pt: 4
+    sol: '(가)+(나): $-305+38=$ <span class="fin">$-267\,\mathrm{kJ/mol}$</span>'
+    t: num
+    a: -267
+    tol: 0.01
+    unit: kJ/mol
+  - p: 반응 (가)의 $\Delta S^\circ$와 $\Delta E^\circ$를 구하시오.
+    pt: 6
+    sol: $\Delta S^\circ=\dfrac{88000-38000}{298}\approx$ <span class="fin">168 J/K</span>. $\Delta n_g=1$ → $\Delta E^\circ=88-8.3\times298\times10^{-3}\approx$ <span class="fin">85.5 kJ</span>
+    t: essay
+    kp:
+    - $\Delta S^\circ=\dfrac{88000-38000}{298}\approx$ 168 J/K. $\Delta n_g=1$ → $\Delta E^\circ=88-8.3\times298\times10^{-3}\approx$ 85.5 kJ
+  ex: '원본: 2019 MDEET 자연과학Ⅱ 11 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem15
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2020 MDEET 자연과학Ⅱ 9 변형] 300 K에서 CO(g) + $\frac12$O$_2$(g) → CO$_2$(g) 반응에 대해 CO(g)와 CO$_2$(g)의 표준 생성 엔탈피는 각각 $-110$, $-394\,\mathrm{kJ/mol}$, 표준 생성 자유 에너지는 각각 $-137$, $-394\,\mathrm{kJ/mol}$이다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: $\Delta H^\circ$, $\Delta G^\circ$, $\Delta S^\circ$를 구하시오.
+    pt: 6
+    sol: $\Delta H^\circ=$ <span class="fin">$-284$ kJ</span>, $\Delta G^\circ=$ <span class="fin">$-257$ kJ</span>, $\Delta S^\circ=\dfrac{-284+257}{300}\times1000=$ <span class="fin">$-90$ J/K</span>
+    t: essay
+    kp:
+    - $\Delta H^\circ=$ $-284$ kJ, $\Delta G^\circ=$ $-257$ kJ, $\Delta S^\circ=\dfrac{-284+257}{300}\times1000=$ $-90$ J/K
+  - p: $\Delta E^\circ$와 $\Delta H^\circ$의 크기를 비교하시오.
+    pt: 2
+    sol: $\Delta n_g=-\frac12$ → $\Delta E=\Delta H+\frac12RT\approx-282.8\,\mathrm{kJ}$ → $\Delta E^\circ\gt\Delta H^\circ$ (덜 음수)
+    t: essay
+    kp:
+    - $\Delta n_g=-\frac12$ → $\Delta E=\Delta H+\frac12RT\approx-282.8\,\mathrm{kJ}$ → $\Delta E^\circ\gt\Delta H^\circ$ (덜 음수)
+  ex: '원본: 2020 MDEET 자연과학Ⅱ 9 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem16
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2021 MDEET 자연과학Ⅱ 13 변형] 298 K에서 표준 생성 자유 에너지(kJ/mol)와 표준 몰 엔트로피(J/K·mol)는 C$_6$H$_6$(l) 125, 173 / O$_2$(g) 0, 205 / CO$_2$(g) $-394$, 214 / H$_2$O(l) $-237$, 70이다. 액체 benzene 1 mol이 완전 연소한다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: $\Delta G^\circ$와 $\Delta S^\circ$를 구하시오.
+    pt: 6
+    sol: C$_6$H$_6$ + 7.5O$_2$ → 6CO$_2$ + 3H$_2$O(l). $\Delta G^\circ=6(-394)+3(-237)-125=$ <span class="fin">$-3200$ kJ</span>. $\Delta S^\circ=6(214)+3(70)-173-7.5(205)=$ <span class="fin">$-216.5$ J/K</span>
+    t: essay
+    kp:
+    - C$_6$H$_6$ + 7.5O$_2$ → 6CO$_2$ + 3H$_2$O(l). $\Delta G^\circ=6(-394)+3(-237)-125=$ $-3200$ kJ. $\Delta S^\circ=6(214)+3(70)-173-7.5(205)=$ $-216.5$ J/K
+  - p: $\Delta H^\circ$를 구하고, $\Delta E^\circ-\Delta H^\circ$를 구하시오.
+    pt: 4
+    sol: $\Delta H^\circ=\Delta G^\circ+T\Delta S^\circ=-3200+298(-0.2165)\approx$ <span class="fin">$-3265$ kJ</span>. $\Delta n_g=-1.5$ → $\Delta E-\Delta H=1.5RT\approx$ <span class="fin">+3.7 kJ</span>
+    t: essay
+    kp:
+    - $\Delta H^\circ=\Delta G^\circ+T\Delta S^\circ=-3200+298(-0.2165)\approx$ $-3265$ kJ. $\Delta n_g=-1.5$ → $\Delta E-\Delta H=1.5RT\approx$ +3.7 kJ
+  ex: '원본: 2021 MDEET 자연과학Ⅱ 13 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem17
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2024 MDEET 자연과학Ⅱ 11 변형] 반응 A(g) + B(l) ⇌ 2C(g)의 $\Delta H^\circ=30\,\mathrm{kJ}$, $\Delta S^\circ=100\,\mathrm{J/K}$이고 온도에 무관하다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: $\Delta H^\circ$와 $T\Delta S^\circ$를 온도에 따라 나타낸 두 직선이 만나는 온도를 구하고, 그 온도의 의미를 쓰시오.
+    pt: 4
+    sol: $T=\dfrac{30000}{100}=$ <span class="fin">300 K</span>. $\Delta G^\circ=0$, $K=1$이 되는 온도(이보다 높으면 정반응이 자발적).
+    t: essay
+    kp:
+    - $T=\dfrac{30000}{100}=$ 300 K. $\Delta G^\circ=0$, $K=1$이 되는 온도(이보다 높으면 정반응이 자발적).
+  - p: 280 K와 320 K에서 $\Delta G^\circ$를 구하고, 온도가 높아질 때 평형 상수의 변화를 쓰시오.
+    pt: 4
+    sol: '280 K: $+2\,\mathrm{kJ}$, 320 K: $-2\,\mathrm{kJ}$. 흡열 반응이므로 온도가 높을수록 <b>$K$ 증가</b>.'
+    t: essay
+    kp:
+    - '280 K: $+2\,\mathrm{kJ}$, 320 K: $-2\,\mathrm{kJ}$. 흡열 반응이므로 온도가 높을수록 $K$ 증가.'
+  - p: 300 K에서 C(g) 2 mol이 생성될 때 $\Delta E^\circ$를 구하시오.
+    pt: 2
+    sol: $\Delta n_g=2-1=1$ → $30-8.3\times300\times10^{-3}\approx$ <span class="fin">27.5 kJ</span>
+    t: num
+    a: 27.5
+    tol: 0.02
+    unit: kJ
+  ex: '원본: 2024 MDEET 자연과학Ⅱ 11 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem18
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2026 MDEET 자연과학Ⅱ 12 변형] 피스톤이 달린 실린더에서 1 mol의 H$_2$O(l)이 1 atm, 100 °C에서 가역적으로 H$_2$O(g)로 변하였다. 100 °C에서 물의 표준 기화 엔탈피는 $40.7\,\mathrm{kJ/mol}$이다. (액체 부피 무시)'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: 이 과정의 $\Delta G$와 $\Delta S$를 구하시오.
+    pt: 4
+    sol: 평형 상변화 → <span class="fin">$\Delta G=0$</span>, $\Delta S=\dfrac{40700}{373}\approx$ <span class="fin">109 J/K</span>
+    t: essay
+    kp:
+    - 평형 상변화 → $\Delta G=0$, $\Delta S=\dfrac{40700}{373}\approx$ 109 J/K
+  - p: 계가 한 일과 내부 에너지 변화를 구하시오.
+    pt: 4
+    sol: $w=P\Delta V=RT=8.3\times373\approx$ <span class="fin">3.10 kJ</span>, $\Delta E=40.7-3.10=$ <span class="fin">37.6 kJ</span>
+    t: essay
+    kp:
+    - $w=P\Delta V=RT=8.3\times373\approx$ 3.10 kJ, $\Delta E=40.7-3.10=$ 37.6 kJ
+  ex: '원본: 2026 MDEET 자연과학Ⅱ 12 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem19
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2019 MDEET 자연과학Ⅱ 10 변형] 298 K, 표준 상태에서 hydrogen peroxide의 분해와 관련된 반응 엔탈피는 다음과 같다. (b) 2H$_2$O$_2$(g) → 2H$_2$O(g) + O$_2$(g), $\Delta H^\circ=-206\,\mathrm{kJ}$ / (c) 2H$_2$O$_2$(l) → 2H$_2$O(g) + O$_2$(g), $\Delta H^\circ=-100\,\mathrm{kJ}$'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: H$_2$O$_2$의 몰 기화 엔탈피를 헤스 법칙으로 구하시오.
+    pt: 4
+    sol: '(c) − (b): 2H$_2$O$_2$(l) → 2H$_2$O$_2$(g), $\Delta H=+106$ → <span class="fin">53 kJ/mol</span>'
+    t: num
+    a: 53
+    tol: 0.01
+    unit: kJ/mol
+  - p: 과정 (b)에서 계의 엔트로피 변화 부호를 쓰고 이유를 쓰시오.
+    pt: 2
+    sol: 기체 2 mol → 3 mol로 증가 → <b>$\Delta S\gt0$</b>
+    t: essay
+    kp:
+    - 기체 2 mol → 3 mol로 증가 → $\Delta S\gt0$
+  ex: '원본: 2019 MDEET 자연과학Ⅱ 10 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_chem20
+  s: chem
+  u: 열화학·열역학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2020 MDEET 자연과학Ⅱ 8 변형] 298 K에서 황의 동소체 S(g), S$_2$(g), S$_8$(g)의 표준 생성 엔탈피는 각각 278, 128, 102 kJ/mol이다. 또 4S$_2$(g) + 8O$_2$(g) → 8SO$_2$(g)의 $\Delta H^\circ=-2896\,\mathrm{kJ}$이다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 이 과목은 계산기를 사용할 수 있다. ◦ $R=8.3\,\mathrm{J\,mol^{-1}K^{-1}}$, $N_A=6.0\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{pm}=10^{-10}\,\mathrm{cm}$. 기체는 이상 기체로 거동한다.</div></details>
+  parts:
+  - p: S$_2$(g)의 S=S 결합 에너지를 구하시오.
+    pt: 4
+    sol: 'S$_2$ → 2S: $2(278)-128=$ <span class="fin">428 kJ/mol</span>'
+    t: num
+    a: 428
+    tol: 0.01
+    unit: kJ/mol
+  - p: SO$_2$(g)의 표준 생성 엔탈피와, S$_8$(g) + 8O$_2$(g) → 8SO$_2$(g)의 $\Delta H^\circ$를 구하시오.
+    pt: 6
+    sol: $8\Delta H_f(\mathrm{SO_2})=-2896+4(128)$ → <span class="fin">$-298$ kJ/mol</span>. $8(-298)-102=$ <span class="fin">$-2486$ kJ</span>
+    t: essay
+    kp:
+    - $8\Delta H_f(\mathrm{SO_2})=-2896+4(128)$ → $-298$ kJ/mol. $8(-298)-102=$ $-2486$ kJ
+  ex: '원본: 2020 MDEET 자연과학Ⅱ 8 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio01
+  s: bio
+  u: 블롯 분석
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2019 MDEET 자연과학Ⅰ 13 변형] 성장 인자가 수용체 티로신 키네이스(RTK)에 결합하면 RTK → Ras → Raf → MEK → MAPK 순서로 신호가 전달된다. 단백질 Z는 이 경로의 단백질 하나에 작용한다. 야생형 세포와 Z 기능 결핍 세포에 성장 인자를 처리하고 시간별로 전체 MAPK와 인산화된 MAPK(p-MAPK)를 웨스턴 블롯으로 조사하였다.'
+  tb: '<div class="bogi"><div class="bt">&lt; 결과 (밴드 굵기: − 없음, + 약함, ++ 중간, +++ 강함) &gt;</div><table class="dt"><tr><th></th><th>0분</th><th>10분</th><th>20분</th><th>60분</th></tr><tr><td>야생형 p-MAPK</td><td>−</td><td>++</td><td>+++</td><td>+</td></tr><tr><td>Z 결핍 p-MAPK</td><td>−</td><td>++</td><td>+++</td><td>+++</td></tr><tr><td>전체 MAPK (두 세포)</td><td>+++</td><td>+++</td><td>+++</td><td>+++</td></tr></table></div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>'
+  parts:
+  - p: 전체 MAPK 밴드를 함께 확인하는 이유를 쓰시오.
+    pt: 2
+    sol: 전체 MAPK 양이 모든 시료에서 같음을 보여, p-MAPK 변화가 단백질 양 차이가 아니라 <b>인산화 정도의 차이</b>임을 확인하는 대조(로딩 대조)이다.
+    t: essay
+    kp:
+    - 전체 MAPK 양이 모든 시료에서 같음을 보여, p-MAPK 변화가 단백질 양 차이가 아니라 인산화 정도의 차이임을 확인하는 대조(로딩 대조)이다.
+  - p: Z의 기능을 추론하고, Ras와 관련지어 가능한 작용 방식을 1가지 쓰시오.
+    pt: 6
+    sol: 'Z가 없으면 60분에도 신호가 꺼지지 않음 → Z는 <b>신호를 끄는(억제하는) 단백질</b>. 예: Ras의 GTPase 활성을 높여 Ras-GTP를 Ras-GDP로 빨리 바꾼다(GAP 역할).'
+    t: essay
+    kp:
+    - 'Z가 없으면 60분에도 신호가 꺼지지 않음 → Z는 신호를 끄는(억제하는) 단백질. 예: Ras의 GTPase 활성을 높여 Ras-GTP를 Ras-GDP로 빨리 바꾼다(GAP 역할).'
+  ex: '원본: 2019 MDEET 자연과학Ⅰ 13 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio02
+  s: bio
+  u: 블롯 분석
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2023 MDEET 자연과학Ⅰ 24 변형] 물질 X와 Y가 유전자 G의 발현에 미치는 영향을 알아보았다. 배양 접시 ㉠~㉤에 같은 수의 세포를 넣고 표와 같이 처리한 뒤, G mRNA는 RT-PCR로, G 단백질은 웨스턴 블롯으로 조사하였다. MG132는 프로테아좀 억제제이다. 대조 유전자(β-actin)는 모든 접시에서 같았다.'
+  tb: <div class="bogi"><div class="bt">&lt; 처리와 결과 &gt;</div><table class="dt"><tr><th></th><th>㉠</th><th>㉡</th><th>㉢</th><th>㉣</th><th>㉤</th></tr><tr><td>X</td><td>−</td><td>+</td><td>+</td><td>+</td><td>−</td></tr><tr><td>Y</td><td>−</td><td>−</td><td>+</td><td>+</td><td>+</td></tr><tr><td>MG132</td><td>−</td><td>−</td><td>−</td><td>+</td><td>−</td></tr><tr><td>G mRNA</td><td>+</td><td>+++</td><td>+++</td><td>+++</td><td>?</td></tr><tr><td>G 단백질</td><td>+</td><td>+++</td><td>+</td><td>+++</td><td>?</td></tr></table></div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: X와 Y가 각각 G 발현의 어느 단계에 영향을 주는지 근거와 함께 쓰시오.
+    pt: 6
+    sol: 'X: ㉠→㉡에서 mRNA가 늘었다 → <b>전사(mRNA 양)를 증가</b>시킨다.<br>Y: ㉡→㉢에서 mRNA는 같은데 단백질만 줄고, 프로테아좀 억제(㉣)로 회복 → <b>G 단백질의 프로테아좀 분해를 촉진</b>한다.'
+    t: essay
+    kp:
+    - 'X: ㉠→㉡에서 mRNA가 늘었다 → 전사(mRNA 양)를 증가시킨다.'
+    - 'Y: ㉡→㉢에서 mRNA는 같은데 단백질만 줄고, 프로테아좀 억제(㉣)로 회복 → G 단백질의 프로테아좀 분해를 촉진한다.'
+  - p: ㉤의 G mRNA와 G 단백질 양을 ㉠과 비교하여 예상하시오.
+    pt: 2
+    sol: 'mRNA: ㉠과 같음(+), 단백질: ㉠보다 적음(Y가 분해 촉진).'
+    t: essay
+    kp:
+    - 'mRNA: ㉠과 같음(+), 단백질: ㉠보다 적음(Y가 분해 촉진).'
+  ex: '원본: 2023 MDEET 자연과학Ⅰ 24 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio03
+  s: bio
+  u: 블롯 분석
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2015 MEET 자연과학Ⅰ 38 변형] 조직 A와 B에서 RNA를 추출해 역전사로 cDNA를 만든 뒤, 유전자 X와 대조 유전자(액틴)에 대해 SYBR 그린을 이용한 실시간 PCR을 하였다. 표는 형광이 기하급수적으로 증가하기 시작하는 반응 횟수($C_t$)이다. (증폭 효율은 100 %)'
+  tb: <div class="bogi"><div class="bt">&lt; $C_t$ &gt;</div><table class="dt"><tr><th>시료</th><th>A-X</th><th>A-액틴</th><th>B-X</th><th>B-액틴</th></tr><tr><td>$C_t$</td><td>26.0</td><td>10.0</td><td>22.0</td><td>11.0</td></tr></table></div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: 실험에 넣은 전체 cDNA 양은 A와 B 중 어느 쪽이 많은지 쓰시오.
+    pt: 2
+    sol: 액틴의 $C_t$가 작은 <b>A</b>가 더 많다.
+    t: essay
+    kp:
+    - 액틴의 $C_t$가 작은 A가 더 많다.
+  - p: 액틴으로 보정했을 때 B의 X 발현량은 A의 몇 배인지 구하시오.
+    pt: 6
+    sol: '$\Delta C_t$: A $=26-10=16$, B $=22-11=11$ → 차이 5 → $2^5=$ <span class="fin">32배</span>'
+    t: num
+    a: 32
+    tol: 0.01
+    unit: 배
+  - p: SYBR 그린의 형광이 PCR 산물의 양에 비례하는 이유를 쓰시오.
+    pt: 2
+    sol: SYBR 그린은 이중 가닥 DNA에 끼어들어 결합할 때 형광을 내므로, 증폭된 이중 가닥 DNA가 많을수록 형광이 세다.
+    t: essay
+    kp:
+    - SYBR 그린은 이중 가닥 DNA에 끼어들어 결합할 때 형광을 내므로, 증폭된 이중 가닥 DNA가 많을수록 형광이 세다.
+  ex: '원본: 2015 MEET 자연과학Ⅰ 38 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio04
+  s: bio
+  u: 블롯 분석
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2015 MEET 자연과학Ⅰ 37 변형] 식물에서 전사 인자 N은 노화를 촉진하고, 마이크로 RNA miR-K는 N의 mRNA에 상보적으로 결합한다. N의 염기 서열에서 miR-K 결합 부위의 염기를 아미노산은 바뀌지 않도록(침묵 돌연변이) 여러 개 바꾼 N-m을 만들었다. 노던 블롯으로 발아 후 날짜별 N과 miR-K의 양을 조사했더니, 야생형에서는 miR-K가 줄어드는 시기에 N mRNA가 늘었고, N-m 식물에서는 miR-K 양과 관계없이 N-m mRNA가 처음부터 많았다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: 노던 블롯으로 분석하는 대상과, 탐침이 결합하는 원리를 쓰시오.
+    pt: 2
+    sol: <b>RNA</b>(mRNA, miRNA). 막에 옮긴 RNA에 표지된 상보적 탐침이 염기 상보 결합(혼성화)한다.
+    t: essay
+    kp:
+    - RNA(mRNA, miRNA). 막에 옮긴 RNA에 표지된 상보적 탐침이 염기 상보 결합(혼성화)한다.
+  - p: N-m에서 mRNA가 처음부터 많은 이유를 쓰고, N-m 식물의 노화 시기를 야생형과 비교하시오.
+    pt: 6
+    sol: 바뀐 염기 때문에 miR-K가 N-m mRNA에 결합하지 못해 <b>분해되지 않는다</b> → N 단백질이 일찍 많아져 <b>노화가 촉진(빨라짐)</b>된다. 아미노산 서열은 같으므로 N 단백질 기능은 정상이다.
+    t: essay
+    kp:
+    - 바뀐 염기 때문에 miR-K가 N-m mRNA에 결합하지 못해 분해되지 않는다 → N 단백질이 일찍 많아져 노화가 촉진(빨라짐)된다. 아미노산 서열은 같으므로 N 단백질 기능은 정상이다.
+  ex: '원본: 2015 MEET 자연과학Ⅰ 37 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio05
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2015 MEET 자연과학Ⅰ 5 · 2021 MDEET 9 변형] 원핵생물의 전사는 전사 조절자(활성 인자 또는 억제 인자)와 그 활성을 바꾸는 작용자(유도자 또는 보조억제자)에 의해 조절된다. 표는 서로 다른 조절 기작 Ⅰ~Ⅳ에서 조절자와 작용자의 유무에 따른 유전자 발현량(상댓값)이다.'
+  tb: <div class="bogi"><div class="bt">&lt; 결과 &gt;</div><table class="dt"><tr><th>조절자</th><th>작용자</th><th>Ⅰ</th><th>Ⅱ</th><th>Ⅲ</th><th>Ⅳ</th></tr><tr><td>없음</td><td>없음</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td>있음</td><td>없음</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>있음</td><td>있음</td><td>1</td><td>0</td><td>1</td><td>0</td></tr></table></div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: Ⅰ~Ⅳ를 음성 조절과 양성 조절로 구분하고, 각 기작에서 작용자의 역할(조절자를 활성화/불활성화)을 쓰시오.
+    pt: 6
+    sol: 'Ⅰ: 조절자만 있으면 발현 ↓ → <b>음성</b>, 작용자가 억제 인자를 <b>불활성화</b>(유도자).<br>Ⅱ: 조절자+작용자일 때 발현 ↓ → <b>음성</b>, 작용자가 억제 인자를 <b>활성화</b>(보조억제자).<br>Ⅲ: 조절자 없으면 발현 0 → <b>양성</b>, 작용자가 활성 인자를 <b>활성화</b>.<br>Ⅳ: <b>양성</b>, 작용자가 활성 인자를 <b>불활성화</b>.'
+    t: essay
+    kp:
+    - 'Ⅰ: 조절자만 있으면 발현 ↓ → 음성, 작용자가 억제 인자를 불활성화(유도자).'
+    - 'Ⅱ: 조절자+작용자일 때 발현 ↓ → 음성, 작용자가 억제 인자를 활성화(보조억제자).'
+    - 'Ⅲ: 조절자 없으면 발현 0 → 양성, 작용자가 활성 인자를 활성화.'
+    - 'Ⅳ: 양성, 작용자가 활성 인자를 불활성화.'
+  - p: 젖당 오페론과 트립토판 오페론의 조절에 쓰이는 기작을 Ⅰ~Ⅳ에서 각각 모두 고르고, 이때 작용자에 해당하는 물질을 쓰시오.
+    pt: 4
+    sol: '젖당 오페론: <b>Ⅰ</b>(억제 단백질 + 알로락토스), <b>Ⅲ</b>(CAP + cAMP). 트립토판 오페론: <b>Ⅱ</b>(trp 억제 단백질 + 트립토판).'
+    t: essay
+    kp:
+    - '젖당 오페론: Ⅰ(억제 단백질 + 알로락토스), Ⅲ(CAP + cAMP). 트립토판 오페론: Ⅱ(trp 억제 단백질 + 트립토판).'
+  ex: '원본: 2015 MEET 자연과학Ⅰ 5 · 2021 MDEET 9 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio06
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2016 MEET 자연과학Ⅰ 15 변형] 아데닐산 고리화 효소(AC)는 ATP로부터 cAMP를 만든다. 돌연변이 효소 AC$^c$는 포도당과 관계없이 항상 활성을 가진다. AC$^c$ 유전자를 야생형, $\Delta crp$(CAP 유전자 결손), $\Delta lacI$(억제 단백질 유전자 결손) 대장균에 각각 넣고, 포도당 또는 젖당만 탄소원으로 넣은 배지에서 β-갈락토시데이스 발현 여부를 조사하였다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: 세 균주를 포도당 배지와 젖당 배지에서 키울 때 β-갈락토시데이스의 발현 여부(+/−)를 각각 쓰시오.
+    pt: 6
+    sol: '야생형: 포도당 <b>−</b>(유도자 없음), 젖당 <b>+</b><br>$\Delta crp$: 포도당 <b>−</b>, 젖당 <b>−</b>(CAP가 없어 양성 조절 불가)<br>$\Delta lacI$: 포도당 <b>+</b>, 젖당 <b>+</b> (억제 해제 + AC$^c$ 덕분에 cAMP 충분)'
+    t: essay
+    kp:
+    - '야생형: 포도당 −(유도자 없음), 젖당 +'
+    - '$\Delta crp$: 포도당 −, 젖당 −(CAP가 없어 양성 조절 불가)'
+    - '$\Delta lacI$: 포도당 +, 젖당 + (억제 해제 + AC$^c$ 덕분에 cAMP 충분)'
+  - p: AC$^c$를 넣지 않은 $\Delta lacI$ 균주를 포도당 배지에서 키우면 결과가 어떻게 달라질 수 있는지 쓰시오.
+    pt: 4
+    sol: 포도당이 있으면 cAMP가 적어 CAP–cAMP가 프로모터에 결합하지 못하므로 억제가 해제되어 있어도 <b>발현이 매우 약해진다</b>(이화산물 억제).
+    t: essay
+    kp:
+    - 포도당이 있으면 cAMP가 적어 CAP–cAMP가 프로모터에 결합하지 못하므로 억제가 해제되어 있어도 발현이 매우 약해진다(이화산물 억제).
+  ex: '원본: 2016 MEET 자연과학Ⅰ 15 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio07
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2017 MDEET 자연과학Ⅰ 14 변형] 대장균 trp 오페론은 R(억제 단백질 유전자)–P–O–L(선도 서열)–E–D–C–B–A로 구성된다. 트립토판 유무에 따른 TrpB 발현량을 조사했다. 억제 효과는 (트립토판 없음 발현량)÷(트립토판 있음 발현량)이다. ($trpR^-$: 억제 단백질 기능 상실, $trpL^-$: 전사 감쇠 기능 상실)'
+  tb: <div class="bogi"><div class="bt">&lt; 결과 &gt;</div><table class="dt"><tr><th>균주</th><th>trp 있음</th><th>trp 없음</th><th>억제 효과(배)</th></tr><tr><td>야생형</td><td>2</td><td>240</td><td>120</td></tr><tr><td>$trpR^-$</td><td>60</td><td>240</td><td>?</td></tr><tr><td>$trpL^-$</td><td>㉠</td><td>240</td><td>30</td></tr><tr><td>$trpR^-$, $trpL^-$</td><td>240</td><td>240</td><td>1</td></tr></table></div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: $trpR^-$의 억제 효과와 ㉠을 구하시오.
+    pt: 4
+    sol: '$trpR^-$: $240/60=$ <span class="fin">4배</span>(감쇠만 작동), ㉠ $=240/30=$ <span class="fin">8</span>(억제 단백질만 작동)'
+    t: essay
+    kp:
+    - '$trpR^-$: $240/60=$ 4배(감쇠만 작동), ㉠ $=240/30=$ 8(억제 단백질만 작동)'
+  - p: 야생형의 억제 효과 120배를 두 조절 기작으로 설명하고, 억제 단백질이 결합하지 못하는 $trpO$ 돌연변이체의 억제 효과를 예상하시오.
+    pt: 6
+    sol: 억제 단백질에 의한 전사 개시 억제 30배 × 전사 감쇠 4배 $=120$배. $trpO$ 돌연변이체는 억제 단백질이 작동자에 결합하지 못하므로 감쇠만 남아 <span class="fin">4배</span>.
+    t: essay
+    kp:
+    - 억제 단백질에 의한 전사 개시 억제 30배 × 전사 감쇠 4배 $=120$배. $trpO$ 돌연변이체는 억제 단백질이 작동자에 결합하지 못하므로 감쇠만 남아 4배.
+  ex: '원본: 2017 MDEET 자연과학Ⅰ 14 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio08
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2019 MDEET 자연과학Ⅰ 25 변형] trp 오페론의 전사 감쇠는 mRNA 5′ 선도 부위의 영역 1~4가 만드는 2차 구조로 조절된다. 영역 1에는 선도 펩타이드 암호 서열(Trp 코돈 2개 포함)과 종결 코돈이 있다. 영역 3–4가 짝지으면 종결자(헤어핀 + 연속된 U)가 되어 전사가 멈추고, 영역 2–3이 짝지으면 전사가 계속된다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: 트립토판이 풍부할 때와 부족할 때 리보솜의 위치와 형성되는 2차 구조를 각각 설명하시오.
+    pt: 6
+    sol: '풍부: Trp-tRNA가 많아 리보솜이 영역 1을 빨리 지나 영역 2를 덮음 → <b>3–4 종결자</b> 형성 → 전사 감쇠.<br>부족: 리보솜이 영역 1의 Trp 코돈에서 멈춤 → <b>2–3</b> 짝 형성(3–4 형성 불가) → 전사 계속.'
+    t: essay
+    kp:
+    - '풍부: Trp-tRNA가 많아 리보솜이 영역 1을 빨리 지나 영역 2를 덮음 → 3–4 종결자 형성 → 전사 감쇠.'
+    - '부족: 리보솜이 영역 1의 Trp 코돈에서 멈춤 → 2–3 짝 형성(3–4 형성 불가) → 전사 계속.'
+  - p: 영역 1의 Trp 코돈 2개를 모두 다른 아미노산 코돈으로 바꾼 균주를 트립토판이 없는 배지에서 키우면 전사 감쇠가 일어나는지 판단하고 이유를 쓰시오.
+    pt: 4
+    sol: <b>일어난다</b>. Trp 코돈이 없으므로 트립토판이 부족해도 리보솜이 멈추지 않고 영역 2까지 진행해 3–4 종결자가 생긴다.
+    t: essay
+    kp:
+    - 일어난다. Trp 코돈이 없으므로 트립토판이 부족해도 리보솜이 멈추지 않고 영역 2까지 진행해 3–4 종결자가 생긴다.
+  ex: '원본: 2019 MDEET 자연과학Ⅰ 25 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio09
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2018 MDEET 자연과학Ⅰ 22 변형] 젖당 오페론 조절을 알아보기 위해 억제 단백질 기능 상실 돌연변이체($lacI^-$)와 작동자 기능 상실 돌연변이체($lacO^c$)를 만들고, $lacI^+$ 유전자와 정상 젖당 오페론을 모두 가진 플라스미드 M을 각각에 1카피 넣었다. 표는 $lacZ$ 발현량(상댓값)이다.'
+  tb: <div class="bogi"><div class="bt">&lt; 결과 &gt;</div><table class="dt"><tr><th rowspan="2">균주</th><th rowspan="2">M</th><th colspan="2">$lacZ$ 발현량</th></tr><tr><th>젖당 없음</th><th>젖당 있음</th></tr><tr><td rowspan="2">야생형</td><td>×</td><td>0</td><td>100</td></tr><tr><td>○</td><td>0</td><td>200</td></tr><tr><td rowspan="2">$lacI^-$</td><td>×</td><td>100</td><td>100</td></tr><tr><td>○</td><td>㉠</td><td>㉡</td></tr><tr><td rowspan="2">$lacO^c$</td><td>×</td><td>㉢</td><td>100</td></tr><tr><td>○</td><td>㉣</td><td>200</td></tr></table></div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: ㉠~㉣을 쓰시오.
+    pt: 6
+    sol: ㉠ <span class="fin">0</span>, ㉡ <span class="fin">200</span>, ㉢ <span class="fin">100</span>, ㉣ <span class="fin">100</span>
+    t: essay
+    kp:
+    - ㉠ 0, ㉡ 200, ㉢ 100, ㉣ 100
+  - p: ㉠과 ㉣의 결과로부터 $lacI$와 $lacO$가 각각 트랜스(trans)·시스(cis) 중 어떻게 작용하는지 설명하시오.
+    pt: 4
+    sol: '$lacI$: 플라스미드에서 만든 억제 단백질이 염색체 오페론까지 억제 → <b>트랜스 작용</b>(확산하는 단백질 산물).<br>$lacO$: 플라스미드의 정상 작동자가 있어도 염색체의 $O^c$ 오페론은 계속 발현 → <b>시스 작용</b>(같은 DNA 위의 유전자만 조절).'
+    t: essay
+    kp:
+    - '$lacI$: 플라스미드에서 만든 억제 단백질이 염색체 오페론까지 억제 → 트랜스 작용(확산하는 단백질 산물).'
+    - '$lacO$: 플라스미드의 정상 작동자가 있어도 염색체의 $O^c$ 오페론은 계속 발현 → 시스 작용(같은 DNA 위의 유전자만 조절).'
+  ex: '원본: 2018 MDEET 자연과학Ⅰ 22 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio10
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2022 MDEET 자연과학Ⅰ 15 변형] 포도당과 젖당이 모두 든 배지에서 야생형 대장균, 돌연변이주 A, B를 키웠다. A는 $lacI$ 돌연변이로 억제 단백질이 알로락토스와 결합하지 못한다. B는 젖당 오페론에서 CAP–cAMP 결합 부위가 결실되었다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: 야생형의 생장 곡선 모양을 쓰고, 그렇게 되는 이유를 설명하시오.
+    pt: 4
+    sol: 포도당을 먼저 쓰며 증가 → 잠시 정체(유도기) → 젖당을 쓰며 다시 증가하는 <b>이중 생장(diauxie)</b>. 포도당이 있으면 cAMP가 적어 젖당 오페론 발현이 약하고, 포도당이 떨어지면 cAMP↑ → CAP–cAMP가 결합해 발현이 활발해진다.
+    t: essay
+    kp:
+    - 포도당을 먼저 쓰며 증가 → 잠시 정체(유도기) → 젖당을 쓰며 다시 증가하는 이중 생장(diauxie). 포도당이 있으면 cAMP가 적어 젖당 오페론 발현이 약하고, 포도당이 떨어지면 cAMP↑ → CAP–cAMP가 결합해 발현이 활발해진다.
+  - p: A와 B의 생장 곡선은 포도당을 다 쓴 뒤 각각 어떻게 되는지 쓰시오.
+    pt: 6
+    sol: 'A: 억제가 풀리지 않아 젖당을 쓰지 못함 → 포도당 소진 후 <b>더 이상 증가하지 않는다</b>.<br>B: 억제는 풀리지만 CAP에 의한 촉진이 없어 발현이 약함 → 젖당을 <b>느리게</b> 쓰며 완만하게 증가한다.'
+    t: essay
+    kp:
+    - 'A: 억제가 풀리지 않아 젖당을 쓰지 못함 → 포도당 소진 후 더 이상 증가하지 않는다.'
+    - 'B: 억제는 풀리지만 CAP에 의한 촉진이 없어 발현이 약함 → 젖당을 느리게 쓰며 완만하게 증가한다.'
+  ex: '원본: 2022 MDEET 자연과학Ⅰ 15 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio11
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2023 MDEET 자연과학Ⅰ 13 변형] 대장균 엿당(maltose) 오페론 중 하나인 $malPQ$의 프로모터 앞에는 활성 인자 MalT의 결합 부위가 있다. MalT는 엿당 유도체가 결합해야 DNA에 붙는다. MalT를 만드는 $malT$ 유전자의 프로모터 앞에는 CAP–cAMP 결합 부위가 있다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: $malPQ$ 오페론이 발현되기 위한 배지 조건(엿당·포도당)을 쓰고, 이유를 쓰시오.
+    pt: 4
+    sol: <b>엿당 있음 + 포도당 없음</b>. 엿당 유도체가 있어야 MalT가 활성화되고, 포도당이 없어 cAMP가 많아야 CAP–cAMP가 $malT$ 전사를 촉진해 MalT가 충분히 만들어진다.
+    t: essay
+    kp:
+    - 엿당 있음 + 포도당 없음. 엿당 유도체가 있어야 MalT가 활성화되고, 포도당이 없어 cAMP가 많아야 CAP–cAMP가 $malT$ 전사를 촉진해 MalT가 충분히 만들어진다.
+  - p: CAP에 의한 $malT$ 조절은 음성·양성 중 무엇인지 쓰고, $malT$가 항상 많이 발현되는 돌연변이체에서 $malPQ$가 이화산물 억제를 받는지 판단하시오.
+    pt: 6
+    sol: <b>양성 조절</b>. 이화산물 억제는 $malT$ 발현을 통해 간접적으로 일어나므로, $malT$가 항상 발현되면 <b>이화산물 억제를 받지 않는다</b>(엿당만 있으면 발현).
+    t: essay
+    kp:
+    - 양성 조절. 이화산물 억제는 $malT$ 발현을 통해 간접적으로 일어나므로, $malT$가 항상 발현되면 이화산물 억제를 받지 않는다(엿당만 있으면 발현).
+  ex: '원본: 2023 MDEET 자연과학Ⅰ 13 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio12
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2016 MEET 자연과학Ⅰ 14 변형] 어떤 바이러스의 mRNA에는 단백질 암호 영역(ORF) 사이에 서열 S가 있다. 진핵생물 무세포 단백질 합성계에 다음 전사체를 넣고 웨스턴 블롯으로 단백질을 확인했다. ORF1은 20 kDa, ORF2는 30 kDa 단백질을 암호화한다.'
+  tb: <div class="bogi"><div class="bt">&lt; 전사체와 결과 &gt;</div>㉠ 5′ 캡이 있는 선형 mRNA [ORF1] → 20 kDa 검출<br>㉡ 5′ 캡이 없는 선형 mRNA [S–ORF1] → 20 kDa 검출<br>㉢ 원형 mRNA [ORF2] (캡·말단 없음) → 검출 안 됨<br>㉣ 원형 mRNA [S–ORF2] → 30 kDa 검출</div><details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: 진핵세포의 일반적인 번역 개시 과정을 쓰고, ㉢에서 단백질이 만들어지지 않은 이유를 쓰시오.
+    pt: 4
+    sol: 작은 소단위체가 mRNA <b>5′ 캡</b>에 결합한 뒤 3′ 쪽으로 훑어가며(scanning) 첫 AUG에서 개시한다. ㉢은 캡(5′ 말단)이 없어 리보솜이 결합할 곳이 없다.
+    t: essay
+    kp:
+    - 작은 소단위체가 mRNA 5′ 캡에 결합한 뒤 3′ 쪽으로 훑어가며(scanning) 첫 AUG에서 개시한다. ㉢은 캡(5′ 말단)이 없어 리보솜이 결합할 곳이 없다.
+  - p: S의 기능을 추론하고, ㉣의 S를 대장균의 리보솜 결합 부위(샤인-달가노 서열)로 바꾸어 진핵 합성계에 넣으면 30 kDa 단백질이 생기는지 판단하시오.
+    pt: 6
+    sol: S는 캡 없이 리보솜을 직접 불러들이는 <b>내부 리보솜 진입 부위(IRES)</b>이다. 샤인-달가노 서열은 원핵 리보솜이 인식하는 서열이므로 진핵 합성계에서는 작동하지 않아 <b>생기지 않는다</b>.
+    t: essay
+    kp:
+    - S는 캡 없이 리보솜을 직접 불러들이는 내부 리보솜 진입 부위(IRES)이다. 샤인-달가노 서열은 원핵 리보솜이 인식하는 서열이므로 진핵 합성계에서는 작동하지 않아 생기지 않는다.
+  ex: '원본: 2016 MEET 자연과학Ⅰ 14 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio13
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2023 MDEET 자연과학Ⅰ 25 변형] 시험관 단백질 합성계로 tRNA의 기능을 조사했다. (가) Cys-tRNA 합성 효소로 tRNA$^{Cys}$(안티코돈 5′-GCA-3′)에 시스테인을 붙인다. (나) 붙어 있는 시스테인을 화학적으로 알라닌으로 바꾸어 Ala-tRNA$^{Cys}$를 만든다(안티코돈은 그대로). (다) Ala-tRNA$^{Cys}$를 넣은 합성계에서 단백질을 만든다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: (다)에서 합성된 단백질에서 원래 시스테인이 있어야 할 자리에 어떤 아미노산이 들어가는지 쓰시오.
+    pt: 4
+    sol: <b>알라닌</b>
+    t: txt
+    a:
+    - 알라닌
+    - Ala
+    - alanine
+  - p: 이 결과가 보여 주는 tRNA의 역할을 쓰고, 단백질의 정확한 번역에서 아미노아실-tRNA 합성 효소가 중요한 이유를 쓰시오.
+    pt: 6
+    sol: 리보솜은 붙은 아미노산이 아니라 <b>tRNA의 안티코돈과 mRNA 코돈의 상보성</b>만 확인한다(tRNA = 어댑터). 따라서 각 tRNA에 맞는 아미노산을 정확히 붙이는 합성 효소의 정확성이 번역 정확성을 결정한다.
+    t: essay
+    kp:
+    - 리보솜은 붙은 아미노산이 아니라 tRNA의 안티코돈과 mRNA 코돈의 상보성만 확인한다(tRNA = 어댑터). 따라서 각 tRNA에 맞는 아미노산을 정확히 붙이는 합성 효소의 정확성이 번역 정확성을 결정한다.
+  ex: '원본: 2023 MDEET 자연과학Ⅰ 25 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio14
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2021 MDEET 자연과학Ⅰ 10 변형] 사람 RNA 중합 효소 Ⅱ의 C-말단에는 7개 아미노산 서열(Tyr-Ser-Pro-Thr-Ser-Pro-Ser)이 수십 번 반복된다. 이 중 2번 Ser, 4번 Thr, 5번 Ser이 인산화된 효소(Ser2-P, Thr4-P, Ser5-P)는 각각 이어맞추기 인자, 전사 종결 인자, 5′ 캡 형성 효소 중 하나와 결합한다. 염색질 면역 침전(ChIP)으로 유전자 위치별 결합량을 조사한 결과, Ser5-P는 전사 개시점에서 가장 많고 3′ 쪽으로 갈수록 줄었고, Ser2-P는 3′ 쪽으로 갈수록 늘었으며, Thr4-P는 전사 종결점 근처에서 급격히 늘었다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: Ser2-P, Thr4-P, Ser5-P가 각각 결합하는 인자를 쓰시오.
+    pt: 4
+    sol: 'Ser5-P: <b>5′ 캡 형성 효소</b>, Ser2-P: <b>이어맞추기 인자</b>, Thr4-P: <b>전사 종결 인자</b>'
+    t: essay
+    kp:
+    - 'Ser5-P: 5′ 캡 형성 효소, Ser2-P: 이어맞추기 인자, Thr4-P: 전사 종결 인자'
+  - p: Ser5-P와 캡 형성 효소의 결합이 전사 개시 직후에 일어나야 하는 이유를 쓰시오.
+    pt: 4
+    sol: 새로 만들어지는 pre-mRNA의 5′ 말단이 나오자마자 캡을 씌워야 분해를 막고, 이후 핵 밖 수송·번역 개시에 쓰일 수 있기 때문(전사와 가공이 동시에 일어남).
+    t: essay
+    kp:
+    - 새로 만들어지는 pre-mRNA의 5′ 말단이 나오자마자 캡을 씌워야 분해를 막고, 이후 핵 밖 수송·번역 개시에 쓰일 수 있기 때문(전사와 가공이 동시에 일어남).
+  ex: '원본: 2021 MDEET 자연과학Ⅰ 10 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio15
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2022 MDEET 19 · 2026 MDEET 7 변형] 초파리의 빨간 눈 유전자 $w^+$는 X 염색체의 진정염색질에 있다. 역위로 $w^+$가 이질염색질 근처로 옮겨진 PEV 초파리는 눈이 빨간색과 흰색이 섞인 모자이크가 된다. PEV 초파리에 돌연변이를 일으켜 모자이크가 억제되어 빨간 눈을 갖게 된 돌연변이체들을 찾았더니, 다음 단백질 중 하나의 기능을 잃어 있었다: A(히스톤 탈아세틸화 효소), B(히스톤 H3의 9번 라이신(H3K9)에 메틸기를 붙이는 효소), C(이질염색질 단백질 HP1).'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: PEV 초파리의 눈이 모자이크가 되는 이유를 쓰시오.
+    pt: 4
+    sol: 세포마다 이질염색질이 퍼져 나가는 정도가 달라, 어떤 세포에서는 $w^+$가 이질염색질에 묻혀 <b>발현이 꺼지고</b>(흰색) 어떤 세포에서는 발현된다(빨간색).
+    t: essay
+    kp:
+    - 세포마다 이질염색질이 퍼져 나가는 정도가 달라, 어떤 세포에서는 $w^+$가 이질염색질에 묻혀 발현이 꺼지고(흰색) 어떤 세포에서는 발현된다(빨간색).
+  - p: A~C의 기능을 잃으면 빨간 눈이 되는 이유를 쓰고, H3K9의 아세틸화와 메틸화 사이의 관계를 쓰시오.
+    pt: 6
+    sol: A~C는 모두 이질염색질 형성에 필요하다(탈아세틸화 → H3K9 메틸화 → HP1 결합). 하나라도 없으면 이질염색질이 퍼지지 못해 $w^+$가 발현된다. 같은 라이신(K9)에는 아세틸기와 메틸기가 동시에 붙을 수 없으므로 <b>아세틸화가 늘면 메틸화는 줄어든다</b>.
+    t: essay
+    kp:
+    - A~C는 모두 이질염색질 형성에 필요하다(탈아세틸화 → H3K9 메틸화 → HP1 결합). 하나라도 없으면 이질염색질이 퍼지지 못해 $w^+$가 발현된다. 같은 라이신(K9)에는 아세틸기와 메틸기가 동시에 붙을 수 없으므로 아세틸화가 늘면 메틸화는 줄어든다.
+  ex: '원본: 2022 MDEET 19 · 2026 MDEET 7 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio16
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2016 MEET 자연과학Ⅰ 13 변형] 초파리 초기 배아에서 Dorsal 단백질은 배쪽 세포의 핵에 많고 등쪽으로 갈수록 줄어든다. Dorsal은 $snail$과 $rhomboid$의 인핸서에 결합해 발현을 유도하는데, $snail$은 Dorsal 농도가 높은 배쪽 끝에서만, $rhomboid$는 그 바로 옆(농도가 중간인 곳)에서만 발현된다. Snail 단백질은 $rhomboid$의 발현을 억제한다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: Dorsal에 대한 친화력은 $snail$과 $rhomboid$ 인핸서 중 어느 쪽이 큰지 쓰고 근거를 쓰시오.
+    pt: 4
+    sol: <b>$rhomboid$</b>. 농도가 중간인 곳에서도 발현되므로 적은 Dorsal로도 결합한다. $snail$은 농도가 높아야 결합(친화력 작음).
+    t: essay
+    kp:
+    - $rhomboid$. 농도가 중간인 곳에서도 발현되므로 적은 Dorsal로도 결합한다. $snail$은 농도가 높아야 결합(친화력 작음).
+  - p: 배아의 배쪽 끝에서 $rhomboid$가 발현되지 않는 이유를 쓰고, $snail$ 기능 상실 배아에서 $rhomboid$ 발현 영역을 예상하시오.
+    pt: 6
+    sol: 배쪽 끝에서는 Snail이 $rhomboid$를 억제한다. $snail$이 없으면 억제가 사라져 <b>배쪽 끝까지 $rhomboid$ 발현 영역이 넓어진다</b>.
+    t: essay
+    kp:
+    - 배쪽 끝에서는 Snail이 $rhomboid$를 억제한다. $snail$이 없으면 억제가 사라져 배쪽 끝까지 $rhomboid$ 발현 영역이 넓어진다.
+  ex: '원본: 2016 MEET 자연과학Ⅰ 13 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'
+- id: xm_bio17
+  s: bio
+  u: 유전자 발현·조절·생명공학
+  t: set
+  lv: 3
+  col: past
+  xs: MEET·DEET
+  q: '[2022 MDEET 자연과학Ⅰ 21 변형] 초파리 배아의 앞뒤 축 형성에는 모계 효과 유전자 → 간극 유전자 → 쌍지배 유전자 → 체절 극성 유전자 → 혹스 유전자의 순서로 발현되는 유전자들이 관여한다. 배아에서 네 유전자 A~D의 mRNA 분포를 보았더니 A는 앞쪽 끝에 농도 기울기, B는 가운데 넓은 띠 1개, C는 7개의 띠, D는 14개의 띠로 나타났다.'
+  tb: <details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>◦ 별도 언급이 없으면 제시된 돌연변이 외의 변화는 없고, 기저(누출) 발현은 0으로 본다.</div></details>
+  parts:
+  - p: A~D를 bicoid, krüppel, even-skipped, wingless에 짝짓고, 각각이 속한 유전자 무리를 쓰시오.
+    pt: 6
+    sol: 'A: <b>bicoid</b>(모계 효과), B: <b>krüppel</b>(간극), C: <b>even-skipped</b>(쌍지배), D: <b>wingless</b>(체절 극성)'
+    t: essay
+    kp:
+    - 'A: bicoid(모계 효과), B: krüppel(간극), C: even-skipped(쌍지배), D: wingless(체절 극성)'
+  - p: A~D 중 가장 먼저 발현되는 것을 쓰고, 앞 단계 유전자의 산물이 다음 단계 유전자의 발현을 조절할 수 있는 이유를 쓰시오.
+    pt: 4
+    sol: <b>A(bicoid)</b> – 난자 형성 때 어미가 넣은 mRNA. 앞 단계 산물 대부분이 <b>전사 인자</b>이므로 다음 단계 유전자의 조절 부위에 결합해 발현 위치를 정한다.
+    t: essay
+    kp:
+    - A(bicoid) – 난자 형성 때 어미가 넣은 mRNA. 앞 단계 산물 대부분이 전사 인자이므로 다음 단계 유전자의 조절 부위에 결합해 발현 위치를 정한다.
+  ex: '원본: 2022 MDEET 자연과학Ⅰ 21 (의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.'

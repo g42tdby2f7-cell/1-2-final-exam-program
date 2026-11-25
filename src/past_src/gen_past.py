@@ -36,18 +36,25 @@ NUM = {
  ('earth', 5, 2): (70, 'km/s/Mpc', .02), ('earth', 9, 1): (10.8, '배', .02), ('earth', 12, 3): (9, '', .01), ('earth', 14, 1): (8.5, '등급', .02),
  ('earth', 14, 2): (0.05, '″', .05), ('earth', 16, 1): (-500, 'km/s', .02), ('earth', 17, 2): (3, '', .01), ('earth', 20, 2): (3, 'R', .01),
 }
-TXT = {('bio', 15, 1): ['ACCGTAATCG', "5'-ACCGTAATCG-3'"], ('bio', 15, 3): ['ddATP', 'ddA', 'A']}
+NUM.update({
+ ('mbio', 3, 2): (32, '배', .01), ('mchem', 1, 3): (8.97, 'g/cm³', .02), ('mchem', 5, 1): (1.5, '배', .01), ('mchem', 5, 2): (1.22, '', .02),
+ ('mchem', 12, 1): (-106, 'kJ/mol', .01), ('mchem', 14, 1): (-267, 'kJ/mol', .01),
+ ('mchem', 17, 3): (27.5, 'kJ', .02), ('mchem', 19, 1): (53, 'kJ/mol', .01), ('mchem', 20, 1): (428, 'kJ/mol', .01),
+})
+TXT = {('mbio', 13, 1): ['알라닌', 'Ala', 'alanine'], ('bio', 15, 1): ['ACCGTAATCG', "5'-ACCGTAATCG-3'"], ('bio', 15, 3): ['ddATP', 'ddA', 'A']}
 
 KIND = {'임용': '임용', 'MEET': 'MEET', 'DEET': 'DEET', 'PEET': 'PEET'}
 NAME = {'phys': '물리', 'chem': '화학', 'bio': '생물', 'earth': '지구과학'}
 out, figs = [], {}
 import build_scale
-for s in ['phys', 'chem', 'bio', 'earth']:
-    subj = build_scale.scale_points(importlib.import_module(s).SUBJ)
+MODS = [('phys', 'phys', 'xp_'), ('chem', 'chem', 'xp_'), ('bio', 'bio', 'xp_'), ('earth', 'earth', 'xp_'),
+        ('phys', 'm_phys', 'xm_'), ('chem', 'm_chem', 'xm_'), ('bio', 'm_bio', 'xm_')]
+for s, modname, pre in MODS:
+    subj = build_scale.scale_points(importlib.import_module(modname).SUBJ)
     common = subj.get('common', '')
     for n, q in enumerate(subj['qs'], 1):
-        kind = next((k for k in KIND if k in q['src']), '임용')
-        item = {'id': f'xp_{s}{n:02d}', 's': s, 'u': q['g'], 't': 'set', 'lv': 3, 'col': 'past', 'xs': kind,
+        kind = 'MEET·DEET' if ('MEET' in q['src'] or 'DEET' in q['src']) else '임용'
+        item = {'id': f'{pre}{s}{n:02d}', 's': s, 'u': q['g'], 't': 'set', 'lv': 3, 'col': 'past', 'xs': kind,
                 'q': f"[{q['src']}] " + plain(q['stem'])}
         tb = ''
         if q.get('box'):
@@ -56,21 +63,24 @@ for s in ['phys', 'chem', 'bio', 'earth']:
             tb += f'<details class="pcom"><summary>공통 조건 · 상수 · 근삿값</summary><div>{common}</div></details>'
         if tb: item['tb'] = tb
         if q.get('fig'):
-            k = f'xp_{s}{n:02d}'; figs[k] = svgmath(q['fig']); item['fig'] = k
+            k = f'{pre}{s}{n:02d}'; figs[k] = svgmath(q['fig']); item['fig'] = k
         parts = []
         for i, sb in enumerate(q['subs'], 1):
             p = {'p': plain(sb['q']), 'pt': sb.get('w', 2) * 2, 'sol': sb['a']}
-            if (s, n, i) in NUM:
-                v, u, tol = NUM[(s, n, i)]; p.update(t='num', a=v, tol=tol)
+            key = (s, n, i) if pre == 'xp_' else ('m' + s, n, i)
+            if key in NUM:
+                v, u, tol = NUM[key]; p.update(t='num', a=v, tol=tol)
                 if u: p['unit'] = u
-            elif (s, n, i) in TXT:
-                p.update(t='txt', a=TXT[(s, n, i)])
+            elif key in TXT:
+                p.update(t='txt', a=TXT[key])
             else:
                 p.update(t='essay', kp=kps(sb['a']))
             parts.append(p)
         item['parts'] = parts
         m = re.match(r'(\d{4}) 임용 (\S+) ([AB])-(\d+)', q['src'])
-        item['ex'] = ('원본: ' + q['src'].replace(' 변형', '') + ' (한국교육과정평가원 중등교사 임용시험 1차). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.')
+        org = ('의·치의학교육입문검사(MEET·DEET), 의·치의학교육입문검사협의회 공개 기출' if kind != '임용'
+               else '한국교육과정평가원 중등교사 임용시험 1차')
+        item['ex'] = ('원본: ' + q['src'].replace(' 변형', '') + f' ({org}). 이 문항은 원본의 개념·아이디어를 바탕으로 숫자·조건·표현을 바꾼 변형 문항이에요.')
         out.append(item)
 
 yaml.safe_dump(out, open(os.path.join(HERE, '..', 'x_past.yaml'), 'w'), allow_unicode=True, sort_keys=False, width=1000)
