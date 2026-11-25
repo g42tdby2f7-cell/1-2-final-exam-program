@@ -143,6 +143,8 @@ math{font-size:1.1em}
 .choice .why{display:block;margin-top:6px;padding:7px 9px;border-radius:8px;font-size:13.5px;font-weight:400;line-height:1.55;text-align:left;background:rgba(0,0,0,.035);color:var(--ink,#333)}.choice .why b{display:block;font-size:12px;margin-bottom:2px}.choice .why.y b{color:#1a8f4c}.choice .why.n b{color:#c9423a}
 .res{overflow-x:auto}
 .part{margin:14px 0 4px;padding-top:12px;border-top:1px dashed var(--line)}.part .ptxt{font-size:15px;font-weight:600;line-height:1.6;margin-bottom:8px;word-break:keep-all}.part .pts{color:var(--acc);font-weight:700;font-size:13px}.tbwrap{overflow-x:auto;margin:10px 0}.tbwrap table{border-collapse:collapse;font-size:13.5px;margin:0 auto}.tbwrap td,.tbwrap th{border:1px solid #d9d6cf;padding:6px 9px;text-align:center}.tbwrap th{background:#f4f2ee}
+.fin{font-weight:700;color:var(--acc)}details.pcom{margin:8px 0;font-size:13px;color:#555;background:#f7f5f1;border-radius:8px;padding:6px 10px}details.pcom summary{cursor:pointer;font-weight:700}
+.bogi table{border-collapse:collapse;margin:6px auto;font-size:13.5px}.bogi td,.bogi th{border:1px solid #d9d6cf;padding:4px 8px;text-align:center}.bogi th{background:#f4f2ee}
 .bogi{border:1.5px solid #bbb;border-radius:6px;padding:10px 12px;margin:10px 0;font-size:14.5px;line-height:1.7;text-align:left}.bogi .bt{text-align:center;font-weight:700;margin-bottom:4px;letter-spacing:2px}
 .qtext .katex-display,.detail .katex-display{margin:.4em 0;overflow-x:auto;overflow-y:hidden}
 @media (max-width:420px){.subj .nm{font-size:18px}.qtext{font-size:16px}}
@@ -174,7 +176,10 @@ const SUBJ={phys:{n:'물리',e:'⚡',c:'bg-phys'},chem:{n:'화학',e:'🧪',c:'b
 const SORDER=['phys','chem','bio','earth'];
 const TYPE_NM={mc:'객관식',num:'단답(수치)',txt:'단답',essay:'서술형',set:'서답형 세트'};
 const LV_NM={1:'암기',2:'계산·적용',3:'심화'};
-const Q=QS; const QMAP={}; Q.forEach(q=>QMAP[q.id]=q);
+const QMAP={}; QS.forEach(q=>QMAP[q.id]=q);
+const Q=QS.filter(q=>!q.col); /* 일반 복습 문제 */
+const PQ=QS.filter(q=>q.col==='past'); /* 임용·MEET·DEET·PEET 기출 변형 */
+const XKIND=['임용','MEET','DEET','PEET'];
 
 /* ---------- storage ---------- */
 const SK='bss_1-2final_v1';
@@ -281,7 +286,7 @@ let HIST=[];
 function go(view,arg,push){
   if(push!==false){HIST.push([view,arg]); if(HIST.length>30)HIST.shift();}
   if(TIMER&&view!=='exam'){ if(push!==false)HIST.pop(); askConfirm('모의고사가 진행 중이에요. 나가면 지금 상태로 바로 채점돼요. 나갈까요?',()=>{submitExam(true);go(view,arg)}); return; }
-  ({home:vHome,subject:vSubject,quiz:vQuiz,examSetup:vExamSetup,exam:vExam,examResult:vExamResult,ask:vAsk,lib:vLib,wrong:vWrong})[view](arg);
+  ({home:vHome,subject:vSubject,quiz:vQuiz,examSetup:vExamSetup,exam:vExam,examResult:vExamResult,ask:vAsk,lib:vLib,wrong:vWrong,past:vPast})[view](arg);
 }
 function goBack(){HIST.pop();const h=HIST.pop();if(h)go(h[0],h[1]);else go('home')}
 
@@ -293,7 +298,7 @@ function stat(subj){
 }
 function vHome(){
   setTitle('1-2 기말 복습 · 물화생지',false); setTab('home');
-  let h=`<a class="card" href="https://g42tdby2f7-cell.github.io/1-2-final-exam-program/" target="_blank" rel="noopener" style="display:flex;gap:10px;align-items:center;padding:11px 13px;margin:0 0 12px;text-decoration:none;color:inherit;background:#eef1fc;border:1.5px solid #c9d3f5"><span style="font-size:20px">🔗</span><span style="flex:1;min-width:0"><b style="font-size:13.5px">온라인 버전 (항상 최신)</b><span style="display:block;font-size:12px;color:var(--acc);word-break:break-all">g42tdby2f7-cell.github.io/1-2-final-exam-program</span></span><span style="font-size:18px;color:var(--acc)">›</span></a><a class="card" href="memo.html" style="display:flex;gap:10px;align-items:center;padding:12px 13px;margin:0 0 12px;text-decoration:none;color:inherit;background:#e7efe9;border:1.5px solid #b9d4c6"><span style="font-size:22px">🔁</span><span style="flex:1;min-width:0"><b style="font-size:14px">반복 학습 · 암기 퀴즈</b><span style="display:block;font-size:12px;color:#2c5f52">틀린 내용은 다른 문제로 다시 · 기억 상자(라이트너) · 스피드 OX · 짝 맞추기 · 요점 보기</span></span><span style="font-size:18px;color:#2c5f52">›</span></a><a class="card" href="nomen.html" style="display:flex;gap:10px;align-items:center;padding:12px 13px;margin:0 0 12px;text-decoration:none;color:inherit;background:#e3e8fb;border:1.5px solid #c3cdf3"><span style="font-size:22px">🧪</span><span style="flex:1;min-width:0"><b style="font-size:14px">캠탁 명명법 퀴즈</b><span style="display:block;font-size:12px;color:#2A47C9">영어 이름 → 화학식 · 객관식 / 직접 쓰기 / 암기표 · 고체·상전이 물질 포함</span></span><span style="font-size:18px;color:#2A47C9">›</span></a><div class="h2">무엇을 복습할까요?</div><div class="sub">수업 PPT·학습지·내 필기로 만든 문제 ${Q.length}개${typeof UPDATED!=='undefined'?' · 업데이트 '+UPDATED:''}</div><div class="grid2" style="margin-top:14px">`;
+  let h=`<a class="card" href="https://g42tdby2f7-cell.github.io/1-2-final-exam-program/" target="_blank" rel="noopener" style="display:flex;gap:10px;align-items:center;padding:11px 13px;margin:0 0 12px;text-decoration:none;color:inherit;background:#eef1fc;border:1.5px solid #c9d3f5"><span style="font-size:20px">🔗</span><span style="flex:1;min-width:0"><b style="font-size:13.5px">온라인 버전 (항상 최신)</b><span style="display:block;font-size:12px;color:var(--acc);word-break:break-all">g42tdby2f7-cell.github.io/1-2-final-exam-program</span></span><span style="font-size:18px;color:var(--acc)">›</span></a><a class="card" href="memo.html" style="display:flex;gap:10px;align-items:center;padding:12px 13px;margin:0 0 12px;text-decoration:none;color:inherit;background:#e7efe9;border:1.5px solid #b9d4c6"><span style="font-size:22px">🔁</span><span style="flex:1;min-width:0"><b style="font-size:14px">반복 학습 · 암기 퀴즈</b><span style="display:block;font-size:12px;color:#2c5f52">틀린 내용은 다른 문제로 다시 · 기억 상자(라이트너) · 스피드 OX · 짝 맞추기 · 요점 보기</span></span><span style="font-size:18px;color:#2c5f52">›</span></a><a class="card" href="nomen.html" style="display:flex;gap:10px;align-items:center;padding:12px 13px;margin:0 0 12px;text-decoration:none;color:inherit;background:#e3e8fb;border:1.5px solid #c3cdf3"><span style="font-size:22px">🧪</span><span style="flex:1;min-width:0"><b style="font-size:14px">캠탁 명명법 퀴즈</b><span style="display:block;font-size:12px;color:#2A47C9">영어 이름 → 화학식 · 객관식 / 직접 쓰기 / 암기표 · 고체·상전이 물질 포함</span></span><span style="font-size:18px;color:#2A47C9">›</span></a><button class="card" onclick="go('past')" style="display:flex;gap:10px;align-items:center;padding:12px 13px;margin:0 0 12px;width:100%;text-align:left;background:#fbf0e4;border:1.5px solid #ecc9a3"><span style="font-size:22px">🎓</span><span style="flex:1;min-width:0"><b style="font-size:14px">임용 · MEET · DEET · PEET 기출 변형</b><span style="display:block;font-size:12px;color:#8a4f12">내 시험 범위 문항만 골라 변형 · 서답형 ${PQ.length}문항 · 과목/시험/영역별 · 시간 제한 모의고사</span></span><span style="font-size:18px;color:#8a4f12">›</span></button><div class="h2">무엇을 복습할까요?</div><div class="sub">수업 PPT·학습지·내 필기로 만든 문제 ${Q.length}개${typeof UPDATED!=='undefined'?' · 업데이트 '+UPDATED:''}</div><div class="grid2" style="margin-top:14px">`;
   SORDER.forEach(s=>{const st=stat(s);const pct=st.n?Math.round(st.done/st.n*100):0;
     h+=`<button class="subj ${SUBJ[s].c}" onclick="go('subject','${s}')"><div class="emo">${SUBJ[s].e}</div><div class="nm">${SUBJ[s].n}</div><div class="ct">${st.n}문제<br>푼 ${st.done} · 맞힘 ${st.ok}</div><div class="bar"><i style="width:${pct}%"></i></div></button>`});
   h+=`</div>
@@ -304,6 +309,37 @@ function vHome(){
   </div>
   <div class="hint">💡 문제를 풀면 바로 풀이가 나오고, <b>관련 자료</b> 버튼으로 수업 PPT·학습지·내 필기의 해당 페이지를 열어볼 수 있어요. 기록은 이 기기의 브라우저에 저장돼요.</div>`;
   render(h);
+}
+
+/* ---------- 임용·MEET·DEET·PEET 기출 변형 ---------- */
+let PSEL={s:'',k:'',units:[],count:5};
+function vPast(){
+  setTitle('임용·xEET 기출 변형',true); setTab('home');
+  const byK=k=>PQ.filter(q=>q.xs===k&&(!PSEL.s||q.s===PSEL.s)).length;
+  let h=`<div class="h2">🎓 임용 · MEET · DEET · PEET 기출 변형</div><div class="sub">교원 임용·의치약학 입문 시험에서 <b>내 1-2 기말 범위</b>에 해당하는 문항만 골라, 숫자·조건·표현을 바꾼 서답형 문제예요. 문제 앞 [ ]에 원본 출처가 있어요. 대학 수준 원본은 고등학교 범위로 풀 수 있게 다듬었어요.</div><div class="lbl">시험 종류</div><div class="chips">`;
+  [['','전체'],...XKIND.map(k=>[k,k])].forEach(([k,n])=>{const c=k?byK(k):PQ.filter(q=>!PSEL.s||q.s===PSEL.s).length;h+=`<button class="chip ${PSEL.k===k?'on':''}" ${c?'':'disabled style="opacity:.45"'} onclick="PSEL.k='${k}';PSEL.units=[];vPast()">${n} · ${c}</button>`});
+  h+=`</div>`;
+  if(XKIND.some(k=>!PQ.some(q=>q.xs===k))) h+=`<div class="hint">MEET·DEET·PEET는 공식 기출 자료실에 접속할 수 없어 아직 비어 있어요. 시험지 PDF를 올려 주면 같은 방식으로 추가돼요.</div>`;
+  h+=`<div class="lbl">과목</div><div class="chips">`;
+  [['','전 과목'],...SORDER.map(s=>[s,SUBJ[s].e+' '+SUBJ[s].n])].forEach(([s,n])=>{const c=PQ.filter(q=>(!s||q.s===s)&&(!PSEL.k||q.xs===PSEL.k)).length;h+=`<button class="chip ${PSEL.s===s?'on':''}" onclick="PSEL.s='${s}';PSEL.units=[];vPast()">${n} · ${c}</button>`});
+  const base=PQ.filter(q=>(!PSEL.s||q.s===PSEL.s)&&(!PSEL.k||q.xs===PSEL.k));
+  const units=[...new Set(base.map(q=>(PSEL.s?'':SUBJ[q.s].n+' · ')+q.u))];
+  h+=`</div><div class="lbl">영역 (선택 안 하면 전체)</div><div class="chips">`;
+  units.forEach(u=>{h+=`<button class="chip ${PSEL.units.includes(u)?'on':''}" onclick="pToggle('${u}')">${esc(u)}</button>`});
+  const pool=base.filter(q=>!PSEL.units.length||PSEL.units.includes((PSEL.s?'':SUBJ[q.s].n+' · ')+q.u));
+  h+=`</div><div class="lbl">문제 수</div><div class="chips">`;
+  [3,5,10,0].forEach(c=>{h+=`<button class="chip ${PSEL.count===c?'on':''}" onclick="PSEL.count=${c};vPast()">${c||'전부'}</button>`});
+  const n=PSEL.count?Math.min(PSEL.count,pool.length):pool.length;
+  h+=`</div><div class="row" style="margin-top:16px"><button class="btn sec" ${pool.length?'':'disabled'} onclick="pStart(false)">출제 순서대로 (${n})</button><button class="btn" ${pool.length?'':'disabled'} onclick="pStart(true)">랜덤 (${n})</button></div>`;
+  h+=`<button class="btn sec" style="margin-top:10px" onclick="EXS.subj='past';EXS.sets=Math.min(4,Math.max(1,EXS.sets||2));go('examSetup')">⏱️ 시간 제한 모의고사로 풀기</button>`;
+  const done=pool.filter(q=>ST.ans[q.id]).length; h+=`<div class="hint">이 조건에서 ${pool.length}문항 중 ${done}문항을 풀었어요. 소문항 중 수치 답은 자동 채점, 서술은 채점 기준을 체크해 자가 채점해요.</div>`;
+  render(h);
+}
+function pToggle(u){const i=PSEL.units.indexOf(u);if(i>=0)PSEL.units.splice(i,1);else PSEL.units.push(u);vPast()}
+function pStart(rand){
+  let pool=PQ.filter(q=>(!PSEL.s||q.s===PSEL.s)&&(!PSEL.k||q.xs===PSEL.k)&&(!PSEL.units.length||PSEL.units.includes((PSEL.s?'':SUBJ[q.s].n+' · ')+q.u)));
+  if(rand) pool=shuffle(pool); if(PSEL.count) pool=pool.slice(0,PSEL.count);
+  startQuiz('past',pool.map(q=>q.id));
 }
 
 /* ---------- subject ---------- */
@@ -435,7 +471,7 @@ function quizSummary(){
   const ids=QZ.list, done=ids.filter(i=>QZ.res[i]), ok=done.filter(i=>QZ.res[i].ok);
   let h=`<div class="card" style="text-align:center"><div class="sub">결과</div><div class="big">${ok.length} / ${ids.length}</div><div class="sub">푼 문제 ${done.length} · 정답률 ${done.length?Math.round(ok.length/done.length*100):0}%</div></div><div class="card">`;
   ids.forEach((id,k)=>{const q=QMAP[id],r=QZ.res[id];h+=`<div class="sumrow"><span style="flex:1">${k+1}. ${esc(q.q.split('\n')[0].slice(0,46))}${q.q.length>46?'…':''}</span>${r?`<span class="pill ${r.ok?'ok':'no'}">${r.ok?'정답':'오답'}</span>`:'<span class="pill">안 풂</span>'}<button class="btn sm sec" onclick="QZ.i=${k};vQuiz()">보기</button></div>`});
-  h+=`</div><div class="row"><button class="btn sec" onclick="${SORDER.includes(QZ.s)?`go('subject','${QZ.s}')`:`go('home')`}">${SORDER.includes(QZ.s)?'과목으로':'홈으로'}</button>${ids.some(i=>QZ.res[i]&&!QZ.res[i].ok)?`<button class="btn" onclick="startQuiz('${QZ.s}',QZ.list.filter(i=>QZ.res[i]&&!QZ.res[i].ok))">틀린 것만 다시</button>`:''}</div>`;
+  h+=`</div><div class="row"><button class="btn sec" onclick="${QZ.s==='past'?`go('past')`:SORDER.includes(QZ.s)?`go('subject','${QZ.s}')`:`go('home')`}">${QZ.s==='past'?'기출 목록으로':SORDER.includes(QZ.s)?'과목으로':'홈으로'}</button>${ids.some(i=>QZ.res[i]&&!QZ.res[i].ok)?`<button class="btn" onclick="startQuiz('${QZ.s}',QZ.list.filter(i=>QZ.res[i]&&!QZ.res[i].ok))">틀린 것만 다시</button>`:''}</div>`;
   render(h);
 }
 
@@ -447,7 +483,7 @@ function vExamSetup(){
   setTitle('모의고사',false); setTab('exam');
   const P=examPool();
   let h=`<div class="h2">⏱️ 심화 모의고사</div><div class="sub">심화(고난도) 객관식·단답과 학원 TEST 스타일 서답형 세트로만 출제돼요. 시간이 끝나면 바로 자동 채점되고, 서답형의 서술 소문항은 채점 기준으로 부분 점수를 매겨요.</div><div class="lbl">과목</div><div class="chips">`;
-  [['all','전 과목 섞기'],...SORDER.map(s=>[s,SUBJ[s].n])].forEach(([k,n])=>{h+=`<button class="chip ${EXS.subj===k?'on':''}" onclick="EXS.subj='${k}';vExamSetup()">${n}</button>`});
+  [['all','전 과목 섞기'],...SORDER.map(s=>[s,SUBJ[s].n]),['past','🎓 임용·xEET 기출']].forEach(([k,n])=>{h+=`<button class="chip ${EXS.subj===k?'on':''}" onclick="EXS.subj='${k}';vExamSetup()">${n}</button>`});
   h+=`</div><div class="lbl">심화 객관식·단답 (문제당 ${EXPT}점)</div><div class="chips">`;
   [5,8,10,15,20].forEach(c=>{h+=`<button class="chip ${EXS.count===c?'on':''}" onclick="EXS.count=${c};vExamSetup()">${c}문제</button>`});
   h+=`</div><div class="lbl">서답형 심화 세트</div><div class="chips">`;
@@ -460,6 +496,7 @@ function vExamSetup(){
   render(h);
 }
 function examPool(){
+  if(EXS.subj==='past'){const pp=PQ.filter(q=>(!PSEL.s||q.s===PSEL.s)&&(!PSEL.k||q.xs===PSEL.k));return {single:[],sets:pp}}
   const ok=q=>EXS.subj==='all'||q.s===EXS.subj;
   return {single:Q.filter(q=>ok(q)&&q.lv===3&&(q.t==='mc'||q.t==='num'||q.t==='txt')), sets:Q.filter(q=>ok(q)&&q.t==='set')};
 }
@@ -474,7 +511,7 @@ function startExam(){
   const singles=shuffle(balPick(P.single,Math.min(EXS.count,P.single.length)));
   const sets=balPick(P.sets,Math.min(EXS.sets,P.sets.length));
   const pick=[...singles,...sets];
-  EX={ids:pick.map(q=>q.id),ans:{},order:{},start:Date.now(),end:Date.now()+EXS.min*60000,subj:EXS.subj==='all'?'전 과목':SUBJ[EXS.subj].n,min:EXS.min,done:false};
+  EX={ids:pick.map(q=>q.id),ans:{},order:{},start:Date.now(),end:Date.now()+EXS.min*60000,subj:EXS.subj==='all'?'전 과목':EXS.subj==='past'?'임용·xEET 기출'+(PSEL.s?' '+SUBJ[PSEL.s].n:''):SUBJ[EXS.subj].n,min:EXS.min,done:false};
   pick.forEach(q=>{if(q.t==='mc')EX.order[q.id]=q.fix?q.c.map((_,k)=>k):shuffle(q.c.map((_,k)=>k)); if(q.t==='set')EX.ans[q.id]=q.parts.map(()=>'')});
   clearInterval(TIMER); TIMER=setInterval(tick,500);
   go('exam');

@@ -33,7 +33,7 @@ def srcfull(q):
 used_figs = set()
 for q in QS:
     s, t = q['s'], q['t']
-    if t == 'essay': continue
+    if t == 'essay' or q.get('col'): continue
     sec = sec_of(s, q.get('u') or '기타')
     base = dict(subj=s, sec=sec, sub=srcname(q), src=srcfull(q), raw=True)
     if q.get('fig'): base['fig'] = q['fig']; used_figs.add(q['fig'])
