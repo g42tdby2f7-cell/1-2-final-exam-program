@@ -4,7 +4,7 @@ QS=[]
 import figs
 FIG={k:f() for k,f in figs.FIGS.items()}
 FIG.update(json.load(open('past_figs.json')))  # 임용·xEET 기출 변형 그림 (past_src/gen_past.py)
-for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox'),('phys','s_ts'),(None,'s_add'),(None,'s_b2'),('phys','s_p25'),(None,'x_past')]:
+for s,f in [('phys','q_phys'),('chem','q_chem'),('bio','q_bio'),('earth','q_earth'),('chem','x_chem'),('bio','x_bio'),(None,'x_ep'),('phys','q_qm'),('phys','s_phys'),('chem','s_chem'),('bio','s_bio'),('earth','s_earth'),(None,'h_all'),('phys','s_pw'),(None,'s_bogi'),('bio','q_bio7'),('bio','s_bio2'),('phys','s_tr'),('phys','s_qn'),('earth','s_kn'),('chem','s_ct'),('chem','s_cb'),('earth','s_sw'),(None,'s_ge'),('chem','s_mx'),('earth','s_c3'),('earth','s_c4'),('earth','s_ox'),('phys','s_ts'),(None,'s_add'),(None,'s_b2'),('phys','s_p25'),(None,'s_bt'),(None,'x_past')]:
     for q in yaml.safe_load(open(f+'.yaml')):
         if s: q['s']=s
         assert q.get('s') in ('phys','chem','bio','earth'), q['id']
@@ -111,6 +111,12 @@ SRC={
  'kn':dict(n='지학 학원(KNR) 「성간물질 · 은하」 학습지·필기',short='지학 KNR 학습지',s='earth',ic='📗'),
  'qn':dict(n='물리 양자역학 수업 사진·손필기 (흑체 ~ 양자 컴퓨터)',short='물리 양자 필기',s='phys',ic='📕'),
  's1':dict(n='물리 「다이오드 추가」 PPT (근사 모델·예제)',short='물리 다이오드 추가',s='phys',ic='📕'),
+ 'bt1':dict(n='생물 생명공학 기술 ① 「유전자 재조합 기술 — X-Gal blue-white screening」 PPT·필기',short='생명공학 ① 유전자 재조합',s='bio',ic='🧬'),
+ 'pcr':dict(n='생물 생명공학 기술 ① 「PCR (중합효소 연쇄 반응)」 PPT·필기',short='생명공학 ① PCR',s='bio',ic='🧬'),
+ 'bt2':dict(n='생물 생명공학 기술 ② 「핵치환 · 조직배양 · 세포융합」 PPT·필기',short='생명공학 ② 핵치환·조직배양·세포융합',s='bio',ic='🧬'),
+ 'gel':dict(n='생물 생명공학 기술 ③ 「전기영동」 PPT·필기',short='생명공학 ③ 전기영동',s='bio',ic='🧬'),
+ 'stem':dict(n='생물 생명공학 기술 「줄기세포」 PPT·필기',short='생명공학 줄기세포',s='bio',ic='🧬'),
+ 'dfp':dict(n='생물 생명공학 기술 ④ 「DNA 지문 · 모세관 전기영동 · 염기서열 결정」 PPT·필기',short='생명공학 ④ DNA 지문',s='bio',ic='🧬'),
 }
 IMG={}
 import shutil as _sh
